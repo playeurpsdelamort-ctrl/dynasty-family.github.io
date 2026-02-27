@@ -3,25 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynasty Family’s - Recrutement</title>
+    <title>Candidature Staff - Dynasty Family’s</title>
     <style>
-        body { background-color: #0f172a; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
-        .container { max-width: 800px; margin: auto; background: #1e293b; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { color: #38bdf8; text-transform: uppercase; letter-spacing: 2px; }
-        p { color: #94a3b8; line-height: 1.6; }
-        .form-wrapper { margin-top: 30px; border: 1px solid #334155; border-radius: 10px; overflow: hidden; }
-        iframe { width: 100%; height: 700px; border: none; }
+        :root { --blue-glow: #38bdf8; --bg-dark: #020617; }
+        body { background: radial-gradient(circle, #1e293b 0%, var(--bg-dark) 100%); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 800px; background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; border: 1px solid #334155; box-shadow: 0 0 40px rgba(0,0,0,0.5); }
+        .logo-container { text-align: center; margin-bottom: 20px; }
+        .logo-container img { width: 120px; height: 120px; border-radius: 50%; border: 2px solid var(--blue-glow); box-shadow: 0 0 15px rgba(56, 189, 248, 0.5); }
+        h1 { color: var(--blue-glow); text-align: center; text-transform: uppercase; letter-spacing: 3px; margin: 0; }
+        .section-header { background: rgba(56, 189, 248, 0.1); color: var(--blue-glow); padding: 10px; border-radius: 5px; margin-top: 30px; font-weight: bold; text-transform: uppercase; font-size: 0.85em; border-left: 4px solid var(--blue-glow); }
+        label { display: block; margin-top: 20px; margin-bottom: 8px; font-size: 0.95em; color: #e2e8f0; }
+        textarea, input { width: 100%; padding: 12px; background: #0f172a; border: 1px solid #334155; color: white; border-radius: 8px; box-sizing: border-box; }
+        button { width: 100%; margin-top: 40px; padding: 18px; background: var(--blue-glow); border: none; color: #020617; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 1.1em; text-transform: uppercase; }
+        button:hover { background: #7dd3fc; transform: translateY(-2px); box-shadow: 0 5px 20px rgba(56, 189, 248, 0.4); }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>𝘿𝙮𝙣𝙖𝙨𝙩𝙮 𝙁𝙖𝙢𝙞𝙡𝙮’𝙨</h1>
-        <p>Rejoins l'équipage ! Remplis le formulaire ci-dessous avec soin. <br> 
-        Les candidatures baclées seront automatiquement refusées.</p>
-        
-        <div class="form-wrapper">
-            <iframe src="TON_LIEN_JOTFORM_OU_TALLY_ICI"></iframe>
-        </div>
+<div class="container">
+    <div class="logo-container">
+        <img src="LIEN_DE_TON_IMAGE_ICI" alt="Logo Dynasty">
     </div>
+    <h1>𝘿𝙮𝙣𝙖𝙨𝙩𝙮 𝙁𝙖𝙢𝙞𝙡𝙮’𝙨</h1>
+    
+    <form action="https://formspree.io/f/xnjbrvez" method="POST">
+        <div class="section-header">I. Parcours & Expérience</div>
+        <label>1. Présente ton parcours sur Discord (Anciennneté, rôles...)</label>
+        <textarea name="q1" rows="4" required></textarea>
+        
+        <button type="submit">Envoyer ma candidature</button>
+    </form>
+</div>
 </body>
 </html>
