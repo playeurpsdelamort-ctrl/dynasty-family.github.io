@@ -3,53 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynasty Family | Officiel</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Dynasty Family</title>
+    <style>
+        /* Les couleurs de ton logo */
+        :root {
+            --gold: #fbc02d;
+            --dark: #0a0a0a;
+            --grey: #1a1a1a;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--dark);
+            font-family: 'Arial Black', sans-serif;
+            color: white;
+            overflow: hidden; /* Pour un look propre */
+        }
+
+        /* Effet de lumière en fond */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--gold);
+            filter: blur(150px);
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .main-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            background: var(--grey);
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 30px rgba(251, 192, 45, 0.2);
+            max-width: 90%;
+        }
+
+        .logo-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 15px;
+            border: 3px solid var(--gold);
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .gold-text {
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(251, 192, 45, 0.5);
+        }
+
+        .subtitle {
+            font-family: Arial, sans-serif;
+            font-size: 1rem;
+            color: #888;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+
+        /* Animation d'entrée */
+        .main-container {
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <div class="container nav-flex">
-            <div class="logo-area">
-                <img src="dinastyfamilli.jpg" alt="Logo Dynasty Family" class="logo-img">
-                <span class="brand-name">DYNASTY <span class="gold-text">FAMILY</span></span>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#communaute">Communauté</a></li>
-                    <li><a href="#rejoindre">Rejoindre</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section id="accueil" class="hero">
-        <div class="hero-content">
-            <h1>L'ÉLITE DE LA <span class="gold-text">DYNASTIE</span></h1>
-            <p>Loyauté, Force et Ambition. Rejoignez l'aventure dès maintenant.</p>
-            <div class="buttons">
-                <a href="#rejoindre" class="btn-gold">Nous rejoindre</a>
-                <a href="#" class="btn-outline">En savoir plus</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="communaute" class="content-section">
-        <div class="container">
-            <h2 class="section-title">Notre <span class="gold-text">Vision</span></h2>
-            <p>Bienvenue sur le site officiel de la <strong>Dynasty Family</strong>. Nous sommes plus qu'un simple groupe, nous sommes une famille unie par des objectifs communs et une entraide constante.</p>
-        </div>
-    </section>
-
-    <footer id="rejoindre">
-        <div class="container">
-            <p>Suivez-nous sur nos réseaux</p>
-            <div class="social-icons">
-                </div>
-            <p class="copyright">&copy; 2024 DYNASTY FAMILY - Tous droits réservés</p>
-        </div>
-    </footer>
+    <div class="main-container">
+        <img src="dinastyfamilli.jpg" alt="Logo" class="logo-img">
+        
+        <h1>DYNASTY <span class="gold-text">FAMILY</span></h1>
+        
+        <p class="subtitle">BIENVENUE DANS LA DYNASTIE</p>
+    </div>
 
 </body>
 </html>
