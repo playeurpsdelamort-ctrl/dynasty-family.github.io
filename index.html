@@ -9,7 +9,7 @@
             --accent: #38bdf8; 
             --accent-glow: rgba(56, 189, 248, 0.4);
             --bg: #020617; 
-            --card: rgba(15, 23, 42, 0.85);
+            --card: rgba(15, 23, 42, 0.9);
             --border: rgba(56, 189, 248, 0.2);
         }
 
@@ -19,85 +19,61 @@
             background: radial-gradient(circle at top right, #1e293b 0%, var(--bg) 100%); 
             color: #f1f5f9; 
             font-family: 'Segoe UI', Roboto, sans-serif; 
-            margin: 0; 
-            padding: 10px;
-            min-height: 100vh;
+            margin: 0; padding: 10px; min-height: 100vh;
         }
 
         .container { 
-            width: 100%; 
-            max-width: 800px; 
-            margin: 10px auto;
-            background: var(--card); 
-            backdrop-filter: blur(20px); 
-            padding: 30px 20px; 
-            border-radius: 28px; 
-            border: 1px solid var(--border); 
-            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+            width: 100%; max-width: 850px; margin: 10px auto;
+            background: var(--card); backdrop-filter: blur(20px); 
+            padding: 30px 20px; border-radius: 28px; 
+            border: 1px solid var(--border); box-shadow: 0 25px 50px rgba(0,0,0,0.8);
         }
 
         .header { text-align: center; margin-bottom: 25px; }
         .logo { width: 110px; height: 110px; border-radius: 50%; border: 3px solid var(--accent); box-shadow: 0 0 25px var(--accent-glow); object-fit: cover; }
-        
         h1 { color: var(--accent); font-size: 1.6rem; text-transform: uppercase; letter-spacing: 4px; margin: 15px 0 5px; font-weight: 900; }
         .subtitle { color: #94a3b8; font-size: 0.85rem; margin-bottom: 25px; }
 
         .tab-switcher {
-            display: flex;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 6px;
-            border-radius: 18px;
-            margin-bottom: 30px;
-            gap: 5px;
-            border: 1px solid var(--border);
-            overflow-x: auto;
+            display: flex; background: rgba(0, 0, 0, 0.5); padding: 6px; 
+            border-radius: 18px; margin-bottom: 30px; gap: 5px; border: 1px solid var(--border);
         }
 
         .tab-btn {
-            flex: 1;
-            padding: 14px 10px;
-            border: none;
-            background: transparent;
-            color: #64748b;
-            cursor: pointer;
-            font-weight: 800;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            white-space: nowrap;
+            flex: 1; padding: 14px 5px; border: none; background: transparent; 
+            color: #64748b; cursor: pointer; font-weight: 800; border-radius: 12px; 
+            font-size: 0.75rem; transition: 0.3s; text-transform: uppercase;
         }
 
-        .tab-btn.active {
-            background: var(--accent);
-            color: #020617;
-            box-shadow: 0 4px 15px var(--accent-glow);
-        }
+        .tab-btn.active { background: var(--accent); color: #020617; box-shadow: 0 4px 15px var(--accent-glow); }
 
         .form-content { display: none; animation: fadeIn 0.5s ease; }
         .form-content.active { display: block; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .group-title { color: var(--accent); font-size: 0.8rem; font-weight: 900; text-transform: uppercase; margin: 35px 0 15px; border-left: 4px solid var(--accent); padding-left: 10px; background: rgba(56, 189, 248, 0.05); padding-top: 5px; padding-bottom: 5px;}
+        .group-title { 
+            color: var(--accent); font-size: 0.85rem; font-weight: 900; 
+            text-transform: uppercase; margin: 40px 0 15px; 
+            border-left: 4px solid var(--accent); padding-left: 12px;
+            background: rgba(56, 189, 248, 0.05); padding-top: 8px; padding-bottom: 8px;
+        }
 
-        label { display: block; margin-top: 20px; margin-bottom: 8px; font-size: 0.9rem; color: #e2e8f0; font-weight: 600; line-height: 1.4; }
-        
+        label { display: block; margin-top: 25px; margin-bottom: 10px; font-size: 0.95rem; color: #e2e8f0; font-weight: 600; line-height: 1.4; }
         input, textarea { 
             width: 100%; padding: 15px; background: rgba(15, 23, 42, 0.7); 
             border: 1px solid #334155; color: #fff; border-radius: 14px; 
             font-size: 1rem; outline: none; transition: 0.3s;
         }
-
         input:focus, textarea:focus { border-color: var(--accent); background: rgba(30, 41, 59, 0.9); }
 
         .submit-btn { 
             width: 100%; padding: 22px; background: var(--accent); border: none; 
             color: #020617; font-weight: 900; border-radius: 18px; cursor: pointer; 
-            text-transform: uppercase; font-size: 1rem; margin-top: 40px;
+            text-transform: uppercase; font-size: 1.1rem; margin-top: 40px;
         }
 
-        footer { text-align: center; margin-top: 40px; color: #475569; font-size: 0.75rem; }
+        footer { text-align: center; margin-top: 40px; color: #475569; font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -106,7 +82,7 @@
     <div class="header">
         <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" alt="Logo" class="logo">
         <h1>𝘿𝙮𝙣𝙖𝙨𝙩𝙮 𝙁𝙖𝙢𝙞𝙡𝙮’𝙨</h1>
-        <p class="subtitle">⚓ Système de Recrutement Centralisé ⚓</p>
+        <p class="subtitle">⚓ Recrutement Officiel de l'Équipage ⚓</p>
     </div>
 
     <div class="tab-switcher">
@@ -116,179 +92,180 @@
     </div>
 
     <form id="form-mod" class="form-content active" action="https://formspree.io/f/xnjbrvez" method="POST">
-        <input type="hidden" name="_subject" value="Nouvelle Candidature MODÉRATEUR">
+        <input type="hidden" name="_subject" value="Candidature MODÉRATEUR - Dynasty">
         
-        <div class="group-title">I. Parcours & Expérience</div>
         <label>Pseudo Discord & Âge</label>
-        <input type="text" name="Identité" required>
+        <input type="text" name="identité" required placeholder="Ex: Zoro#0001 (19 ans)">
 
-        <label>1. Présente ton parcours sur Discord de manière détaillée (ancienneté, serveurs, rôles).</label>
-        <textarea name="parcours" rows="4" required></textarea>
+        <div class="group-title">I. Parcours & Expérience</div>
+        <label>1. Présente ton parcours sur Discord de manière détaillée (ancienneté, types de serveurs, rôles, responsabilités).</label>
+        <textarea name="m1_parcours" rows="4" required></textarea>
 
-        <label>2. Décris une expérience de modération difficile et tes décisions stratégiques.</label>
-        <textarea name="exp_difficile" rows="4" required></textarea>
+        <label>2. Décris une expérience concrète de modération difficile que tu as vécue et explique tes décisions stratégiques.</label>
+        <textarea name="m2_experience" rows="4" required></textarea>
 
-        <label>3. As-tu déjà participé à l’élaboration ou à l’amélioration d’un règlement ? Explique.</label>
-        <textarea name="reglement" rows="3" required></textarea>
+        <label>3. As-tu déjà participé à l’élaboration ou à l’amélioration d’un règlement ? Explique ta méthodologie.</label>
+        <textarea name="m3_reglement" rows="3" required></textarea>
 
         <div class="group-title">II. Motivation & Vision</div>
         <label>4. Quelle est ta conception du rôle de modérateur au sein d’une communauté structurée ?</label>
-        <textarea name="conception" rows="3" required></textarea>
+        <textarea name="m4_conception" rows="3" required></textarea>
 
         <label>5. En quoi ta candidature se distingue-t-elle des autres ?</label>
-        <textarea name="distinction" rows="3" required></textarea>
+        <textarea name="m5_distinction" rows="3" required></textarea>
 
-        <label>6. Quelle est la frontière entre autorité légitime et abus de pouvoir ?</label>
-        <textarea name="abus_pouvoir" rows="3" required></textarea>
+        <label>6. Quelle est, selon toi, la frontière entre autorité légitime et abus de pouvoir ?</label>
+        <textarea name="m6_abus" rows="3" required></textarea>
 
-        <label>7. Comment contribues-tu à instaurer un climat sain et durable ?</label>
-        <textarea name="climat_sain" rows="3" required></textarea>
+        <label>7. Comment contribues-tu à instaurer un climat sain et durable dans une communauté ?</label>
+        <textarea name="m7_climat" rows="3" required></textarea>
 
         <div class="group-title">III. Analyse & Situations Complexes</div>
-        <label>8. Stratégie face à un membre influent qui enfreint le règlement volontairement ?</label>
-        <textarea name="influenceur" rows="3" required></textarea>
+        <label>8. Un membre influent enfreint volontairement le règlement. Quelle stratégie adoptes-tu ?</label>
+        <textarea name="m8_influent" rows="3" required></textarea>
 
-        <label>9. Conflit mutuel entre deux membres : comment établis-tu les responsabilités ?</label>
-        <textarea name="conflit" rows="3" required></textarea>
+        <label>9. Deux membres se provoquent mutuellement, aucun n'est innocent. Comment établis-tu les responsabilités ?</label>
+        <textarea name="m9_responsabilites" rows="3" required></textarea>
 
-        <label>10. Un membre conteste publiquement une sanction. Comment gères-tu ?</label>
-        <textarea name="contestation" rows="3" required></textarea>
+        <label>10. Un membre conteste publiquement une sanction appliquée. Comment gères-tu la situation ?</label>
+        <textarea name="m10_contestation" rows="3" required></textarea>
 
-        <label>11. Vague de raid en pleine nuit : explique tes mesures d’urgence précises.</label>
-        <textarea name="raid" rows="4" required></textarea>
+        <label>11. Une vague de raid survient en pleine nuit. Explique précisément tes mesures d’urgence.</label>
+        <textarea name="m11_raid" rows="4" required></textarea>
 
-        <label>12. Un modérateur abuse de ses permissions. Réaction et pourquoi ?</label>
-        <textarea name="abus_collegue" rows="3" required></textarea>
+        <label>12. Un modérateur abuse de ses permissions. Quelle est ta réaction et pourquoi ?</label>
+        <textarea name="m12_abus_staff" rows="3" required></textarea>
 
-        <div class="group-title">IV. Posture Professionnelle</div>
+        <div class="group-title">IV. Gestion Émotionnelle</div>
         <label>13. Comment maintiens-tu ton objectivité face à la pression ou aux provocations ?</label>
-        <textarea name="objectivite" rows="3" required></textarea>
+        <textarea name="m13_objectivite" rows="3" required></textarea>
 
-        <label>14. Troll vs Membre réellement problématique : quelle différence ?</label>
-        <textarea name="troll" rows="3" required></textarea>
+        <label>14. Comment différencies-tu un simple troll d’un membre réellement problématique ?</label>
+        <textarea name="m14_troll" rows="3" required></textarea>
 
-        <label>15. Fermeté ou pédagogie ? Argumente.</label>
-        <textarea name="fermete" rows="3" required></textarea>
+        <label>15. Penses-tu que la fermeté doit primer sur la pédagogie ? Argumente.</label>
+        <textarea name="m15_pedagogie" rows="3" required></textarea>
 
         <div class="group-title">V. Impartialité & Éthique</div>
-        <label>16. Définis le principe d’impartialité en modération.</label>
-        <textarea name="impartialite" rows="2" required></textarea>
+        <label>16. Définis le principe d’impartialité dans le cadre d’une modération.</label>
+        <textarea name="m16_impartialite" rows="2" required></textarea>
 
-        <label>17. Un ami proche enfreint le règlement : ta démarche exacte ?</label>
-        <textarea name="ami_proche" rows="3" required></textarea>
+        <label>17. Si un ami proche enfreint le règlement, quelle serait ta démarche exacte ?</label>
+        <textarea name="m17_ami" rows="3" required></textarea>
 
-        <label>18. Comment éviter les biais personnels dans tes décisions ?</label>
-        <textarea name="biais" rows="3" required></textarea>
+        <label>18. Comment éviter les biais personnels dans la prise de décision ?</label>
+        <textarea name="m18_biais" rows="3" required></textarea>
 
-        <div class="group-title">VI. Technique</div>
+        <div class="group-title">VI. Compétences Techniques</div>
         <label>19. Explique le fonctionnement des sanctions progressives (warn → mute → kick → ban).</label>
-        <textarea name="progressives" rows="3" required></textarea>
+        <textarea name="m19_sanctions" rows="3" required></textarea>
 
-        <label>20. Rôle et importance des logs ?</label>
-        <textarea name="logs" rows="2" required></textarea>
+        <label>20. Décris le rôle des logs et pourquoi ils sont essentiels.</label>
+        <textarea name="m20_logs" rows="2" required></textarea>
 
-        <label>21. Configuration de bots (automod, antiraid...) ? Décris tes actions passées.</label>
-        <textarea name="bots" rows="3" required></textarea>
+        <label>21. As-tu déjà configuré un bot (automod, antiraid) ? Décris précisément tes actions.</label>
+        <textarea name="m21_bots" rows="3" required></textarea>
 
-        <div class="group-title">VII. Stratégie Finale</div>
-        <label>22. Quelles améliorations structurelles mettrais-tu en place pour l'équipe ?</label>
-        <textarea name="ameliorations" rows="4" required></textarea>
+        <div class="group-title">VII. Question Finale</div>
+        <label>22. Quelles améliorations structurelles mettrais-tu en place pour l’efficacité de l’équipe ?</label>
+        <textarea name="m22_final" rows="4" required></textarea>
 
-        <button type="submit" class="submit-btn">Envoyer mon dossier Modération</button>
+        <button type="submit" class="submit-btn">Soumettre ma candidature Modérateur</button>
     </form>
 
     <form id="form-anim" class="form-content" action="https://formspree.io/f/xnjbrvez" method="POST">
-        <input type="hidden" name="_subject" value="Nouvelle Candidature ANIMATEUR">
+        <input type="hidden" name="_subject" value="Candidature ANIMATEUR - Dynasty">
         
-        <div class="group-title">Expérience</div>
         <label>Pseudo Discord & Âge</label>
-        <input type="text" name="pseudo" required>
+        <input type="text" name="identité" required>
 
+        <div class="group-title">Expérience & Présence</div>
         <label>Depuis combien de temps es-tu sur le serveur ?</label>
-        <input type="text" name="anciennete" required>
+        <input type="text" name="a1_anciennete" required>
 
-        <label>As-tu déjà été animateur ailleurs ? Si oui, quel était ton rôle ?</label>
-        <textarea name="exp_anim" rows="3" required></textarea>
+        <label>As-tu déjà été animateur sur un autre serveur ? Si oui, explique ton rôle.</label>
+        <textarea name="a2_experience" rows="3" required></textarea>
 
         <div class="group-title">Motivation & Personnalité</div>
         <label>Pourquoi souhaites-tu devenir animateur ici ?</label>
-        <textarea name="motivation" rows="3" required></textarea>
+        <textarea name="a3_motivation" rows="3" required></textarea>
 
-        <label>Quelles qualités apportes-tu au serveur ?</label>
-        <textarea name="qualites" rows="3" required></textarea>
+        <label>Quelles qualités penses-tu apporter au serveur ?</label>
+        <textarea name="a4_qualites" rows="3" required></textarea>
 
-        <label>Réaction face à un membre irrespectueux pendant un event ?</label>
-        <textarea name="irrespect" rows="3" required></textarea>
+        <label>Comment réagirais-tu face à un membre irrespectueux qui enfreint les règles ?</label>
+        <textarea name="a5_conflit" rows="3" required></textarea>
 
-        <label>Seul ou en équipe ? Pourquoi ?</label>
-        <textarea name="equipe" rows="3" required></textarea>
+        <label>Préfères-tu travailler seul ou en équipe ? Pourquoi ?</label>
+        <textarea name="a6_equipe" rows="3" required></textarea>
 
-        <label>Gestion du stress et des conflits ?</label>
-        <textarea name="stress" rows="3" required></textarea>
+        <label>Comment gères-tu le stress ou les situations conflictuelles ?</label>
+        <textarea name="a7_stress" rows="3" required></textarea>
 
-        <label>Un animateur peut-il utiliser ses permissions hors events ?</label>
-        <textarea name="permissions_hors" rows="2" required></textarea>
+        <label>Pour toi, un animateur a-t-il le droit d’utiliser ses permissions hors events ?</label>
+        <textarea name="a8_permissions" rows="2" required></textarea>
 
-        <div class="group-title">Créativité</div>
-        <label>Quels types d’événements proposerais-tu ?</label>
-        <textarea name="types_events" rows="3" required></textarea>
+        <div class="group-title">Créativité & Création</div>
+        <label>Quels types d’événements ou d’animations pourrais-tu proposer ?</label>
+        <textarea name="a9_types" rows="3" required></textarea>
 
-        <label>Propose une idée d’animation originale détaillée.</label>
-        <textarea name="idee_originale" rows="4" required></textarea>
+        <label>Propose une idée d’animation originale que tu pourrais organiser.</label>
+        <textarea name="a10_idee_originale" rows="4" required></textarea>
 
-        <label>Une idée d'événement rapide pour les membres ?</label>
-        <textarea name="event_rapide" rows="2" required></textarea>
+        <label>Si tu devais créer un petit événement rapide pour les membres, que ferais-tu ?</label>
+        <textarea name="a11_event_flash" rows="2" required></textarea>
 
-        <label>Qu'est-ce qui rend une animation réussie selon toi ?</label>
-        <textarea name="reussite" rows="2" required></textarea>
+        <label>Selon toi, qu’est-ce qui rend une animation réussie ?</label>
+        <textarea name="a12_succes" rows="2" required></textarea>
 
-        <label>Crée une annonce complète (Date, Heure, Jeu, Règles, Description).</label>
-        <textarea name="annonce_test" rows="5" required placeholder="Fais ton annonce comme si tu allais la poster..."></textarea>
+        <label>Crée une annonce complète pour un jeu (date, heure, description, règles, etc.).</label>
+        <textarea name="a13_annonce_test" rows="5" required></textarea>
 
-        <div class="group-title">Réactivité & Technique</div>
-        <label>Dispute entre deux membres pendant ton animation ?</label>
-        <textarea name="dispute_event" rows="3" required></textarea>
+        <div class="group-title">Gestion & Réactivité</div>
+        <label>Comment réagirais-tu si deux membres se disputaient pendant un événement ?</label>
+        <textarea name="a14_dispute" rows="3" required></textarea>
 
-        <label>Disponibilités régulières (Quand ?) ?</label>
-        <input type="text" name="dispos" required>
+        <label>Serais-tu disponible pour organiser des événements régulièrement ? Quand ?</label>
+        <input type="text" name="a15_dispos" required>
 
-        <label>Un membre spam pendant l'event, que fais-tu ?</label>
-        <textarea name="spam" rows="2" required></textarea>
+        <label>Un membre spam dans le chat pendant un événement, que fais-tu ?</label>
+        <textarea name="a16_spam" rows="2" required></textarea>
 
-        <label>Event qui échoue (bug/manque de gens), ta réaction ?</label>
-        <textarea name="echec" rows="2" required></textarea>
+        <label>Un événement échoue à cause d’un bug ou manque de participants, ta réaction ?</label>
+        <textarea name="a17_echec" rows="2" required></textarea>
 
-        <label>Un autre animateur ne suit pas les règles, que fais-tu ?</label>
-        <textarea name="collegue_regle" rows="2" required></textarea>
+        <label>Tu remarques qu’un autre animateur ne suit pas les règles, que fais-tu ?</label>
+        <textarea name="a18_staff_regle" rows="2" required></textarea>
 
-        <label>Comment annoncer une info importante clairement ?</label>
-        <textarea name="info_claire" rows="2" required></textarea>
+        <label>Comment annoncer une info importante de façon claire et engageante ?</label>
+        <textarea name="a19_annonce_claire" rows="2" required></textarea>
 
-        <label>Maîtrise des bots (giveaway, sondages, mini-jeux) ?</label>
-        <textarea name="bots_anim" rows="2" required></textarea>
+        <div class="group-title">Compétences Techniques</div>
+        <label>Sais-tu utiliser les commandes de bots (giveaway, sondages, mini-jeux) ?</label>
+        <textarea name="a20_bots" rows="2" required></textarea>
 
-        <label>Gestion des salons vocaux et textuels ?</label>
-        <textarea name="gestion_salons" rows="2" required></textarea>
+        <label>Sais-tu gérer les salons vocaux et textuels pendant un événement ?</label>
+        <textarea name="a21_salons" rows="2" required></textarea>
 
-        <button type="submit" class="submit-btn">Envoyer mon dossier Animation</button>
+        <button type="submit" class="submit-btn">Soumettre ma candidature Animateur</button>
     </form>
 
     <form id="form-part" class="form-content" action="https://formspree.io/f/xnjbrvez" method="POST">
-        <input type="hidden" name="_subject" value="Demande de PARTENARIAT">
-        <div class="group-title">VOTRE SERVEUR</div>
-        <label>Nom du Serveur & Lien</label>
-        <input type="text" name="serveur" placeholder="discord.gg/votrelien" required>
+        <input type="hidden" name="_subject" value="Demande de PARTENARIAT - Dynasty">
+        <div class="group-title">VOTRE PROJET</div>
+        <label>Nom du Serveur & Lien d'invitation</label>
+        <input type="text" name="p1_nom" required>
         
         <label>Nombre de membres</label>
-        <input type="number" name="membres" required>
+        <input type="number" name="p2_membres" required>
         
         <label>Pourquoi choisir la Dynasty Family’s ?</label>
-        <textarea name="pourquoi" rows="4" required></textarea>
+        <textarea name="p3_motivation" rows="4" required></textarea>
         
-        <button type="submit" class="submit-btn">Envoyer la proposition</button>
+        <button type="submit" class="submit-btn">Envoyer la proposition de Partenariat</button>
     </form>
 
-    <footer>DYNASTY FAMILY’S © 2026<br>Équipage de Modération</footer>
+    <footer>DYNASTY FAMILY’S © 2026<br>Équipage Officiel de Modération & Animation</footer>
 </div>
 
 <script>
