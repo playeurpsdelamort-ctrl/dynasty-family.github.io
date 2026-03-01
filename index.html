@@ -19,6 +19,7 @@
         button { width: 100%; margin-top: 45px; padding: 20px; background: var(--blue-glow); border: none; color: #020617; font-weight: bold; border-radius: 10px; cursor: pointer; font-size: 1.1em; text-transform: uppercase; transition: 0.3s; }
         button:hover { background: #7dd3fc; transform: translateY(-2px); box-shadow: 0 5px 25px rgba(56, 189, 248, 0.4); }
         footer { text-align: center; margin-top: 30px; color: #475569; font-size: 0.8em; }
+        /* Style pour que les exemples soient bien visibles en gris clair */
         ::placeholder { color: #64748b; font-style: italic; opacity: 1; }
     </style>
 </head>
@@ -29,7 +30,7 @@
         <img src="https://via.placeholder.com/120" alt="Logo Dynasty">
     </div>
     <h1>𝘿𝙮𝙣𝙖𝙨𝙩𝙮 𝙁𝙖𝙢𝙞𝙡𝙮’𝙨</h1>
-    <p class="intro">⚓ Système de Recrutement Officiel - Session Staff ⚓</p>
+    <p class="intro">⚓ Système de Recrutement Officiel - Session Élite ⚓</p>
 
     <form action="https://formspree.io/f/xnjbrvez" method="POST">
         
@@ -44,7 +45,7 @@
         <textarea name="q3" rows="3" required placeholder="Ex: J'ai créé un système de sanctions graduelles pour les arnaques au trade afin d'être plus juste avec les nouveaux..."></textarea>
 
         <div class="section-header">II. Motivation & Vision</div>
-        <label>4. Quelle est ta conception du rôle de modérateur au sein d’une communauté ?</label>
+        <label>4. Quelle est ta conception du rôle de modérateur ?</label>
         <textarea name="q4" rows="3" required placeholder="Ex: Un modérateur est le visage du serveur. Il doit rester calme, neutre et aider les joueurs avant de sanctionner..."></textarea>
 
         <label>5. En quoi ta candidature se distingue-t-elle des autres ?</label>
@@ -53,10 +54,10 @@
         <label>6. Quelle est la frontière entre autorité et abus de pouvoir ?</label>
         <textarea name="q6" rows="3" required placeholder="Ex: L'autorité suit le règlement à la lettre. L'abus de pouvoir, c'est utiliser son grade pour régler des comptes personnels..."></textarea>
 
-        <label>7. Comment contribues-tu à instaurer un climat sain et durable ?</label>
+        <label>7. Comment contribues-tu à instaurer un climat sain ?</label>
         <textarea name="q7" rows="3" required placeholder="Ex: En discutant avec les membres sans être supérieur, et en stoppant les moqueries dès le début..."></textarea>
 
-        <div class="section-header">III. Analyse & Gestion de situations complexes</div>
+        <div class="section-header">III. Analyse & Gestion de situations</div>
         <label>8. Un membre influent enfreint le règlement. Quelle stratégie adoptes-tu ?</label>
         <textarea name="q8" rows="3" required placeholder="Ex: La règle est la même pour tous. Je le sanctionne normalement et j'informe mes supérieurs pour justifier l'acte..."></textarea>
 
@@ -66,7 +67,7 @@
         <label>10. Un membre conteste publiquement une sanction. Que fais-tu ?</label>
         <textarea name="q10" rows="3" required placeholder="Ex: Je ne débats jamais en public. Je lui demande d'ouvrir un ticket 'Plainte Staff' pour revoir le cas avec un Admin..."></textarea>
 
-        <label>11. Une vague de raid survient en pleine nuit. Quelles mesures d’urgence prends-tu ?</label>
+        <label>11. Une vague de raid survient en pleine nuit. Quelles mesures prends-tu ?</label>
         <textarea name="q11" rows="3" required placeholder="Ex: Je lock tous les salons publics, je passe le serveur en sécurité maximale et je lance un scan des nouveaux arrivants..."></textarea>
 
         <label>12. Un modérateur abuse de ses permissions. Quelle est ta réaction ?</label>
@@ -79,21 +80,21 @@
         <label>14. Comment différencies-tu un simple troll d’un membre réellement problématique ?</label>
         <textarea name="q14" rows="3" required placeholder="Ex: Le troll s'arrête si on l'ignore. Le membre problématique cherche à briser la communauté ou à contourner les bans..."></textarea>
 
-        <label>15. La fermeté doit-elle primer sur la pédagogie ? Argumente.</label>
+        <label>15. La fermeté doit-elle primer sur la pédagogie ?</label>
         <textarea name="q15" rows="3" required placeholder="Ex: Pédagogie pour les petits nouveaux maladroits, fermeté totale pour ceux qui connaissent les règles et les brisent..."></textarea>
 
         <div class="section-header">V. Impartialité & Éthique</div>
-        <label>16. Définis le principe d’impartialité en modération.</label>
+        <label>16. Définis l’impartialité en modération.</label>
         <textarea name="q16" rows="2" required placeholder="Ex: C'est agir comme une machine : si la règle est brisée, la sanction tombe, peu importe si j'aime ou pas la personne..."></textarea>
 
-        <label>17. Un ami proche enfreint le règlement, quelle serait ta démarche exacte ?</label>
+        <label>17. Un ami proche enfreint le règlement, que fais-tu ?</label>
         <textarea name="q17" rows="3" required placeholder="Ex: Je laisse un autre collègue staff gérer le dossier pour éviter qu'on m'accuse de favoritisme..."></textarea>
 
-        <label>18. Comment éviter les biais personnels dans la prise de décision ?</label>
+        <label>18. Comment éviter les biais personnels ?</label>
         <textarea name="q18" rows="3" required placeholder="Ex: En demandant toujours un second avis à un autre modérateur avant de prendre une grosse décision..."></textarea>
 
         <div class="section-header">VI. Compétences techniques</div>
-        <label>19. Explique le fonctionnement des sanctions progressives.</label>
+        <label>19. Explique les sanctions progressives.</label>
         <textarea name="q19" rows="3" required placeholder="Ex: Rappel à l'ordre -> Warn -> Mute (1h) -> Mute (24h) -> Kick -> Ban définitif..."></textarea>
 
         <label>20. Pourquoi les logs sont-ils essentiels ?</label>
@@ -102,13 +103,13 @@
         <label>21. As-tu déjà configuré un bot de modération ?</label>
         <textarea name="q21" rows="3" required placeholder="Ex: Oui, j'ai configuré les filtres de mots interdits sur Dyno et le système de vérification anti-bot..."></textarea>
 
-        <div class="section-header">VII. Conclusion stratégique</div>
-        <label>22. Quelles améliorations structurelles mettrais-tu en place sur le serveur ?</label>
+        <div class="section-header">VII. Conclusion</div>
+        <label>22. Quelles améliorations structurelles proposerais-tu ?</label>
         <textarea name="q22" rows="4" required placeholder="Ex: Créer un salon d'entraînement pour les nouveaux staffs ou ajouter un système de récompenses pour les membres les plus calmes..."></textarea>
 
         <button type="submit">Envoyer ma candidature à l'État-Major</button>
     </form>
-    <footer>© 2026 Dynasty Family’s - Recrutement Centralisé</footer>
+    <footer>© 2026 Dynasty Family’s</footer>
 </div>
 
 </body>
