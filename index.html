@@ -9,7 +9,7 @@
             --accent: #38bdf8; 
             --accent-glow: rgba(56, 189, 248, 0.4);
             --bg: #020617; 
-            --card: rgba(15, 23, 42, 0.7);
+            --card: rgba(15, 23, 42, 0.8);
             --border: rgba(56, 189, 248, 0.2);
         }
 
@@ -18,46 +18,164 @@
         body { 
             background: radial-gradient(circle at top right, #1e293b 0%, var(--bg) 100%); 
             color: #f1f5f9; 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            font-family: 'Segoe UI', Roboto, sans-serif; 
             margin: 0; 
-            padding: 15px;
+            padding: 10px;
             min-height: 100vh;
-            line-height: 1.5;
         }
 
-        /* Container Principal */
         .container { 
             width: 100%; 
-            max-width: 650px; 
+            max-width: 700px; 
             margin: 10px auto;
             background: var(--card); 
             backdrop-filter: blur(20px); 
-            -webkit-backdrop-filter: blur(20px);
-            padding: 30px 20px; 
-            border-radius: 28px; 
+            padding: 25px 15px; 
+            border-radius: 24px; 
             border: 1px solid var(--border); 
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
         }
 
-        .header { text-align: center; margin-bottom: 25px; }
-        .logo { 
-            width: 110px; height: 110px; 
-            border-radius: 50%; 
-            border: 3px solid var(--accent); 
-            box-shadow: 0 0 25px var(--accent-glow);
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        .logo:hover { transform: rotate(5deg) scale(1.05); }
+        .header { text-align: center; margin-bottom: 20px; }
+        .logo { width: 100px; height: 100px; border-radius: 50%; border: 2px solid var(--accent); box-shadow: 0 0 20px var(--accent-glow); object-fit: cover; }
+        
+        h1 { color: var(--accent); font-size: 1.4rem; text-transform: uppercase; letter-spacing: 3px; margin: 10px 0; font-weight: 900; }
 
-        h1 { 
-            color: var(--accent); 
-            font-size: 1.6rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin: 15px 0 5px;
-            font-weight: 900;
-            text-shadow: 0 0 10px var(--accent-glow);
+        /* Navigation à 3 Onglets */
+        .tab-switcher {
+            display: flex;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 5px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            overflow-x: auto; /* Pour mobile si l'écran est trop petit */
+            gap: 5px;
         }
 
-        .subtitle { color: #94a3b8; font-size: 0.85rem; margin-bottom: 25px;
+        .tab-btn {
+            flex: 1;
+            min-width: 100px;
+            padding: 12px 5px;
+            border: none;
+            background: transparent;
+            color: #64748b;
+            cursor: pointer;
+            font-weight: 700;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            background: var(--accent);
+            color: #020617;
+            box-shadow: 0 4px 12px var(--accent-glow);
+        }
+
+        /* Formulaires */
+        .form-content { display: none; animation: fadeIn 0.4s ease; }
+        .form-content.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .group-title { color: var(--accent); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin: 25px 0 15px; border-bottom: 1px solid var(--border); padding-bottom: 5px; }
+
+        label { display: block; margin-bottom: 8px; font-size: 0.85rem; color: #e2e8f0; }
+        
+        input, textarea { 
+            width: 100%; padding: 12px; background: rgba(15, 23, 42, 0.6); 
+            border: 1px solid #334155; color: #fff; border-radius: 10px; 
+            font-size: 0.95rem; margin-bottom: 15px; outline: none;
+        }
+
+        input:focus, textarea:focus { border-color: var(--accent); background: rgba(30, 41, 59, 0.8); }
+
+        .submit-btn { 
+            width: 100%; padding: 18px; background: var(--accent); border: none; 
+            color: #020617; font-weight: 800; border-radius: 14px; cursor: pointer; 
+            text-transform: uppercase; font-size: 0.9rem; margin-top: 10px;
+        }
+
+        footer { text-align: center; margin-top: 30px; color: #475569; font-size: 0.7rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" alt="Logo" class="logo">
+        <h1>𝘿𝙮𝙣𝙖𝙨𝙩𝙮 𝙁𝙖𝙢𝙞𝙡𝙮’𝙨</h1>
+    </div>
+
+    <div class="tab-switcher">
+        <button class="tab-btn active" onclick="switchTab('mod')">MODÉRATEUR</button>
+        <button class="tab-btn" onclick="switchTab('anim')">ANIMATEUR</button>
+        <button class="tab-btn" onclick="switchTab('part')">PARTENAIRE</button>
+    </div>
+
+    <form id="form-mod" class="form-content active" action="https://formspree.io/f/xnjbrvez" method="POST">
+        <input type="hidden" name="Candidature" value="MODÉRATEUR">
+        <div class="group-title">SÉCURITÉ & DISCIPLINE</div>
+        <label>Pseudo & Âge</label>
+        <input type="text" name="pseudo" placeholder="Ex: Zoro#0001 (18 ans)" required>
+        
+        <label>1. Ton expérience en modération ?</label>
+        <textarea name="parcours" rows="3" required></textarea>
+        
+        <label>2. Comment gères-tu un conflit entre deux membres ?</label>
+        <textarea name="conflit" rows="3" required></textarea>
+        
+        <button type="submit" class="submit-btn">Postuler comme Modérateur</button>
+    </form>
+
+    <form id="form-anim" class="form-content" action="https://formspree.io/f/xnjbrvez" method="POST">
+        <input type="hidden" name="Candidature" value="ANIMATEUR">
+        <div class="group-title">AMBIANCE & ÉVÉNEMENTS</div>
+        <label>Pseudo & Âge</label>
+        <input type="text" name="pseudo" placeholder="Ex: Brook#0001 (20 ans)" required>
+        
+        <label>1. Quel type d'événements sais-tu organiser ? (Tournois, Quiz...)</label>
+        <textarea name="events" rows="3" required></textarea>
+        
+        <label>2. Comment motives-tu les membres à participer en vocal ?</label>
+        <textarea name="motivation" rows="3" required></textarea>
+        
+        <button type="submit" class="submit-btn">Postuler comme Animateur</button>
+    </form>
+
+    <form id="form-part" class="form-content" action="https://formspree.io/f/xnjbrvez" method="POST">
+        <input type="hidden" name="Candidature" value="PARTENAIRE">
+        <div class="group-title">PROPOSER UNE ALLIANCE</div>
+        <label>Nom du Serveur & Lien</label>
+        <input type="text" name="serveur" placeholder="discord.gg/votrelien" required>
+        
+        <label>Pourquoi s'allier avec la Dynasty Family’s ?</label>
+        <textarea name="pourquoi" rows="4" required></textarea>
+        
+        <button type="submit" class="submit-btn">Envoyer la proposition</button>
+    </form>
+
+    <footer>DYNASTY FAMILY’S © 2026</footer>
+</div>
+
+<script>
+    function switchTab(type) {
+        document.querySelectorAll('.form-content').forEach(f => f.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        
+        if(type === 'mod') {
+            document.getElementById('form-mod').classList.add('active');
+            document.querySelectorAll('.tab-btn')[0].classList.add('active');
+        } else if(type === 'anim') {
+            document.getElementById('form-anim').classList.add('active');
+            document.querySelectorAll('.tab-btn')[1].classList.add('active');
+        } else {
+            document.getElementById('form-part').classList.add('active');
+            document.querySelectorAll('.tab-btn')[2].classList.add('active');
+        }
+    }
+</script>
+
+</body>
+</html>
