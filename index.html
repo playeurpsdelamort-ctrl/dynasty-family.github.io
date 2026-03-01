@@ -3,33 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynasty Family - Officiel</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Recrutement - Dynasty Family’s</title>
+    <style>
+        :root { --blue-glow: #38bdf8; --bg-dark: #020617; --card-bg: rgba(30, 41, 59, 0.7); }
+        body { background: radial-gradient(circle, #1e293b 0%, var(--bg-dark) 100%); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 800px; background: var(--card-bg); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; border: 1px solid #334155; box-shadow: 0 0 40px rgba(0,0,0,0.5); }
+        .logo-container { text-align: center; margin-bottom: 20px; }
+        .logo-container img { width: 120px; height: 120px; border-radius: 50%; border: 2px solid var(--blue-glow); box-shadow: 0 0 15px rgba(56, 189, 248, 0.5); }
+        h1 { color: var(--blue-glow); text-align: center; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; font-weight: 900; font-style: italic; }
+        .intro { text-align: center; color: #94a3b8; font-size: 0.9em; margin-bottom: 30px; }
+        .section-header { background: rgba(56, 189, 248, 0.1); color: var(--blue-glow); padding: 12px; border-radius: 5px; margin-top: 35px; font-weight: bold; text-transform: uppercase; font-size: 0.85em; border-left: 4px solid var(--blue-glow); }
+        label { display: block; margin-top: 22px; margin-bottom: 10px; font-size: 0.95em; color: #e2e8f0; line-height: 1.4; }
+        textarea { width: 100%; padding: 14px; background: #0f172a; border: 1px solid #334155; color: white; border-radius: 8px; box-sizing: border-box; transition: 0.3s; font-size: 0.95em; resize: vertical; }
+        textarea:focus { border-color: var(--blue-glow); outline: none; box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
+        button { width: 100%; margin-top: 45px; padding: 20px; background: var(--blue-glow); border: none; color: #020617; font-weight: bold; border-radius: 10px; cursor: pointer; font-size: 1.1em; text-transform: uppercase; transition: 0.3s; }
+        button:hover { background: #7dd3fc; transform: translateY(-2px); box-shadow: 0 5px 25px rgba(56, 189, 248, 0.4); }
+        footer { text-align: center; margin-top: 30px; color: #475569; font-size: 0.8em; }
+        ::placeholder { color: #64748b; font-style: italic; opacity: 1; }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo-container">
-                <img src="dinastyfamilli.jpg" alt="Logo Dynasty Family" class="site-logo">
-                <h1>Dynasty Family</h1>
-            </div>
-            <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#communaute">Communauté</a></li>
-                <li><a href="#rejoindre">Nous Rejoindre</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section id="hero">
-            <h2>Bienvenue dans la Famille</h2>
-            <p>Le site officiel de la communauté Dynasty Family.</p>
-        </section>
-    </main>
+<div class="container">
+    <div class="logo-container">
+        <img src="https://via.placeholder.com/120" alt="Logo Dynasty">
+    </div>
+    <h1>𝘿𝙮𝙣𝙖𝙨𝙩𝙮 𝙁𝙖𝙢𝙞𝙡𝙮’𝙨</h1>
+    <p class="intro">⚓ Système de Recrutement Officiel - Session Staff ⚓</p>
 
-    <footer>
-        <p>&copy; 2024 Dynasty Family. Tous droits réservés.</p>
-    </footer>
+    <form action="https://formspree.io/f/xnjbrvez" method="POST">
+        
+        <div class="section-header">I. Parcours & Expérience</div>
+        <label>1. Présente ton parcours sur Discord de manière détaillée.</label>
+        <textarea name="q1" rows="4" required placeholder="Ex: Staff depuis 2 ans sur 3 serveurs Blox Fruits (5k+ membres). J'ai géré les recrutements et la modération nocturne..."></textarea>
+
+        <label>2. Décris une expérience concrète de modération difficile.</label>
+        <textarea name="q2" rows="4" required placeholder="Ex: J'ai dû gérer un raid de 50 personnes en pleine nuit. J'ai utilisé l'automod et coordonné l'équipe pour bannir les fauteurs de troubles..."></textarea>
+
+        <label>3. As-tu déjà participé à l’élaboration ou à l’amélioration d’un règlement ?</label>
+        <textarea name="q3" rows="3" required placeholder="Ex: J'ai créé un système de sanctions graduelles pour les arnaques au trade afin d'être plus juste avec les nouveaux..."></textarea>
+
+        <div class="section-header">II. Motivation & Vision</div>
+        <label>4. Quelle est ta conception du rôle de modérateur au sein d’une communauté ?</label>
+        <textarea name="q4" rows="3" required placeholder="Ex: Un modérateur est le visage du serveur. Il doit rester calme, neutre et aider les joueurs avant de sanctionner..."></textarea>
+
+        <label>5. En quoi ta candidature se distingue-t-elle des autres ?</label>
+        <textarea name="q5" rows="3" required placeholder="Ex: Je connais parfaitement les commandes de modération avancées et je suis disponible aux heures creuses (23h-02h)..."></textarea>
+
+        <label>6. Quelle est la frontière entre autorité et abus de pouvoir ?</label>
+        <textarea name="q6" rows="3" required placeholder="Ex: L'autorité suit le règlement à la lettre. L'abus de pouvoir, c'est utiliser son grade pour régler des comptes personnels..."></textarea>
+
+        <label>7. Comment contribues-tu à instaurer un climat sain et durable ?</label>
+        <textarea name="q7" rows="3" required placeholder="Ex: En discutant avec les membres sans être supérieur, et en stoppant les moqueries dès le début..."></textarea>
+
+        <div class="section-header">III. Analyse & Gestion de situations complexes</div>
+        <label>8. Un membre influent enfreint le règlement. Quelle stratégie adoptes-tu ?</label>
+        <textarea name="q8" rows="3" required placeholder="Ex: La règle est la même pour tous. Je le sanctionne normalement et j'informe mes supérieurs pour justifier l'acte..."></textarea>
+
+        <label>9. Deux membres se provoquent mutuellement. Comment réagis-tu ?</label>
+        <textarea name="q9" rows="3" required placeholder="Ex: Je les isole en ticket. J'écoute les deux versions avec les logs, puis je donne un avertissement aux deux si nécessaire..."></textarea>
+
+        <label>10. Un membre conteste publiquement une sanction. Que fais-tu ?</label>
+        <textarea name="q10" rows="3" required placeholder="Ex: Je ne débats jamais en public. Je lui demande d'ouvrir un ticket 'Plainte Staff' pour revoir le cas avec un Admin..."></textarea>
+
+        <label>11. Une vague de raid survient en pleine nuit. Quelles mesures d’urgence prends-tu ?</label>
+        <textarea name="q11" rows="3" required placeholder="Ex: Je lock tous les salons publics, je passe le serveur en sécurité maximale et je lance un scan des nouveaux arrivants..."></textarea>
+
+        <label>12. Un modérateur abuse de ses permissions. Quelle est ta réaction ?</label>
+        <textarea name="q12" rows="3" required placeholder="Ex: Je prends des captures d'écran des logs et j'envoie un rapport privé immédiat au Fondateur..."></textarea>
+
+        <div class="section-header">IV. Posture Professionnelle</div>
+        <label>13. Comment maintiens-tu ton objectivité face aux provocations ?</label>
+        <textarea name="q13" rows="3" required placeholder="Ex: Je pose mon clavier 10 secondes pour respirer. Je me demande 'Qu'est-ce que dirait le règlement ?' au lieu de m'énerver..."></textarea>
+
+        <label>14. Comment différencies-tu un simple troll d’un membre réellement problématique ?</label>
+        <textarea name="q14" rows="3" required placeholder="Ex: Le troll s'arrête si on l'ignore. Le membre problématique cherche à briser la communauté ou à contourner les bans..."></textarea>
+
+        <label>15. La fermeté doit-elle primer sur la pédagogie ? Argumente.</label>
+        <textarea name="q15" rows="3" required placeholder="Ex: Pédagogie pour les petits nouveaux maladroits, fermeté totale pour ceux qui connaissent les règles et les brisent..."></textarea>
+
+        <div class="section-header">V. Impartialité & Éthique</div>
+        <label>16. Définis le principe d’impartialité en modération.</label>
+        <textarea name="q16" rows="2" required placeholder="Ex: C'est agir comme une machine : si la règle est brisée, la sanction tombe, peu importe si j'aime ou pas la personne..."></textarea>
+
+        <label>17. Un ami proche enfreint le règlement, quelle serait ta démarche exacte ?</label>
+        <textarea name="q17" rows="3" required placeholder="Ex: Je laisse un autre collègue staff gérer le dossier pour éviter qu'on m'accuse de favoritisme..."></textarea>
+
+        <label>18. Comment éviter les biais personnels dans la prise de décision ?</label>
+        <textarea name="q18" rows="3" required placeholder="Ex: En demandant toujours un second avis à un autre modérateur avant de prendre une grosse décision..."></textarea>
+
+        <div class="section-header">VI. Compétences techniques</div>
+        <label>19. Explique le fonctionnement des sanctions progressives.</label>
+        <textarea name="q19" rows="3" required placeholder="Ex: Rappel à l'ordre -> Warn -> Mute (1h) -> Mute (24h) -> Kick -> Ban définitif..."></textarea>
+
+        <label>20. Pourquoi les logs sont-ils essentiels ?</label>
+        <textarea name="q20" rows="2" required placeholder="Ex: C'est la boîte noire du serveur. Sans logs, on ne peut pas prouver qu'un membre a triché ou insulté..."></textarea>
+
+        <label>21. As-tu déjà configuré un bot de modération ?</label>
+        <textarea name="q21" rows="3" required placeholder="Ex: Oui, j'ai configuré les filtres de mots interdits sur Dyno et le système de vérification anti-bot..."></textarea>
+
+        <div class="section-header">VII. Conclusion stratégique</div>
+        <label>22. Quelles améliorations structurelles mettrais-tu en place sur le serveur ?</label>
+        <textarea name="q22" rows="4" required placeholder="Ex: Créer un salon d'entraînement pour les nouveaux staffs ou ajouter un système de récompenses pour les membres les plus calmes..."></textarea>
+
+        <button type="submit">Envoyer ma candidature à l'État-Major</button>
+    </form>
+    <footer>© 2026 Dynasty Family’s - Recrutement Centralisé</footer>
+</div>
+
 </body>
 </html>
