@@ -84,7 +84,7 @@
     <div class="header">
         <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" alt="Logo" class="logo">
         <h1>𝘿𝙮𝙣𝙖𝙨𝙩𝙮 𝙁𝙖𝙢𝙞𝙡𝙮’𝙨</h1>
-        <p class="subtitle">⚓ Recrutement Officiel de l'Équipage ⚓</p>
+        <p class="subtitle">⚓ Recrutement Officiel - Devenir une Légende ⚓</p>
     </div>
 
     <div class="tab-switcher">
@@ -94,180 +94,145 @@
     </div>
 
     <form id="form-mod" class="form-content active" action="https://formspree.io/f/xnjbrvez" method="POST">
-        <input type="hidden" name="_subject" value="Candidature MODÉRATEUR - Dynasty">
+        <input type="hidden" name="_subject" value="Candidature MODÉRATEUR">
         
         <label>Pseudo Discord & Âge</label>
-        <input type="text" name="identité" required placeholder="Ex: Luffy#0001 (18 ans)">
+        <input type="text" name="identité" required placeholder="Ex: Zoro_San#0001 (19 ans)">
 
         <div class="group-title">I. Parcours & Expérience</div>
-        <label>1. Présente ton parcours sur Discord de manière détaillée.</label>
-        <textarea name="m1_parcours" rows="4" required placeholder="Ex: Staff depuis 2 ans sur 3 serveurs (Communautaire, Gaming). J'ai géré l'accueil et les litiges..."></textarea>
+        <label>1. Présente ton parcours Discord de manière détaillée.</label>
+        <textarea name="m1" required placeholder="Ex: Je suis sur Discord depuis 2018. J'ai été modérateur sur un serveur communautaire de 5000 membres pendant 8 mois, où j'ai géré le recrutement des nouveaux staffs..."></textarea>
 
-        <label>2. Décris une expérience concrète de modération difficile et tes décisions.</label>
-        <textarea name="m2_experience" rows="4" required placeholder="Ex: J'ai dû gérer un conflit entre deux groupes. J'ai isolé les meneurs en vocal pour calmer le jeu..."></textarea>
+        <label>2. Décris une expérience de modération difficile et ta stratégie.</label>
+        <textarea name="m2" required placeholder="Ex: J'ai dû gérer un conflit entre deux groupes d'amis. J'ai isolé les meneurs dans des salons séparés pour éviter l'escalade et j'ai appliqué un avertissement formel..."></textarea>
 
-        <label>3. As-tu déjà amélioré un règlement ? Explique ta méthode.</label>
-        <textarea name="m3_reglement" rows="3" required placeholder="Ex: J'ai reformulé les règles sur le spam pour inclure les mentions inutiles..."></textarea>
+        <label>3. As-tu déjà amélioré un règlement ?</label>
+        <textarea name="m3" required placeholder="Ex: Oui, j'ai réécrit les règles sur le spoil pour clarifier les sanctions automatiques en cas de sortie de nouveaux chapitres..."></textarea>
 
         <div class="group-title">II. Motivation & Vision</div>
-        <label>4. Quelle est ta conception du rôle de modérateur ?</label>
-        <textarea name="m4_conception" rows="3" required placeholder="Ex: C'est un pilier qui aide avant de sanctionner. Il doit être exemplaire..."></textarea>
+        <label>4. Ta conception du rôle de modérateur ?</label>
+        <textarea name="m4" required placeholder="Ex: Pour moi, un modérateur est un médiateur exemplaire qui doit assurer la sécurité tout en restant pédagogique..."></textarea>
 
         <label>5. En quoi ta candidature se distingue-t-elle ?</label>
-        <textarea name="m5_distinction" rows="3" required placeholder="Ex: Ma patience et ma connaissance parfaite des bots de sécurité..."></textarea>
+        <textarea name="m5" required placeholder="Ex: Je suis extrêmement calme sous la pression et je maîtrise parfaitement l'outil 'Logs' pour prouver chaque sanction..."></textarea>
 
-        <label>6. Frontière entre autorité légitime et abus de pouvoir ?</label>
-        <textarea name="m6_abus" rows="3" required placeholder="Ex: L'autorité suit le règlement, l'abus suit l'énervement personnel..."></textarea>
+        <label>6. Frontière entre autorité et abus de pouvoir ?</label>
+        <textarea name="m6" required placeholder="Ex: L'autorité s'appuie sur le règlement. L'abus commence quand on sanctionne par énervement personnel ou par favoritisme..."></textarea>
 
-        <label>7. Comment contribues-tu à un climat sain ?</label>
-        <textarea name="m7_climat" rows="3" required placeholder="Ex: En valorisant les comportements positifs et en étant présent pour discuter..."></textarea>
+        <label>7. Comment instaures-tu un climat sain ?</label>
+        <textarea name="m7" required placeholder="Ex: En participant activement aux discussions sans abuser des permissions et en désamorçant les tensions dès qu'elles apparaissent..."></textarea>
 
-        <div class="group-title">III. Analyse & Situations</div>
-        <label>8. Un membre influent enfreint le règlement. Stratégie ?</label>
-        <textarea name="m8_influent" rows="3" required placeholder="Ex: Personne n'est au-dessus des lois. Je lui explique son erreur en privé puis j'applique la sanction..."></textarea>
+        <div class="group-title">III. Situations Complexes</div>
+        <label>8. Un membre influent enfreint le règlement ?</label>
+        <textarea name="m8" required placeholder="Ex: Je le traite comme n'importe quel membre. S'il récidive, j'en informe mes supérieurs pour valider une sanction exemplaire..."></textarea>
 
-        <label>9. Conflit mutuel : comment établis-tu les responsabilités ?</label>
-        <textarea name="m9_responsabilites" rows="3" required placeholder="Ex: Je remonte les logs pour trouver l'élément déclencheur et je sanctionne selon le degré..."></textarea>
+        <label>9. Conflit mutuel : comment juges-tu ?</label>
+        <textarea name="m9" required placeholder="Ex: Je remonte l'historique des messages. Celui qui a lancé la provocation est le premier coupable, mais le second est aussi sanctionné s'il a surenchéri..."></textarea>
 
-        <label>10. Sanction contestée publiquement. Comment gères-tu ?</label>
-        <textarea name="m10_contestation" rows="3" required placeholder="Ex: Je redirige vers un salon ticket ou MP pour ne pas polluer le chat public..."></textarea>
+        <label>10. Sanction contestée publiquement ?</label>
+        <textarea name="m10" required placeholder="Ex: Je ne rentre pas dans le débat en public. Je lui demande de m'envoyer un message privé ou d'ouvrir un ticket pour en discuter calmement..."></textarea>
 
-        <label>11. Vague de raid en pleine nuit : tes mesures d’urgence ?</label>
-        <textarea name="m11_raid" rows="4" required placeholder="Ex: Lockdown (fermeture) des salons, activation du mode lent et signalement aux admins..."></textarea>
+        <label>11. Raid en pleine nuit : mesures d'urgence ?</label>
+        <textarea name="m11" required placeholder="Ex: 1. Activer le lockdown (fermeture) des salons. 2. Utiliser l'antiraid du bot pour ban les comptes récents. 3. Ping les admins..."></textarea>
 
-        <label>12. Un modérateur abuse de ses permissions. Réaction ?</label>
-        <textarea name="m12_abus_staff" rows="3" required placeholder="Ex: Je prends des captures d'écran des logs et j'alerte les Fondateurs immédiatement..."></textarea>
+        <label>12. Un modérateur abuse : ta réaction ?</label>
+        <textarea name="m12" required placeholder="Ex: Je prends des captures d'écran des logs et j'envoie un rapport privé et argumenté aux fondateurs immédiatement..."></textarea>
 
         <div class="group-title">IV. Gestion Émotionnelle</div>
-        <label>13. Comment restes-tu objectif face aux critiques ?</label>
-        <textarea name="m13_objectivite" rows="3" required placeholder="Ex: Je prends du recul et j'évite de répondre à chaud. L'équipe est là pour se soutenir..."></textarea>
+        <label>13. Objectivité face aux provocations ?</label>
+        <textarea name="m13" required placeholder="Ex: Je prends 5 minutes de recul avant de répondre. Si je me sens trop impliqué, je demande à un collègue de prendre le relais..."></textarea>
 
-        <label>14. Différence entre troll et membre problématique ?</label>
-        <textarea name="m14_troll" rows="3" required placeholder="Ex: Le troll veut l'attention. Le membre problématique cherche à nuire au projet..."></textarea>
+        <label>14. Troll vs Membre problématique ?</label>
+        <textarea name="m14" required placeholder="Ex: Le troll cherche à faire rire ou énerver ponctuellement. Le membre problématique cherche à briser l'ambiance ou à nuire au projet durablement..."></textarea>
 
-        <label>15. Fermeté ou pédagogie ? Argumente.</label>
-        <textarea name="m15_pedagogie" rows="3" required placeholder="Ex: Pédagogie pour la première erreur, fermeté pour la récidive volontaire..."></textarea>
+        <label>15. Fermeté ou pédagogie ?</label>
+        <textarea name="m15" required placeholder="Ex: Pédagogie d'abord (rappel à l'ordre), fermeté ensuite (sanction). Mais pour les fautes graves (insultes raciales), c'est la fermeté immédiate..."></textarea>
 
-        <div class="group-title">V. Impartialité & Éthique</div>
-        <label>16. Définis l’impartialité en modération.</label>
-        <textarea name="m16_impartialite" rows="2" required placeholder="Ex: Traiter tout le monde de la même façon, peu importe l'affinité..."></textarea>
+        <div class="group-title">V. Éthique</div>
+        <label>16. Définis l'impartialité.</label>
+        <textarea name="m16" required placeholder="Ex: C'est le fait de juger une action sans regarder qui est l'auteur, ami comme inconnu..."></textarea>
 
-        <label>17. Un ami proche enfreint le règlement : ta démarche ?</label>
-        <textarea name="m17_ami" rows="3" required placeholder="Ex: Je demande à un autre staff de gérer le dossier pour rester neutre..."></textarea>
+        <label>17. Ami proche qui enfreint les règles ?</label>
+        <textarea name="m17" required placeholder="Ex: Je laisse un autre staff s'occuper de la sanction pour éviter tout conflit d'intérêt ou sentiment d'injustice..."></textarea>
 
-        <label>18. Comment éviter les biais personnels ?</label>
-        <textarea name="m18_biais" rows="3" required placeholder="Ex: En me basant strictement sur les faits et les logs, pas sur mes sentiments..."></textarea>
+        <label>18. Éviter les biais personnels ?</label>
+        <textarea name="m18" required placeholder="Ex: En me référant toujours aux preuves (captures, logs) et au règlement écrit, sans interpréter..."></textarea>
 
         <div class="group-title">VI. Technique</div>
-        <label>19. Explique les sanctions progressives.</label>
-        <textarea name="m19_sanctions" rows="3" required placeholder="Ex: Warn -> Mute (court) -> Mute (long) -> Kick -> Ban..."></textarea>
+        <label>19. Sanctions progressives ?</label>
+        <textarea name="m19" required placeholder="Ex: Avertissement oral -> Warn officiel -> Mute 1h -> Kick -> Ban définitif..."></textarea>
 
-        <label>20. Importance des logs ?</label>
-        <textarea name="m20_logs" rows="2" required placeholder="Ex: C'est la trace juridique du serveur. Sans logs, pas de preuve..."></textarea>
+        <label>20. Rôle des logs ?</label>
+        <textarea name="m20" required placeholder="Ex: Ils servent de preuve irréfutable et permettent de surveiller les messages supprimés ou les modifications suspectes..."></textarea>
 
-        <label>21. Configuration de bots ? Décris tes actions.</label>
-        <textarea name="m21_bots" rows="3" required placeholder="Ex: J'ai configuré Dyno pour l'automod et MEE6 pour les rôles..."></textarea>
+        <label>21. Config de bots mod ?</label>
+        <textarea name="m21" required placeholder="Ex: J'ai paramétré Dyno pour filtrer les mots interdits et configurer les salons de logs spécifiques..."></textarea>
 
-        <div class="group-title">VII. Question Finale</div>
-        <label>22. Améliorations structurelles pour l’équipe ?</label>
-        <textarea name="m22_final" rows="4" required placeholder="Ex: Créer une base de données interne pour suivre les récidivistes..."></textarea>
+        <div class="group-title">VII. Stratégie Finale</div>
+        <label>22. Améliorations structurelles ?</label>
+        <textarea name="m22" required placeholder="Ex: Créer un salon de transmission pour que l'équipe de nuit puisse informer l'équipe du jour des incidents passés..."></textarea>
 
-        <button type="submit" class="submit-btn">Soumettre ma candidature Modérateur</button>
+        <button type="submit" class="submit-btn">Postuler pour la Modération</button>
     </form>
 
     <form id="form-anim" class="form-content" action="https://formspree.io/f/xnjbrvez" method="POST">
-        <input type="hidden" name="_subject" value="Candidature ANIMATEUR - Dynasty">
+        <input type="hidden" name="_subject" value="Candidature ANIMATEUR">
         
         <label>Pseudo Discord & Âge</label>
-        <input type="text" name="identité" required placeholder="Ex: Brook#0001 (20 ans)">
+        <input type="text" name="identité" required placeholder="Ex: Brook_Vocal#0001 (20 ans)">
 
-        <div class="group-title">Expérience & Présence</div>
-        <label>Depuis combien de temps es-tu sur le serveur ?</label>
-        <input type="text" name="a1_anciennete" required placeholder="Ex: 6 mois">
+        <label>Ancienneté sur le serveur ?</label>
+        <input type="text" name="a1" required placeholder="Ex: Arrivé il y a 4 mois">
 
         <label>Expérience d'animateur ailleurs ?</label>
-        <textarea name="a2_experience" rows="3" required placeholder="Ex: Oui, j'ai géré des soirées karaoké sur un serveur One Piece..."></textarea>
+        <textarea name="a2" required placeholder="Ex: Oui, j'organisais des Blind Tests tous les samedis soirs sur un serveur de 1000 personnes..."></textarea>
 
-        <div class="group-title">Motivation & Personnalité</div>
-        <label>Pourquoi souhaites-tu devenir animateur ici ?</label>
-        <textarea name="a3_motivation" rows="3" required placeholder="Ex: J'aime l'énergie du serveur et je veux redynamiser le vocal..."></textarea>
+        <div class="group-title">Motivation</div>
+        <label>Pourquoi ici ?</label>
+        <textarea name="a3" required placeholder="Ex: La communauté est hyper réactive et j'adore l'univers One Piece, ça me donne plein d'idées d'events..."></textarea>
 
-        <label>Qualités apportées au serveur ?</label>
-        <textarea name="a4_qualites" rows="3" required placeholder="Ex: Dynamisme, créativité et sens de l'humour..."></textarea>
+        <label>Qualités apportées ?</label>
+        <textarea name="a4" required placeholder="Ex: Ma bonne humeur communicative et ma capacité à improviser quand il y a un imprévu..."></textarea>
 
-        <label>Réaction face à un membre irrespectueux en event ?</label>
-        <textarea name="a5_conflit" rows="3" required placeholder="Ex: Je demande un calme immédiat, si ça continue je mute et j'appelle un modo..."></textarea>
+        <label>Membre irrespectueux en event ?</label>
+        <textarea name="a5" required placeholder="Ex: Je fais une première remarque avec humour, si ça continue je l'exclis de l'event pour protéger le plaisir des autres..."></textarea>
 
-        <label>Seul ou en équipe ? Pourquoi ?</label>
-        <textarea name="a6_equipe" rows="3" required placeholder="Ex: En équipe, car à plusieurs on a plus d'idées et on gère mieux la foule..."></textarea>
-
-        <label>Gestion du stress ou conflits ?</label>
-        <textarea name="a7_stress" rows="3" required placeholder="Ex: Je reste poli mais ferme, et je ne rentre jamais dans le jeu de la provoc..."></textarea>
-
-        <label>Droit d'utiliser les permissions hors events ?</label>
-        <textarea name="a8_permissions" rows="2" required placeholder="Ex: Non, les permissions sont des outils de travail, pas des jouets..."></textarea>
+        <label>Permissions hors events ?</label>
+        <textarea name="a8" required placeholder="Ex: Absolument pas, les commandes d'administration ne servent que pendant le travail officiel..."></textarea>
 
         <div class="group-title">Créativité</div>
-        <label>Quels types d’événements proposerais-tu ?</label>
-        <textarea name="a9_types" rows="3" required placeholder="Ex: Tournois 1v1, Blind Test, Loup-Garou..."></textarea>
+        <label>Types d'événements proposés ?</label>
+        <textarea name="a9" required placeholder="Ex: Tournois de jeux mobiles, soirées débats, Loup-Garou, concours de dessins..."></textarea>
 
-        <label>Idée d’animation originale détaillée.</label>
-        <textarea name="a10_idee_originale" rows="4" required placeholder="Ex: Une chasse au trésor via des indices cachés dans les salons textuels..."></textarea>
+        <label>Ton idée originale détaillée ?</label>
+        <textarea name="a10" required placeholder="Ex: Un 'Battle Royale' textuel où les gens doivent répondre à des énigmes en un temps limité pour survivre..."></textarea>
 
-        <label>Événement rapide pour les membres ?</label>
-        <textarea name="a11_event_flash" rows="2" required placeholder="Ex: Un quiz de 5 questions sur One Piece à 18h..."></textarea>
-
-        <label>Qu'est-ce qui rend une animation réussie ?</label>
-        <textarea name="a12_succes" rows="2" required placeholder="Ex: La participation active des membres et l'absence de débordements..."></textarea>
-
-        <label>Annonce complète (test).</label>
-        <textarea name="a13_annonce_test" rows="5" required placeholder="Ex: 📢 ÉVÉNEMENT : Karaoké ce soir à 21h ! RDV en vocal. Préparez vos voix !"></textarea>
-
-        <div class="group-title">Réactivité</div>
-        <label>Dispute entre deux membres en event ?</label>
-        <textarea name="a14_dispute" rows="3" required placeholder="Ex: Je les sors du vocal temporairement pour ne pas gâcher l'event pour les autres..."></textarea>
-
-        <label>Disponibilités régulières ?</label>
-        <input type="text" name="a15_dispos" required placeholder="Ex: Lundi/Mercredi/Vendredi soir dès 20h">
-
-        <label>Membre qui spam pendant l'event ?</label>
-        <textarea name="a16_spam" rows="2" required placeholder="Ex: Warn oral, puis mute si récidive..."></textarea>
-
-        <label>Event qui échoue, ta réaction ?</label>
-        <textarea name="a17_echec" rows="2" required placeholder="Ex: Je ne me décourage pas, j'analyse pourquoi ça n'a pas marché (horaire ? jeu ?)..."></textarea>
-
-        <label>Collègue qui ne suit pas les règles ?</label>
-        <textarea name="a18_staff_regle" rows="2" required placeholder="Ex: Je lui en parle en privé d'abord, si rien ne change j'informe les responsables..."></textarea>
-
-        <label>Comment annoncer une info clairement ?</label>
-        <textarea name="a19_annonce_claire" rows="2" required placeholder="Ex: En utilisant des émojis et des listes à puces pour que ce soit lisible..."></textarea>
+        <label>Annonce test complète ?</label>
+        <textarea name="a13" required placeholder="Ex: 📣 EVENT : CE SOIR à 21H ! 🎵 BLIND TEST SPÉCIAL ANIME. RDV en Vocal. Lots à gagner ! Soyez là !"></textarea>
 
         <div class="group-title">Technique</div>
-        <label>Maîtrise des bots ?</label>
-        <textarea name="a20_bots" rows="2" required placeholder="Ex: Je sais utiliser GiveawaysBot et gérer les rôles temporaires..."></textarea>
+        <label>Bots d'animation maîtrisés ?</label>
+        <textarea name="a20" required placeholder="Ex: GiveawaysBot, Gartic Bot, et je sais configurer les salons de sondages..."></textarea>
 
-        <label>Gestion des salons vocaux/textuels ?</label>
-        <textarea name="a21_salons" rows="2" required placeholder="Ex: Je sais configurer les permissions pour que personne ne puisse crier..."></textarea>
+        <label>Gestion des salons vocaux ?</label>
+        <textarea name="a21" required placeholder="Ex: Je sais limiter le nombre de places, couper les micros des perturbateurs et mettre de la musique de fond..."></textarea>
 
-        <button type="submit" class="submit-btn">Soumettre ma candidature Animateur</button>
+        <button type="submit" class="submit-btn">Devenir Animateur</button>
     </form>
 
     <form id="form-part" class="form-content" action="https://formspree.io/f/xnjbrvez" method="POST">
-        <input type="hidden" name="_subject" value="Demande de PARTENARIAT - Dynasty">
+        <input type="hidden" name="_subject" value="Demande de PARTENARIAT">
         <div class="group-title">VOTRE PROJET</div>
-        <label>Nom du Serveur & Lien d'invitation</label>
-        <input type="text" name="p1_nom" required placeholder="Ex: Mon Serveur (discord.gg/invite)">
+        <label>Lien du serveur & Membres</label>
+        <input type="text" name="p1" required placeholder="Ex: discord.gg/dynasty (1200 membres)">
         
-        <label>Nombre de membres</label>
-        <input type="number" name="p2_membres" required placeholder="Ex: 500">
+        <label>Pourquoi la Dynasty Family’s ?</label>
+        <textarea name="p3" required placeholder="Ex: Nous cherchons un partenaire sérieux pour organiser des événements inter-serveurs..."></textarea>
         
-        <label>Pourquoi choisir la Dynasty Family’s ?</label>
-        <textarea name="p3_motivation" rows="4" required placeholder="Ex: Votre communauté est active et correspond à notre thématique..."></textarea>
-        
-        <button type="submit" class="submit-btn">Envoyer la proposition de Partenariat</button>
+        <button type="submit" class="submit-btn">Envoyer la Demande</button>
     </form>
 
-    <footer>DYNASTY FAMILY’S © 2026<br>Équipage Officiel de Modération & Animation</footer>
+    <footer>DYNASTY FAMILY’S © 2026<br>L'équipage vous attend.</footer>
 </div>
 
 <script>
