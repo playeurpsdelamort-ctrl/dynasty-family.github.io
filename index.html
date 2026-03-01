@@ -8,14 +8,20 @@
         :root { --blue-glow: #38bdf8; --bg-dark: #020617; --card-bg: rgba(30, 41, 59, 0.7); }
         body { background: radial-gradient(circle, #1e293b 0%, var(--bg-dark) 100%); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; display: flex; justify-content: center; }
         .container { width: 100%; max-width: 800px; background: var(--card-bg); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; border: 1px solid #334155; box-shadow: 0 0 40px rgba(0,0,0,0.5); }
+        
+        /* Style du Logo Luffy */
         .logo-container { text-align: center; margin-bottom: 20px; }
-        .logo-container img { width: 120px; height: 120px; border-radius: 50%; border: 2px solid var(--blue-glow); box-shadow: 0 0 15px rgba(56, 189, 248, 0.5); }
+        .logo-container img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--blue-glow); box-shadow: 0 0 20px rgba(56, 189, 248, 0.6); object-fit: cover; }
+        
         h1 { color: var(--blue-glow); text-align: center; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; font-style: italic; font-weight: 900; }
         .intro { text-align: center; color: #94a3b8; font-size: 0.9em; margin-bottom: 30px; line-height: 1.6; }
         .section-header { background: rgba(56, 189, 248, 0.1); color: var(--blue-glow); padding: 12px; border-radius: 5px; margin-top: 35px; font-weight: bold; text-transform: uppercase; font-size: 0.85em; border-left: 4px solid var(--blue-glow); }
         label { display: block; margin-top: 22px; margin-bottom: 10px; font-size: 0.95em; color: #e2e8f0; line-height: 1.4; }
-        input, textarea { width: 100%; padding: 14px; background: #0f172a; border: 1px solid #334155; color: white; border-radius: 8px; box-sizing: border-box; transition: 0.3s; font-size: 0.95em; }
-        input:focus, textarea:focus { border-color: var(--blue-glow); outline: none; box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
+        textarea { width: 100%; padding: 14px; background: #0f172a; border: 1px solid #334155; color: white; border-radius: 8px; box-sizing: border-box; transition: 0.3s; font-size: 0.95em; resize: vertical; }
+        textarea:focus { border-color: var(--blue-glow); outline: none; box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
+        
+        ::placeholder { color: #64748b; font-style: italic; font-size: 0.85em; }
+        
         button { width: 100%; margin-top: 45px; padding: 20px; background: var(--blue-glow); border: none; color: #020617; font-weight: bold; border-radius: 10px; cursor: pointer; font-size: 1.1em; text-transform: uppercase; transition: 0.3s; letter-spacing: 1px; }
         button:hover { background: #7dd3fc; transform: translateY(-2px); box-shadow: 0 5px 25px rgba(56, 189, 248, 0.4); }
         footer { text-align: center; margin-top: 30px; color: #475569; font-size: 0.8em; }
@@ -25,7 +31,7 @@
 
 <div class="container">
     <div class="logo-container">
-        <img src="https://via.placeholder.com/120" alt="Logo Dynasty">
+        <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" alt="Logo Dynasty">
     </div>
     <h1>𝘿𝙮𝙣𝙖𝙨𝙩𝙮 𝙁𝙖𝙢𝙞𝙡𝙮’𝙨</h1>
     <p class="intro">⚓ Système de Recrutement Officiel - Devenez un pilier de l'équipage ⚓</p>
@@ -33,77 +39,77 @@
     <form action="https://formspree.io/f/xnjbrvez" method="POST">
         
         <div class="section-header">I. Parcours & Expérience</div>
-        <label>1. Présente ton parcours sur Discord de manière détaillée (ancienneté, types de serveurs, rôles, responsabilités).</label>
-        <textarea name="q1_parcours" rows="4" required placeholder="Ex: Staff sur 3 serveurs Blox Fruits depuis 2 ans..."></textarea>
+        <label>1. Présente ton parcours sur Discord de manière détaillée.</label>
+        <textarea name="q1" rows="4" required placeholder="Ex: Staff depuis 2 ans sur 3 serveurs Blox Fruits (5k membres). J'ai géré les conflits et l'accueil..."></textarea>
 
-        <label>2. Décris une expérience concrète de modération difficile que tu as vécue et explique tes décisions stratégiques.</label>
-        <textarea name="q2_experience_difficile" rows="4" required></textarea>
+        <label>2. Décris une expérience de modération difficile et ta stratégie.</label>
+        <textarea name="q2" rows="4" required placeholder="Ex: J'ai dû gérer un raid massif. J'ai activé le lockdown et banni les comptes suspects un par un..."></textarea>
 
-        <label>3. As-tu déjà participé à l’élaboration ou à l’amélioration d’un règlement ? Si oui, explique ta méthodologie.</label>
-        <textarea name="q3_reglement" rows="3" required></textarea>
+        <label>3. As-tu déjà amélioré un règlement ? Explique ta méthode.</label>
+        <textarea name="q3" rows="3" required placeholder="Ex: J'ai ajouté des règles précises sur le langage pour éviter les toxicités en salon vocal..."></textarea>
 
         <div class="section-header">II. Motivation & Vision</div>
-        <label>4. Quelle est ta conception du rôle de modérateur au sein d’une communauté structurée ?</label>
-        <textarea name="q4_conception_role" rows="3" required></textarea>
+        <label>4. Quelle est ta conception du rôle de modérateur ?</label>
+        <textarea name="q4" rows="3" required placeholder="Ex: Un modérateur est là pour aider les membres avant de punir. Il doit être le moteur du respect..."></textarea>
 
-        <label>5. En quoi ta candidature se distingue-t-elle des autres ?</label>
-        <textarea name="q5_distinction" rows="3" required></textarea>
+        <label>5. En quoi ta candidature se distingue-t-elle ?</label>
+        <textarea name="q5" rows="3" required placeholder="Ex: Ma grande patience et ma connaissance parfaite des bots de sécurité..."></textarea>
 
-        <label>6. Quelle est, selon toi, la frontière entre autorité légitime et abus de pouvoir ?</label>
-        <textarea name="q6_autorite_vs_abus" rows="3" required></textarea>
+        <label>6. Définis la frontière entre autorité et abus de pouvoir.</label>
+        <textarea name="q6" rows="3" required placeholder="Ex: L'autorité suit le règlement, l'abus de pouvoir suit l'énervement personnel..."></textarea>
 
-        <label>7. Comment contribues-tu à instaurer un climat sain et durable dans une communauté en ligne ?</label>
-        <textarea name="q7_climat_sain" rows="3" required></textarea>
+        <label>7. Comment instaures-tu un climat sain ?</label>
+        <textarea name="q7" rows="3" required placeholder="Ex: En étant présent, en discutant avec les gens et en rappelant les règles avec humour mais fermeté..."></textarea>
 
-        <div class="section-header">III. Analyse & Gestion de situations complexes</div>
-        <label>8. Un membre influent enfreint volontairement le règlement. Quelle stratégie adoptes-tu ?</label>
-        <textarea name="q8_membre_influent" rows="3" required></textarea>
+        <div class="section-header">III. Analyse & Gestion de situations</div>
+        <label>8. Un membre influent enfreint les règles. Que fais-tu ?</label>
+        <textarea name="q8" rows="3" required placeholder="Ex: La règle est la même pour tout le monde. Je le sanctionne comme n'importe qui..."></textarea>
 
-        <label>9. Deux membres se provoquent mutuellement, aucun n'est totalement innocent. Comment établis-tu les responsabilités ?</label>
-        <textarea name="q9_conflit_mutuel" rows="3" required></textarea>
+        <label>9. Deux membres se provoquent mutuellement. Comment réagis-tu ?</label>
+        <textarea name="q9" rows="3" required placeholder="Ex: Je les isole pour discuter calmement et je demande à chacun de reconnaître ses torts..."></textarea>
 
-        <label>10. Un membre conteste publiquement une sanction que tu as appliquée. Comment gères-tu la situation ?</label>
-        <textarea name="q10_contestation_publique" rows="3" required></textarea>
+        <label>10. Un membre conteste publiquement une sanction. Que fais-tu ?</label>
+        <textarea name="q10" rows="3" required placeholder="Ex: Je l'invite à passer en message privé ou en ticket pour ne pas polluer le chat public..."></textarea>
 
-        <label>11. Une vague de raid survient en pleine nuit. Explique précisément les mesures d’urgence que tu prends.</label>
-        <textarea name="q11_gestion_raid" rows="3" required></textarea>
+        <label>11. Une vague de raid survient en pleine nuit. Tes mesures ?</label>
+        <textarea name="q11" rows="3" required placeholder="Ex: Lockdown immédiat du serveur et message aux autres admins pour renfort..."></textarea>
 
-        <label>12. Un modérateur abuse de ses permissions. Quelle est ta réaction et pourquoi ?</label>
-        <textarea name="q12_abus_staff" rows="3" required></textarea>
+        <label>12. Un modérateur abuse de ses permissions. Réaction ?</label>
+        <textarea name="q12" rows="3" required placeholder="Ex: Je prends des captures d'écran des logs et j'envoie un rapport urgent aux fondateurs..."></textarea>
 
-        <div class="section-header">IV. Gestion émotionnelle & posture professionnelle</div>
-        <label>13. Comment maintiens-tu ton objectivité face à la pression ou aux provocations ?</label>
-        <textarea name="q13_objectivite" rows="3" required></textarea>
+        <div class="section-header">IV. Posture Professionnelle</div>
+        <label>13. Comment restes-tu objectif face aux provocations ?</label>
+        <textarea name="q13" rows="3" required placeholder="Ex: Je ne réponds jamais à chaud. Je respire et je relis le règlement avant d'agir..."></textarea>
 
-        <label>14. Comment différencies-tu un simple troll d’un membre réellement problématique ?</label>
-        <textarea name="q14_troll_vs_probleme" rows="3" required></textarea>
+        <label>14. Troll vs Membre problématique : comment les différencier ?</label>
+        <textarea name="q14" rows="3" required placeholder="Ex: Le troll s'arrête si on l'ignore. Le membre problématique cherche à nuire au serveur..."></textarea>
 
-        <label>15. Penses-tu que la fermeté doit primer sur la pédagogie ? Argumente.</label>
-        <textarea name="q15_fermete_pedagogie" rows="3" required></textarea>
+        <label>15. Fermeté ou pédagogie ? Argumente.</label>
+        <textarea name="q15" rows="3" required placeholder="Ex: Pédagogie d'abord pour expliquer, fermeté ensuite si la personne recommence exprès..."></textarea>
 
         <div class="section-header">V. Impartialité & Éthique</div>
-        <label>16. Définis le principe d’impartialité dans le cadre d’une modération.</label>
-        <textarea name="q16_impartialite" rows="2" required></textarea>
+        <label>16. Définis le principe d’impartialité.</label>
+        <textarea name="q16" rows="2" required placeholder="Ex: C'est juger les actes sans tenir compte de l'amitié ou de l'ancienneté du membre..."></textarea>
 
-        <label>17. Si un ami proche enfreint le règlement, quelle serait ta démarche exacte ?</label>
-        <textarea name="q17_ami_reglement" rows="3" required></textarea>
+        <label>17. Un ami proche enfreint le règlement, que fais-tu ?</label>
+        <textarea name="q17" rows="3" required placeholder="Ex: Je laisse un autre staff s'en occuper pour être sûr que la décision soit neutre..."></textarea>
 
-        <label>18. Comment éviter les biais personnels dans la prise de décision ?</label>
-        <textarea name="q18_biais_personnels" rows="3" required></textarea>
+        <label>18. Comment éviter les biais personnels ?</label>
+        <textarea name="q18" rows="3" required placeholder="Ex: En demandant toujours l'avis d'un collègue sur les cas compliqués..."></textarea>
 
         <div class="section-header">VI. Compétences techniques</div>
-        <label>19. Explique le fonctionnement des sanctions progressives (warn → mute → kick → ban).</label>
-        <textarea name="q19_sanctions" rows="3" required></textarea>
+        <label>19. Explique les sanctions progressives.</label>
+        <textarea name="q19" rows="3" required placeholder="Ex: Avertissement -> Mute court -> Mute long -> Kick -> Ban..."></textarea>
 
-        <label>20. Décris le rôle des logs et pourquoi ils sont essentiels.</label>
-        <textarea name="q20_logs" rows="2" required></textarea>
+        <label>20. Pourquoi les logs sont-ils essentiels ?</label>
+        <textarea name="q20" rows="2" required placeholder="Ex: Pour garder une preuve de tout ce qui a été dit et fait en cas de contestation..."></textarea>
 
-        <label>21. As-tu déjà configuré un bot de modération (automod, antiraid) ? Décris tes actions.</label>
-        <textarea name="q21_config_bots" rows="3" required></textarea>
+        <label>21. As-tu déjà configuré un bot ? Explique.</label>
+        <textarea name="q21" rows="3" required placeholder="Ex: Oui, j'ai configuré Dyno pour l'anti-spam et MEE6 pour les messages de bienvenue..."></textarea>
 
-        <div class="section-header">VII. Question stratégique finale</div>
-        <label>22. Si tu étais responsable, quelles améliorations structurelles mettrais-tu en place sur le serveur ?</label>
-        <textarea name="q22_ameliorations" rows="4" required></textarea>
+        <div class="section-header">VII. Question finale</div>
+        <label>22. Quelles améliorations proposerais-tu pour le serveur ?</label>
+        <textarea name="q22" rows="4" required placeholder="Ex: Organiser plus d'événements communautaires et renforcer le système de tickets..."></textarea>
 
         <button type="submit">Envoyer ma candidature à l'État-Major</button>
     </form>
