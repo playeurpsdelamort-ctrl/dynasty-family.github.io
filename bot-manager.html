@@ -2,78 +2,69 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Expert Bot Manager - Dynasty Family's</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Bot Manager - Dynasty Family's</title>
     <style>
-        body { margin: 0; background: #050a18; color: white; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; padding: 50px; }
-        .header { text-align: center; margin-bottom: 40px; }
-        .logo { width: 80px; border-radius: 50%; border: 2px solid #ff8c00; }
-        .title { color: #ff8c00; font-style: italic; text-transform: uppercase; margin-top: 10px; font-size: 24px; letter-spacing: 2px; }
-        .exam-card { width: 950px; background: rgba(13, 20, 38, 0.95); border-radius: 15px; border: 1px solid #ff8c00; padding: 60px; position: relative; box-shadow: 0 0 50px rgba(0,0,0,0.8); }
-        .progress-bar { position: absolute; top: 0; left: 0; height: 5px; background: linear-gradient(to right, #ff8c00, #ff5500); width: 0%; transition: 0.4s; }
+        :root { --primary: #ff8c00; --bg: #050a18; --card: #0d1426; }
+        body { margin: 0; background: var(--bg); color: white; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        
+        .header { text-align: center; margin: 40px 0; }
+        .logo { width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--primary); box-shadow: 0 0 30px rgba(255, 140, 0, 0.4); margin-bottom: 20px; }
+        .title { color: var(--primary); font-size: 2.2rem; font-weight: 900; text-transform: uppercase; font-style: italic; letter-spacing: -1px; margin: 0; }
+        .subtitle { color: #94a3b8; font-size: 0.8rem; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin-top: 5px; }
+
+        .exam-card { width: 90%; max-width: 900px; background: var(--card); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.05); padding: 50px; position: relative; box-shadow: 0 40px 100px rgba(0,0,0,0.6); margin-bottom: 50px; }
+        
+        .progress-container { width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; margin-bottom: 40px; position: relative; overflow: hidden; }
+        .progress-bar { height: 100%; background: var(--primary); width: 0%; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 15px var(--primary); }
+
         .step { display: none; }
-        .step.active { display: block; }
-        .category { color: #ff8c00; text-transform: uppercase; font-size: 12px; font-weight: 900; margin-bottom: 10px; letter-spacing: 1px; }
-        .question-text { font-size: 20px; margin-bottom: 30px; font-weight: bold; line-height: 1.5; border-left: 5px solid #ff8c00; padding-left: 15px; }
-        textarea { width: 100%; height: 350px; background: rgba(0,0,0,0.5); border: 1px solid #444; border-radius: 5px; color: #fff; padding: 25px; font-size: 18px; box-sizing: border-box; resize: none; outline: none; border-bottom: 2px solid transparent; transition: 0.3s; }
-        textarea:focus { border-color: #ff8c00; background: rgba(0,0,0,0.7); }
-        .nav-btns { margin-top: 40px; display: flex; justify-content: space-between; }
-        .btn { padding: 20px 60px; border-radius: 5px; border: none; font-weight: bold; text-transform: uppercase; cursor: pointer; transition: 0.3s; font-size: 16px; }
-        .btn-next { background: #ff8c00; color: #000; box-shadow: 0 4px 15px rgba(255,140,0,0.3); }
-        .btn-prev { background: #111; color: #666; }
-        .btn:hover { transform: scale(1.02); opacity: 0.9; }
+        .step.active { display: block; animation: slideIn 0.4s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .q-label { color: var(--primary); font-weight: 900; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; display: block; }
+        .q-text { font-size: 1.3rem; font-weight: 700; margin-bottom: 30px; line-height: 1.4; color: #f8fafc; }
+        
+        textarea { width: 100%; height: 300px; background: rgba(0, 0, 0, 0.4); border: 2px solid rgba(255,255,255,0.05); border-radius: 12px; color: #7de3ff; font-family: 'Consolas', monospace; padding: 25px; font-size: 1rem; box-sizing: border-box; resize: none; transition: 0.3s; outline: none; }
+        textarea:focus { border-color: var(--primary); background: rgba(0, 0, 0, 0.6); }
+
+        .btn-next { width: 100%; background: var(--primary); color: #000; border: none; padding: 20px; border-radius: 12px; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; cursor: pointer; margin-top: 30px; transition: 0.3s; }
+        .btn-next:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255, 140, 0, 0.4); }
     </style>
 </head>
 <body>
     <div class="header">
         <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo">
-        <div class="title">Expert Bot Manager Examination</div>
+        <h1 class="title">CANDIDATURE BOT MANAGER</h1>
+        <div class="subtitle">DYNASTY FAMILY'S • ARCHITECTURE & SÉCURITÉ</div>
     </div>
+
     <div class="exam-card">
-        <div class="progress-bar" id="bar"></div>
+        <div class="progress-container"><div class="progress-bar" id="bar"></div></div>
         <form action="https://formspree.io/f/xnjbrvez" method="POST" id="form">
             <input type="hidden" name="Pseudo" id="hid-user">
-            <input type="hidden" name="Poste" value="Bot Manager Expert">
+            <input type="hidden" name="Poste" value="Bot Manager">
             <div id="container"></div>
-            <div class="nav-btns">
-                <button type="button" class="btn btn-prev" id="prev" onclick="move(-1)">Précédent</button>
-                <button type="button" class="btn btn-next" id="next" onclick="move(1)">Suivant</button>
-            </div>
+            <button type="button" class="btn-next" id="nextBtn" onclick="move(1)">SUIVANT</button>
         </form>
     </div>
+
     <script>
         const questions = [
-            "I. Architecture & Hébergement : Analyse comparativement une architecture self-hosted, cloud-managed et serverless pour un bot Discord. Discute des implications en matière de latence, scalabilité horizontale, résilience et coûts d’exploitation.",
-            "Explique les différences fondamentales entre : Gateway Intents privilégiés, Webhooks, et Slash Commands (Interactions API). Dans quels contextes privilégierais-tu chacun ?",
-            "Décris le cycle de vie complet d’un bot Discord depuis l’authentification OAuth2 jusqu’au traitement d’un événement (event dispatch → handler → réponse).",
-            "Quels sont les risques liés au stockage local d’un token bot ? Propose une architecture sécurisée pour la gestion des secrets (ex : variables d’environnement chiffrées, vault, rotation de token).",
-            "II. Permissions & Sécurité Avancée : Analyse le principe du Least Privilege (Moindre Privilège) dans le contexte d’un bot Discord. Comment l’implémenter concrètement ?",
-            "Détaille les permissions pouvant provoquer une compromission massive du serveur si mal configurées (ex : Manage Roles, Administrator, Manage Webhooks…). Explique les scénarios d’attaque possibles.",
-            "Comment protéger un bot contre : Injection de commandes, Escalade de privilèges, Spam API / Rate limit abuse, Exploitation via faille dans une dépendance NPM/PyPI ?",
-            "Propose un protocole de prévention anti-raid intégrant : Détection comportementale, Limitation de fréquence (rate limiting), Journalisation automatisée, Mode lockdown dynamique.",
-            "III. Résilience & Gestion de crise : Un bot critique tombe en panne durant un raid actif. Décris un plan de continuité opérationnelle (PCA) structuré en trois phases : urgence immédiate – stabilisation – restauration complète.",
-            "Comment implémenterais-tu un système de failover automatique pour garantir une haute disponibilité (HA) ?",
-            "Décris une méthode de monitoring proactive (logs centralisés, alertes webhook, uptime monitoring, métriques CPU/RAM).",
-            "Un bot commence à exécuter des actions imprévues sans modification récente du code. Quelle serait ta démarche d’audit technique ?",
-            "IV. Conflits & Interopérabilité : Deux bots entrent en conflit à cause d’un préfixe identique ou d’événements redondants. Explique comment diagnostiquer précisément la source du conflit.",
-            "Comment éviter les collisions de permissions lorsque plusieurs bots gèrent les rôles automatiquement ?",
-            "Un bot mute accidentellement un administrateur à cause d’un mauvais algorithme de détection. Analyse les failles de conception qui ont permis cette erreur.",
-            "V. Développement & Optimisation : Explique la différence entre une architecture monolithique et modulaire pour un bot. Laquelle privilégierais-tu pour un serveur à forte croissance ?",
-            "Comment optimiser un bot pour réduire la consommation mémoire et éviter les memory leaks ?",
-            "Quels sont les avantages et inconvénients d’un stockage : JSON local, Base SQL, Base NoSQL, Redis cache ?",
-            "Comment implémenter un système de permissions hiérarchique interne au bot indépendant des rôles Discord ?",
-            "VI. Gouvernance & Décision Stratégique : Dans quels cas justifierais-tu la création d’un bot propriétaire plutôt que l’utilisation d’un bot public reconnu ?",
-            "Comment évaluer la fiabilité d’un bot public avant de l’ajouter au serveur ?",
-            "Quelle serait ta politique concernant l’attribution du rôle Administrateur à un bot ? Donne une réponse argumentée, technique et sécuritaire.",
-            "VII. Étude de cas finale (niveau expert) : Ton serveur de 15 000 membres subit : un raid coordonné, une tentative d’exploitation d’un bot via commande mal filtrée, une saturation API. Décris ta stratégie complète (Actions immédiates, Mesures techniques, Communication staff, Rapport)."
+            "I. ARCHITECTURE : Analyse comparativement une architecture self-hosted, cloud-managed et serverless pour un bot Discord. Discute des implications en matière de résilience et coûts.",
+            "II. SÉCURITÉ : Détaille les permissions pouvant provoquer une compromission massive du serveur (Manage Roles, Webhooks, etc.). Scénarios d’attaque possibles ?",
+            "III. GESTION DE CRISE : Un bot critique tombe en panne durant un raid massif. Décris ton Plan de Continuité Opérationnelle (PCA) en trois phases.",
+            "IV. MONITORING : Décris une méthode de surveillance proactive (logs centralisés, alertes, métriques CPU/RAM) pour garantir un uptime de 99.9%.",
+            "V. ÉTUDE DE CAS : Serveur de 15 000 membres sous raid coordonné + saturation API. Quelles sont tes mesures techniques immédiates ?"
         ];
 
         document.getElementById('hid-user').value = localStorage.getItem('user') || "Anonyme";
         const cont = document.getElementById('container');
         questions.forEach((q, i) => {
             cont.innerHTML += `<div class="step">
-                <div class="category">Section Expertise - Question ${i+1}/23</div>
-                <div class="question-text">${q}</div>
-                <textarea name="Reponse_Expert_${i+1}" placeholder="Analyse technique approfondie..." required></textarea>
+                <span class="q-label">MODULE TECHNIQUE ${i+1} / ${questions.length}</span>
+                <div class="q-text">${q}</div>
+                <textarea name="Bot_Expert_Q${i+1}" placeholder="Analyse technique attendue..." required></textarea>
             </div>`;
         });
 
@@ -82,11 +73,10 @@
         function show(idx) {
             steps.forEach((s, i) => s.classList.toggle('active', i === idx));
             document.getElementById('bar').style.width = ((idx + 1) / steps.length) * 100 + "%";
-            document.getElementById('prev').style.visibility = idx === 0 ? 'hidden' : 'visible';
-            document.getElementById('next').innerText = idx === steps.length - 1 ? 'Soumettre l\'expertise' : 'Suivant';
+            document.getElementById('nextBtn').innerText = idx === steps.length - 1 ? 'TRANSMETTRE L\'EXPERTISE' : 'SUIVANT';
         }
         function move(n) {
-            if (n === 1 && !steps[current].querySelector('textarea').value.trim()) return alert("Analyse technique requise.");
+            if (!steps[current].querySelector('textarea').value.trim()) return alert("Une analyse est requise.");
             current += n;
             if (current >= steps.length) document.getElementById('form').submit();
             else show(current);
