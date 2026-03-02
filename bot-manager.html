@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Examen Bot Manager - Dynasty Family's</title>
     <style>
-        /* ESTHÉTIQUE BASÉE SUR TES CAPTURES */
+        /* ESTHÉTIQUE BASÉE SUR LES CAPTURES (image_27535a & image_267605) */
         body {
             margin: 0;
             padding: 0;
-            background-color: #050a18; 
+            background-color: #050a18; /* Bleu nuit profond */
             background-image: 
                 radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 30px),
                 radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 40px);
@@ -17,7 +17,7 @@
             background-attachment: fixed;
             color: #ffffff;
             font-family: 'Segoe UI', sans-serif;
-            overflow-x: hidden;
+            overflow: hidden; /* Empêche le scroll pendant l'examen */
         }
 
         .container {
@@ -29,38 +29,40 @@
             padding: 20px;
         }
 
-        /* HEADER */
+        /* LOGO & TITRES (image_267605) */
         .logo-main {
-            width: 120px;
-            height: 120px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             border: 3px solid #ff8c00;
-            box-shadow: 0 0 25px rgba(255, 140, 0, 0.5);
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
             margin-bottom: 15px;
             object-fit: cover;
         }
 
         .main-title {
-            color: #ff8c00;
-            font-style: italic;
+            color: #ff8c00; /* Orange néon */
+            font-style: italic; /* Style italique */
             font-weight: 900;
             text-transform: uppercase;
-            font-size: 2rem;
-            margin: 5px 0;
+            font-size: 1.8rem;
+            margin: 0;
+            letter-spacing: 1px;
         }
 
-        /* CARTE & PROGRESSION */
+        /* CARTE DE L'EXAMEN */
         .glass-card {
             width: 100%;
             max-width: 800px;
-            background: rgba(13, 20, 38, 0.95);
+            background: rgba(13, 20, 38, 0.95); /* */
             border: 1px solid rgba(255, 140, 0, 0.2);
             border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.7);
-            position: relative;
+            padding: 35px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+            margin-top: 20px;
         }
 
+        /* BARRE DE PROGRESSION */
         .progress-container {
             width: 100%;
             background: rgba(255,255,255,0.1);
@@ -73,38 +75,38 @@
             height: 100%;
             background: #ff8c00;
             width: 0%;
-            transition: 0.4s;
+            transition: 0.4s ease;
             box-shadow: 0 0 10px #ff8c00;
         }
 
-        /* SYSTÈME D'ÉTAPES */
-        .step { display: none; animation: fadeIn 0.4s ease; text-align: left; }
+        /* SYSTÈME D'ÉTAPES (UNE PAR UNE) */
+        .step { display: none; animation: slideIn 0.4s ease; text-align: left; }
         .step.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .question-num { color: #ff8c00; font-weight: 900; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 15px; display: block; }
-        .question-text { font-size: 1.2rem; line-height: 1.6; margin-bottom: 25px; font-weight: 600; color: #f3f4f6; }
+        .question-num { color: #ff8c00; font-weight: 900; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .question-text { font-size: 1.15rem; line-height: 1.5; margin-bottom: 20px; font-weight: 600; color: #f3f4f6; }
 
         textarea {
             width: 100%;
-            min-height: 200px;
-            background: rgba(0, 0, 0, 0.4);
+            min-height: 220px;
+            background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             color: #fff;
-            padding: 20px;
+            padding: 18px;
             font-family: inherit;
-            font-size: 1.05rem;
+            font-size: 1rem;
             resize: none;
             box-sizing: border-box;
             transition: 0.3s;
         }
 
-        textarea:focus { outline: none; border-color: #ff8c00; background: rgba(0, 0, 0, 0.6); }
+        textarea:focus { outline: none; border-color: #ff8c00; }
 
-        /* BOUTONS */
+        /* BOUTONS NAVIGATION */
         .nav-btns { display: flex; justify-content: space-between; margin-top: 30px; gap: 15px; }
-        .btn-nav { padding: 15px 30px; border-radius: 8px; font-weight: 900; cursor: pointer; transition: 0.3s; border: none; text-transform: uppercase; font-size: 0.9rem; }
+        .btn-nav { padding: 14px 28px; border-radius: 8px; font-weight: 900; cursor: pointer; transition: 0.3s; border: none; text-transform: uppercase; font-size: 0.85rem; }
         .btn-prev { background: rgba(255,255,255,0.05); color: #94a3b8; border: 1px solid rgba(255,255,255,0.1); }
         .btn-next { background: #ff8c00; color: #000; flex-grow: 1; }
         .btn-next:hover { box-shadow: 0 0 20px rgba(255, 140, 0, 0.4); transform: scale(1.02); }
@@ -114,8 +116,8 @@
 
     <div class="container">
         <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo-main">
-        <h1 class="main-title">Examen Bot Manager</h1>
-        <p style="color: #ff8c00; margin-bottom: 30px; font-weight: bold; letter-spacing: 1px;">DYNASTY FAMILY'S RECRUTEMENT</p>
+        <h1 class="main-title">Candidature Bot Manager</h1>
+        <p style="color: #ff8c00; font-weight: bold; font-size: 0.8rem; margin: 5px 0 20px 0;">DYNASTY FAMILY'S • EXAMEN TECHNIQUE</p>
 
         <div class="glass-card">
             <div class="progress-container"><div class="progress-bar" id="progress"></div></div>
@@ -129,23 +131,24 @@
 
                 <div class="nav-btns">
                     <button type="button" class="btn-nav btn-prev" id="prevBtn" onclick="changeStep(-1)" style="visibility: hidden;">Précédent</button>
-                    <button type="button" class="btn-nav btn-next" id="nextBtn" onclick="changeStep(1)">Commencer l'examen</button>
+                    <button type="button" class="btn-nav btn-next" id="nextBtn" onclick="changeStep(1)">Démarrer</button>
                 </div>
             </form>
         </div>
-        <a href="hub.html" style="color: #64748b; text-decoration: none; margin-top: 20px; font-size: 0.8rem;">Quitter l'examen</a>
+        <a href="hub.html" style="color: #64748b; text-decoration: none; margin-top: 20px; font-size: 0.75rem; opacity: 0.6;">Annuler et quitter</a>
     </div>
 
     <script>
+        // LISTE DES 23 QUESTIONS
         const questions = [
             "Analyse comparativement une architecture self-hosted, cloud-managed et serverless pour un bot Discord. Discute des implications en matière de latence, scalabilité horizontale, résilience et coûts d’exploitation.",
-            "Explique les différences fondamentales entre : Gateway Intents privilégiés, Webhooks, Slash Commands (Interactions API). Dans quels contextes privilégierais-tu chacun ?",
+            "Explique les différences fondamentales entre : Gateway Intents privilégiés, Webhooks et Slash Commands (Interactions API). Dans quels contextes privilégierais-tu chacun ?",
             "Décris le cycle de vie complet d’un bot Discord depuis l’authentification OAuth2 jusqu’au traitement d’un événement (event dispatch → handler → réponse).",
             "Quels sont les risques liés au stockage local d’un token bot ? Propose une architecture sécurisée pour la gestion des secrets (ex : variables d’environnement chiffrées, vault, rotation de token).",
             "Analyse le principe du Least Privilege (Moindre Privilège) dans le contexte d’un bot Discord. Comment l’implémenter concrètement ?",
             "Détaille les permissions pouvant provoquer une compromission massive du serveur si mal configurées (ex : Manage Roles, Administrator, Manage Webhooks…). Explique les scénarios d’attaque possibles.",
             "Comment protéger un bot contre : Injection de commandes, Escalade de privilèges, Spam API / Rate limit abuse, Exploitation via faille dans une dépendance NPM/PyPI.",
-            "Propose un protocole de prévention anti-raid intégrant : Détection comportementale, Limitation de fréquence (rate limiting), Journalisation automatisée, Mode lockdown dynamique.",
+            "Propose un protocole de prévention anti-raid intégrant : Détection comportementale, Limitation de fréquence (rate limiting), Journalisation automatisée et Mode lockdown dynamique.",
             "Un bot critique tombe en panne durant un raid actif. Décris un plan de continuité opérationnelle (PCA) structuré en trois phases : urgence immédiate – stabilisation – restauration complète.",
             "Comment implémenterais-tu un système de failover automatique pour garantir une haute disponibilité (HA) ?",
             "Décris une méthode de monitoring proactive (logs centralisés, alertes webhook, uptime monitoring, métriques CPU/RAM).",
@@ -160,20 +163,20 @@
             "Dans quels cas justifierais-tu la création d’un bot propriétaire plutôt que l’utilisation d’un bot public reconnu ?",
             "Comment évaluer la fiabilité d’un bot public avant de l’ajouter au serveur ?",
             "Quelle serait ta politique concernant l’attribution du rôle Administrateur à un bot ? Donne une réponse argumentée, technique et sécuritaire.",
-            "ÉTUDE DE CAS : Ton serveur de 15 000 membres subit un raid coordonné, une tentative d’exploitation d’un bot et une saturation API. Décris ta stratégie complète."
+            "ÉTUDE DE CAS : Ton serveur de 15 000 membres subit un raid coordonné, une tentative d’exploitation d’un bot et une saturation API. Décris ta stratégie complète (Actions, Tech, Comm, Rapport)."
         ];
 
         const container = document.getElementById('steps-container');
         document.getElementById('hidden-pseudo').value = localStorage.getItem('user') || "Anonyme";
 
-        // Générer les questions
+        // Injection des questions dans le DOM
         questions.forEach((q, i) => {
             const div = document.createElement('div');
             div.className = 'step';
             div.innerHTML = `
                 <span class="question-num">Question ${i + 1} / ${questions.length}</span>
                 <div class="question-text">${q}</div>
-                <textarea name="reponse_q${i+1}" placeholder="Réponse détaillée..." required></textarea>
+                <textarea name="reponse_q${i+1}" placeholder="Ta réponse technique ici..." required></textarea>
             `;
             container.appendChild(div);
         });
@@ -182,9 +185,10 @@
         const steps = document.querySelectorAll('.step');
 
         function changeStep(n) {
+            // Empêche de passer si vide
             if (n === 1 && currentStep >= 0) {
                 const area = steps[currentStep].querySelector('textarea');
-                if (!area.value.trim()) { alert("Merci de répondre à la question."); return; }
+                if (!area.value.trim()) { alert("Réponse obligatoire pour continuer."); return; }
             }
 
             if (currentStep >= 0) steps[currentStep].classList.remove('active');
@@ -203,7 +207,8 @@
             const progress = ((currentStep + 1) / steps.length) * 100;
             document.getElementById('progress').style.width = progress + "%";
             document.getElementById('prevBtn').style.visibility = currentStep > 0 ? 'visible' : 'hidden';
-            document.getElementById('nextBtn').innerText = currentStep === steps.length - 1 ? "Envoyer l'examen" : (currentStep === -1 ? "Démarrer" : "Suivant");
+            document.getElementById('nextBtn').innerText = currentStep === steps.length - 1 ? "Soumettre l'examen" : (currentStep === -1 ? "Commencer" : "Suivant");
+            
             if(currentStep === -1) changeStep(1);
         }
         updateUI();
