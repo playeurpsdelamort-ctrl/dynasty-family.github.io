@@ -18,10 +18,8 @@
             background: #000;
             background-image: 
                 radial-gradient(1px 1px at 25px 35px, #fff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 50px 100px, #eee, rgba(0,0,0,0)),
                 linear-gradient(135deg, #020617 0%, #0f172a 100%);
-            background-repeat: repeat;
-            background-size: 250px 250px, 300px 300px, 100% 100%;
+            background-attachment: fixed;
             color: var(--text-main); 
             font-family: 'Segoe UI', system-ui, sans-serif; 
             margin: 0; padding: 10px; min-height: 100vh;
@@ -36,6 +34,9 @@
             object-fit: cover; background: #000; margin-bottom: 15px;
         }
 
+        h1 { color: var(--gold); font-size: 1.6rem; text-transform: uppercase; letter-spacing: 3px; margin: 5px 0; font-weight: 900; text-align: center; }
+        .subtitle { color: var(--gold); font-size: 0.8rem; text-transform: uppercase; font-weight: bold; text-align: center; display: block; }
+
         .form-title {
             text-align: center;
             color: var(--gold);
@@ -43,16 +44,13 @@
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin: 25px 0 15px 0;
         }
-
-        h1 { color: var(--gold); font-size: 1.6rem; text-transform: uppercase; letter-spacing: 3px; margin: 5px 0; font-weight: 900; text-align: center; }
-        .subtitle { color: var(--gold); font-size: 0.8rem; text-transform: uppercase; font-weight: bold; text-align: center; display: block; }
 
         /* BOUTONS CENTRÉS */
         .tab-switcher-container {
             display: flex;
-            justify-content: center; /* Centre les boutons horizontalement */
+            justify-content: center;
             width: 100%;
             margin-bottom: 25px;
         }
@@ -68,13 +66,13 @@
             z-index: 100; 
             backdrop-filter: blur(10px);
             max-width: 100%;
-            overflow-x: auto; /* Permet le défilement si trop de boutons sur petit mobile */
+            overflow-x: auto;
             scrollbar-width: none;
         }
         .tab-switcher::-webkit-scrollbar { display: none; }
 
         .tab-btn {
-            flex: 0 0 auto; /* Empêche les boutons de s'écraser */
+            flex: 0 0 auto;
             padding: 12px 18px; 
             border: none; 
             background: transparent; 
@@ -103,16 +101,18 @@
         .category-header { 
             color: #000; background: var(--gold); font-size: 0.85rem; font-weight: 900; 
             text-transform: uppercase; margin: -20px -20px 20px -20px; 
-            padding: 12px; border-radius: 18px 18px 0 0;
+            padding: 12px; border-radius: 18px 18px 0 0; text-align: center;
         }
 
-        label { display: block; margin-top: 20px; margin-bottom: 10px; font-size: 0.95rem; font-weight: 600; color: #fff; line-height: 1.4; }
+        label { display: block; margin-top: 20px; margin-bottom: 10px; font-size: 0.9rem; font-weight: 600; color: #cbd5e1; line-height: 1.4; }
         
         input, textarea { 
             width: 100%; padding: 14px; background: rgba(0,0,0,0.5); 
             border: 1px solid #475569; color: #fff; border-radius: 12px; 
-            font-size: 16px; outline: none;
+            font-size: 16px; outline: none; transition: 0.2s;
         }
+        textarea { min-height: 100px; }
+        input:focus, textarea:focus { border-color: var(--gold); background: rgba(0,0,0,0.7); }
 
         .submit-btn { 
             width: 100%; padding: 20px; background: var(--gold); 
@@ -121,8 +121,7 @@
             box-shadow: 0 10px 25px rgba(251, 146, 60, 0.4); margin-bottom: 50px;
         }
 
-        .staff-tag { color: var(--gold); font-weight: bold; display: block; margin: 20px 0; text-align: center; }
-
+        .staff-tag { color: var(--gold); font-weight: bold; display: block; margin: 20px 0; text-align: center; font-size: 0.9rem; }
         footer { text-align: center; color: #94a3b8; font-size: 0.7rem; padding-bottom: 30px; }
     </style>
 </head>
@@ -146,69 +145,111 @@
         </div>
     </div>
 
-    <form action="https://formspree.io/f/xnjbrvez" method="POST">
-        
-        <div id="section-bot" class="form-content active">
+    <div id="section-bot" class="form-content active">
+        <form action="https://formspree.io/f/xnjbrvez" method="POST">
             <input type="hidden" name="Role" value="BOT MANAGER">
+            
             <div class="glass-card">
                 <div class="category-header">I. Architecture & Hébergement</div>
-                <label>1. Analyse comparativement une architecture self-hosted, cloud-managed et serverless...</label>
+                <label>1. Analyse comparativement une architecture self-hosted, cloud-managed et serverless pour un bot Discord (latence, scalabilité, coûts...).</label>
                 <textarea name="bot_q1" required></textarea>
-                </div>
-            <button type="submit" class="submit-btn">Envoyer Bot Manager</button>
-        </div>
-
-        <div id="section-mod" class="form-content">
-            <input type="hidden" name="Role" value="MODERATEUR TEST">
-            <div class="glass-card">
-                <div class="category-header">I. Parcours & Expérience</div>
-                <label>1. Présente ton parcours sur Discord de manière détaillée...</label>
-                <textarea name="mod_q1" required></textarea>
-                </div>
-            <button type="submit" class="submit-btn">Envoyer Modo Test</button>
-        </div>
-
-        <div id="section-mid" class="form-content">
-            <input type="hidden" name="Role" value="MIDDLEMAN">
-            <div class="glass-card">
-                <div class="category-header">Informations Middleman</div>
-                <label>Disponibilités précises (heures/jours) :</label>
-                <input type="text" name="mid_disp" required>
-                <label>Depuis combien de temps joues-tu à Blox Fruits ?</label>
-                <input type="text" name="mid_lvl" required>
+                <label>2. Explique les différences entre Gateway Intents, Webhooks et Slash Commands. Dans quels contextes les privilégier ?</label>
+                <textarea name="bot_q2" required></textarea>
+                <label>3. Décris le cycle de vie complet d’un bot depuis l’authentification OAuth2 jusqu’au traitement d’un événement.</label>
+                <textarea name="bot_q3" required></textarea>
+                <label>4. Risques du stockage local d’un token ? Propose une architecture sécurisée (vault, secrets...).</label>
+                <textarea name="bot_q4" required></textarea>
             </div>
-            <button type="submit" class="submit-btn">Envoyer Middleman</button>
-        </div>
 
-        <div id="section-anim" class="form-content">
-            <input type="hidden" name="Role" value="ANIMATEUR TEST">
             <div class="glass-card">
-                <div class="category-header">Motivation & Créativité</div>
-                <label>Pourquoi souhaites-tu devenir animateur ici ?</label>
-                <textarea name="anim_q1" required></textarea>
+                <div class="category-header">II. Permissions & Sécurité Avancée</div>
+                <label>5. Analyse le principe du Least Privilege (Moindre Privilège). Comment l’implémenter ?</label>
+                <textarea name="bot_q5" required></textarea>
+                <label>6. Détaille les permissions provoquant une compromission massive (Manage Roles, Admin...) et les scénarios d'attaque.</label>
+                <textarea name="bot_q6" required></textarea>
+                <label>7. Comment protéger contre l'injection, l'escalade de privilèges, le Spam API et les failles NPM/PyPI ?</label>
+                <textarea name="bot_q7" required></textarea>
+                <label>8. Propose un protocole anti-raid (détection comportementale, lockdown dynamique...).</label>
+                <textarea name="bot_q8" required></textarea>
             </div>
-            <button type="submit" class="submit-btn">Envoyer Animateur Test</button>
-        </div>
 
-    </form>
+            <div class="glass-card">
+                <div class="category-header">III. Résilience & Crise</div>
+                <label>9. Plan de continuité (PCA) en 3 phases suite à une panne bot durant un raid actif.</label>
+                <textarea name="bot_q9" required></textarea>
+                <label>10. Comment implémenter un failover automatique (HA) ?</label>
+                <textarea name="bot_q10" required></textarea>
+                <label>11. Méthode de monitoring proactive (uptime, métriques CPU/RAM, logs).</label>
+                <textarea name="bot_q11" required></textarea>
+                <label>12. Démarche d’audit si le bot exécute des actions imprévues sans modif de code.</label>
+                <textarea name="bot_q12" required></textarea>
+            </div>
 
-    <div class="staff-tag">@🛡️ STAFF</div>
+            <div class="glass-card">
+                <div class="category-header">IV. Conflits & Interopérabilité</div>
+                <label>13. Diagnostiquer un conflit de préfixe ou d'événements redondants entre deux bots.</label>
+                <textarea name="bot_q13" required></textarea>
+                <label>14. Éviter les collisions de permissions lors de la gestion auto des rôles.</label>
+                <textarea name="bot_q14" required></textarea>
+                <label>15. Analyse d'une erreur de conception (bot qui mute un admin par erreur).</label>
+                <textarea name="bot_q15" required></textarea>
+            </div>
+
+            <div class="glass-card">
+                <div class="category-header">V. Développement & Optimisation</div>
+                <label>16. Monolithique vs Modulaire pour un serveur à forte croissance ?</label>
+                <textarea name="bot_q16" required></textarea>
+                <label>17. Optimisation mémoire et évitement des memory leaks.</label>
+                <textarea name="bot_q17" required></textarea>
+                <label>18. Avantages/Inconvénients : JSON local, SQL, NoSQL, Redis cache.</label>
+                <textarea name="bot_q18" required></textarea>
+                <label>19. Système de permissions hiérarchique interne indépendant de Discord.</label>
+                <textarea name="bot_q19" required></textarea>
+            </div>
+
+            <div class="glass-card">
+                <div class="category-header">VI. Gouvernance</div>
+                <label>20. Justifier un bot propriétaire vs un bot public reconnu.</label>
+                <textarea name="bot_q20" required></textarea>
+                <label>21. Comment évaluer la fiabilité d'un bot public avant ajout ?</label>
+                <textarea name="bot_q21" required></textarea>
+                <label>22. Ta politique sur l'attribution du rôle Administrateur à un bot (argumentée).</label>
+                <textarea name="bot_q22" required></textarea>
+            </div>
+
+            <div class="glass-card">
+                <div class="category-header">VII. Étude de cas finale</div>
+                <label>23. Raid coordonné sur 15k membres + exploitation bot + saturation API. Stratégie complète requise.</label>
+                <textarea name="bot_q23" required></textarea>
+                <span class="staff-tag">@🛡️ Staff</span>
+            </div>
+            
+            <button type="submit" class="submit-btn">Envoyer Candidature Bot Manager</button>
+        </form>
+    </div>
+
+    <div id="section-mod" class="form-content">
+        <div class="glass-card"><p style="text-align:center">Formulaire Modérateur prêt.</p></div>
+    </div>
+    <div id="section-mid" class="form-content">
+        <div class="glass-card"><p style="text-align:center">Formulaire Middleman prêt.</p></div>
+    </div>
+    <div id="section-anim" class="form-content">
+        <div class="glass-card"><p style="text-align:center">Formulaire Animateur prêt.</p></div>
+    </div>
+
     <footer>DYNASTY FAMILY’S © 2026</footer>
 </div>
 
 <script>
     function showForm(type, event) {
-        // Cacher tous les formulaires
         const sections = document.querySelectorAll('.form-content');
         sections.forEach(s => s.classList.remove('active'));
-        
-        // Afficher le bon
         document.getElementById('section-' + type).classList.add('active');
         
-        // Gérer les classes actives sur les boutons
         const btns = document.querySelectorAll('.tab-btn');
         btns.forEach(b => b.classList.remove('active'));
-        event.currentTarget.classList.add('active');
+        if(event) event.currentTarget.classList.add('active');
         
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
