@@ -2,53 +2,30 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Dynasty Family's - Recrutement</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dynasty Family's - Accueil</title>
+    <style>
+        body { margin: 0; padding: 0; background-color: #050a18; color: white; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
+        .login-card { width: 90%; max-width: 380px; background: rgba(13, 20, 38, 0.95); padding: 40px 25px; border-radius: 20px; border: 1px solid #ff8c00; text-align: center; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        .logo { width: 90px; height: 90px; border-radius: 50%; border: 2px solid #ff8c00; margin-bottom: 20px; }
+        h1 { color: #ff8c00; font-style: italic; font-size: 1.6rem; text-transform: uppercase; margin: 0 0 25px 0; }
+        input { width: 100%; padding: 16px; margin-bottom: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: #000; color: #fff; font-size: 16px; box-sizing: border-box; }
+        button { width: 100%; padding: 18px; border-radius: 12px; border: none; background: #ff8c00; color: #000; font-weight: 900; cursor: pointer; text-transform: uppercase; font-size: 1rem; transition: 0.3s; }
+        button:active { transform: scale(0.98); background: #e67e00; }
+    </style>
 </head>
 <body>
-    <div id="star-field"></div>
-    <div class="container">
+    <div class="login-card">
         <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo">
-        <h1>Dynasty Family’s</h1>
-        <div class="subtitle">RECRUTEMENT DIVINEMENT FUN</div>
-
-        <div class="glass-card">
-            <div id="view-candidat">
-                <input type="text" id="pseudo" placeholder="Ton Pseudo Discord">
-                <button class="btn" onclick="start()">Entrer</button>
-                <a class="staff-link" onclick="toggle()">Accès Staff</a>
-            </div>
-
-            <div id="view-admin" style="display:none;">
-                <input type="text" id="admin-user" placeholder="Identifiant">
-                <input type="password" id="admin-pass" placeholder="Mot de passe">
-                <button class="btn" style="background: white;" onclick="login()">Connexion Staff</button>
-                <a class="staff-link" onclick="toggle()">Retour</a>
-            </div>
-        </div>
+        <h1>Dynasty Family's</h1>
+        <input type="text" id="username" placeholder="Pseudo Discord..." autocomplete="off">
+        <button onclick="start()">Ouvrir le Hub</button>
     </div>
-
-    <script src="script-stars.js"></script>
     <script>
-        function toggle() {
-            const cv = document.getElementById('view-candidat');
-            const av = document.getElementById('view-admin');
-            cv.style.display = cv.style.display === 'none' ? 'block' : 'none';
-            av.style.display = av.style.display === 'none' ? 'block' : 'none';
-        }
-
         function start() {
-            const p = document.getElementById('pseudo').value.trim();
-            if(p) { localStorage.setItem('user', p); window.location.href = "hub.html"; }
-        }
-
-        function login() {
-            const u = document.getElementById('admin-user').value.trim();
-            const p = document.getElementById('admin-pass').value.trim();
-            if(u === "admin" && p === ".9R4yEsXeNz-FCtQTx6Q") {
-                localStorage.setItem('role', 'admin');
-                window.location.href = "admin-view.html";
-            } else { alert("Erreur d'identifiants."); }
+            const u = document.getElementById('username').value;
+            if(u.trim().length > 2) { localStorage.setItem('user', u); window.location.href = "hub.html"; }
+            else { alert("Pseudo trop court !"); }
         }
     </script>
 </body>
