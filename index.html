@@ -7,91 +7,98 @@
     <style>
         :root { 
             --gold: #fb923c; 
-            --white-aura: rgba(255, 255, 255, 0.9);
             --bg-dark: #020617; 
             --card-glass: rgba(15, 23, 42, 0.85);
             --text-main: #f1f5f9;
         }
 
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 
         body { 
             background: #000;
             background-image: 
-                radial-gradient(1.5px 1.5px at 20px 30px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 25px 35px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 100px, #eee, rgba(0,0,0,0)),
                 linear-gradient(135deg, #020617 0%, #0f172a 100%);
-            background-attachment: fixed;
+            background-repeat: repeat;
+            background-size: 250px 250px, 300px 300px, 100% 100%;
             color: var(--text-main); 
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
             margin: 0; padding: 10px; min-height: 100vh;
         }
 
-        .container { width: 100%; max-width: 900px; margin: 0 auto; padding-bottom: 60px; }
+        .container { width: 100%; max-width: 850px; margin: 0 auto; padding: 10px; position: relative; z-index: 5; }
 
-        .header { text-align: center; margin-bottom: 25px; padding-top: 15px; }
+        .header { text-align: center; margin-bottom: 25px; }
         .logo { 
-            width: 100px; height: 100px; border-radius: 50%; 
-            border: 2px solid #fff; box-shadow: 0 0 20px var(--white-aura);
-            object-fit: cover; margin-bottom: 10px;
+            width: 120px; height: 120px; border-radius: 50%; 
+            border: 3px solid #fff; box-shadow: 0 0 30px rgba(251, 146, 60, 0.7);
+            object-fit: cover; background: #000; margin-bottom: 15px;
         }
-        
-        h1 { color: #fff; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 3px; margin: 5px 0; font-weight: 900; }
-        .subtitle { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; font-weight: bold; text-transform: uppercase; }
 
-        /* NAVIGATION PAR ONGLETS */
-        .nav-scroll {
-            display: flex; overflow-x: auto; gap: 10px; padding: 10px 5px;
-            scrollbar-width: none; -ms-overflow-style: none;
-            position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px); margin-bottom: 20px;
+        .form-title {
+            text-align: center;
+            color: var(--gold);
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
         }
-        .nav-scroll::-webkit-scrollbar { display: none; }
-        
+
+        h1 { color: var(--gold); font-size: 1.6rem; text-transform: uppercase; letter-spacing: 3px; margin: 5px 0; font-weight: 900; }
+        .subtitle { color: var(--gold); font-size: 0.8rem; text-transform: uppercase; font-weight: bold; }
+
+        .tab-switcher {
+            display: flex; background: rgba(0,0,0,0.9); padding: 5px; 
+            border-radius: 50px; margin-bottom: 25px; border: 1px solid var(--gold);
+            position: sticky; top: 10px; z-index: 100; backdrop-filter: blur(10px);
+            overflow-x: auto; scrollbar-width: none;
+        }
+        .tab-switcher::-webkit-scrollbar { display: none; }
+
         .tab-btn {
-            flex: 0 0 auto; padding: 12px 20px; border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.05); color: #94a3b8; cursor: pointer;
-            font-weight: 800; border-radius: 12px; font-size: 0.75rem; 
-            text-transform: uppercase; transition: 0.3s;
+            flex: 1; min-width: 120px; padding: 14px 5px; border: none; background: transparent; 
+            color: #94a3b8; cursor: pointer; font-weight: 800; border-radius: 50px; 
+            font-size: 0.7rem; text-transform: uppercase; transition: 0.3s;
         }
-        .tab-btn.active { background: #fff; color: #000; border-color: #fff; box-shadow: 0 0 15px rgba(255,255,255,0.4); }
+        .tab-btn.active { background: var(--gold); color: #000; box-shadow: 0 0 20px var(--gold); }
 
-        /* CONTENU DES FORMULAIRES */
         .form-content { display: none; }
-        .form-content.active { display: block; animation: fadeIn 0.4s ease-out; }
+        .form-content.active { display: block; animation: fadeIn 0.4s ease forwards; }
+        
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         .glass-card {
             background: var(--card-glass); border-radius: 20px; 
-            padding: 20px; border: 1px solid rgba(255,255,255,0.08);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 20px;
+            padding: 20px; border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6); margin-bottom: 25px;
         }
 
-        .cat-title { 
-            color: #000; background: var(--gold); font-size: 0.8rem; font-weight: 900; 
-            text-transform: uppercase; margin: -20px -20px 15px -20px; 
-            padding: 10px; border-radius: 20px 20px 0 0; text-align: center;
+        .category-header { 
+            color: #000; background: var(--gold); font-size: 0.85rem; font-weight: 900; 
+            text-transform: uppercase; margin: -20px -20px 20px -20px; 
+            padding: 12px; border-radius: 18px 18px 0 0;
         }
 
-        label { display: block; margin: 15px 0 8px 0; font-size: 0.9rem; font-weight: 600; color: #cbd5e1; line-height: 1.4; }
+        label { display: block; margin-top: 20px; margin-bottom: 10px; font-size: 0.95rem; font-weight: 600; color: #fff; line-height: 1.4; }
         
-        input, textarea, select { 
-            width: 100%; padding: 14px; background: rgba(0,0,0,0.3); 
-            border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 12px; 
-            font-size: 15px; outline: none; transition: 0.2s;
+        input, textarea { 
+            width: 100%; padding: 14px; background: rgba(0,0,0,0.5); 
+            border: 1px solid #475569; color: #fff; border-radius: 12px; 
+            font-size: 16px; outline: none;
         }
-        textarea { resize: vertical; min-height: 80px; }
-        input:focus, textarea:focus { border-color: var(--gold); background: rgba(0,0,0,0.5); }
 
         .submit-btn { 
-            width: 100%; padding: 18px; background: var(--gold); 
+            width: 100%; padding: 20px; background: var(--gold); 
             border: none; color: #000; font-weight: 900; border-radius: 15px; 
-            cursor: pointer; text-transform: uppercase; font-size: 1rem;
-            box-shadow: 0 8px 20px rgba(251, 146, 60, 0.3); transition: 0.2s;
+            cursor: pointer; text-transform: uppercase; font-size: 1.1rem;
+            box-shadow: 0 10px 25px rgba(251, 146, 60, 0.4); margin-bottom: 50px;
         }
-        .submit-btn:active { transform: scale(0.97); }
 
-        .staff-tag { color: var(--gold); font-weight: 800; display: block; text-align: center; margin-top: 15px; font-size: 0.8rem; letter-spacing: 1px; }
-        footer { text-align: center; color: #475569; font-size: 0.7rem; padding: 20px; }
+        .staff-tag { color: var(--gold); font-weight: bold; display: block; margin-top: 15px; text-align: center; }
+
+        footer { text-align: center; color: #94a3b8; font-size: 0.7rem; padding-bottom: 30px; }
     </style>
 </head>
 <body>
@@ -100,136 +107,110 @@
     <div class="header">
         <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" alt="Logo" class="logo">
         <h1>𝘿𝙮𝙣𝙖𝙨𝙩𝙮 𝙁𝙖𝙢𝙞𝙡𝙮’ｓ</h1>
-        <p class="subtitle">Division Recrutement G5</p>
+        <p class="subtitle">RECRUTEMENT G5</p>
     </div>
 
-    <div class="nav-scroll">
-        <button class="tab-btn active" onclick="switchTab(event, 'bot')">Bot Manager</button>
-        <button class="tab-btn" onclick="switchTab(event, 'mod')">Modérateur Test</button>
-        <button class="tab-btn" onclick="switchTab(event, 'mid')">Middleman</button>
-        <button class="tab-btn" onclick="switchTab(event, 'anim')">Animateur Test</button>
+    <div class="form-title">FORMULAIRES</div>
+
+    <div class="tab-switcher">
+        <button class="tab-btn active" onclick="showForm('bot')">Bot Manager</button>
+        <button class="tab-btn" onclick="showForm('mod')">Modo Test</button>
+        <button class="tab-btn" onclick="showForm('mid')">Middleman</button>
+        <button class="tab-btn" onclick="showForm('anim')">Anim Test</button>
     </div>
 
-    <div id="bot" class="form-content active">
-        <form action="https://formspree.io/f/xnjbrvez" method="POST">
+    <form action="https://formspree.io/f/xnjbrvez" method="POST">
+        <div id="section-bot" class="form-content active">
             <input type="hidden" name="Role" value="BOT MANAGER">
             <div class="glass-card">
-                <label>Pseudo Discord & Âge</label>
-                <input type="text" name="identite" required>
-            </div>
-
-            <div class="glass-card">
-                <div class="cat-title">I. Architecture & Hébergement</div>
-                <label>1. Analyse comparativement une architecture self-hosted, cloud-managed et serverless pour un bot Discord. Discute des implications en matière de latence, scalabilité, résilience et coûts.</label>
-                <textarea name="b1" required></textarea>
-                <label>2. Explique les différences fondamentales entre Gateway Intents privilégiés, Webhooks et Slash Commands.</label>
-                <textarea name="b2" required></textarea>
+                <div class="category-header">I. Architecture & Hébergement</div>
+                <label>1. Analyse comparativement une architecture self-hosted, cloud-managed et serverless pour un bot Discord. Discute des implications en matière de latence, scalabilité horizontale, résilience et coûts d’exploitation.</label>
+                <textarea name="bot_q1"></textarea>
+                <label>2. Explique les différences fondamentales entre : Gateway Intents privilégiés, Webhooks, Slash Commands. Dans quels contextes privilégierais-tu chacun ?</label>
+                <textarea name="bot_q2"></textarea>
                 <label>3. Décris le cycle de vie complet d’un bot Discord depuis l’authentification OAuth2 jusqu’au traitement d’un événement.</label>
-                <textarea name="b3" required></textarea>
+                <textarea name="bot_q3"></textarea>
                 <label>4. Quels sont les risques liés au stockage local d’un token bot ? Propose une architecture sécurisée.</label>
-                <textarea name="b4" required></textarea>
+                <textarea name="bot_q4"></textarea>
             </div>
-
             <div class="glass-card">
-                <div class="cat-title">II. Permissions & Sécurité Avancée</div>
-                <label>5. Analyse le principe du Least Privilege (Moindre Privilège). Comment l’implémenter ?</label>
-                <textarea name="b5" required></textarea>
+                <div class="category-header">II. Permissions & Sécurité</div>
+                <label>5. Analyse le principe du Least Privilege (Moindre Privilège). Comment l’implémenter concrètement ?</label>
+                <textarea name="bot_q5"></textarea>
                 <label>6. Détaille les permissions pouvant provoquer une compromission massive du serveur si mal configurées.</label>
-                <textarea name="b6" required></textarea>
-                <label>7. Comment protéger un bot contre l'injection, l'escalade de privilèges et le Rate limit abuse ?</label>
-                <textarea name="b7" required></textarea>
-                <label>8. Propose un protocole de prévention anti-raid (détection, lockdown dynamique...).</label>
-                <textarea name="b8" required></textarea>
+                <textarea name="bot_q6"></textarea>
             </div>
-            <div class="glass-card">
-                <div class="cat-title">VII. Étude de cas (Expert)</div>
-                <label>23. Stratégie complète pour un raid coordonné sur 15k membres avec tentative d'exploitation bot.</label>
-                <textarea name="b23" required></textarea>
-                <span class="staff-tag">@🛡️ STAFF</span>
-            </div>
-            <button type="submit" class="submit-btn">Envoyer Candidature Bot Manager</button>
-        </form>
-    </div>
+            <button type="submit" class="submit-btn">Soumettre Candidature Bot Manager</button>
+        </div>
 
-    <div id="mod" class="form-content">
-        <form action="https://formspree.io/f/xnjbrvez" method="POST">
+        <div id="section-mod" class="form-content">
             <input type="hidden" name="Role" value="MODERATEUR TEST">
             <div class="glass-card">
-                <div class="cat-title">I. Parcours & Expérience</div>
-                <label>1. Présente ton parcours Discord détaillé (ancienneté, rôles, responsabilités).</label>
-                <textarea name="m1" required></textarea>
-                <label>2. Décris une expérience concrète de modération difficile et tes décisions stratégiques.</label>
-                <textarea name="m2" required></textarea>
-                <label>3. As-tu déjà participé à l’élaboration d’un règlement ?</label>
-                <textarea name="m3" required></textarea>
+                <div class="category-header">I. Parcours & Expérience</div>
+                <label>1. Présente ton parcours sur Discord de manière détaillée (ancienneté, types de serveurs, rôles, responsabilités).</label>
+                <textarea name="mod_q1"></textarea>
+                <label>2. Décris une expérience concrète de modération difficile et explique tes décisions stratégiques.</label>
+                <textarea name="mod_q2"></textarea>
+                <label>3. As-tu déjà participé à l’élaboration ou à l’amélioration d’un règlement ?</label>
+                <textarea name="mod_q3"></textarea>
             </div>
             <div class="glass-card">
-                <div class="cat-title">III. Analyse & Gestion</div>
-                <label>8. Un membre influent enfreint volontairement le règlement. Stratégie ?</label>
-                <textarea name="m8" required></textarea>
-                <label>11. Vague de raid nocturne : tes mesures d'urgence précises ?</label>
-                <textarea name="m11" required></textarea>
-                <span class="staff-tag">@🛡️ STAFF</span>
+                <div class="category-header">II. Motivation & Vision</div>
+                <label>4. Quelle est ta conception du rôle de modérateur au sein d’une communauté structurée ?</label>
+                <textarea name="mod_q4"></textarea>
+                <label>8. Un membre influent enfreint volontairement le règlement. Quelle stratégie adoptes-tu ?</label>
+                <textarea name="mod_q8"></textarea>
             </div>
-            <button type="submit" class="submit-btn">Envoyer Candidature Modo</button>
-        </form>
-    </div>
+            <button type="submit" class="submit-btn">Soumettre Candidature Modo</button>
+        </div>
 
-    <div id="mid" class="form-content">
-        <form action="https://formspree.io/f/xnjbrvez" method="POST">
+        <div id="section-mid" class="form-content">
             <input type="hidden" name="Role" value="MIDDLEMAN">
             <div class="glass-card">
-                <label>Depuis combien de temps joues-tu à Blox Fruits et niveau actuel ?</label>
-                <input type="text" name="mid1" required>
-                <label>Évalue ta connaissance des valeurs (/10) et explique :</label>
-                <textarea name="mid2" required></textarea>
-                <label>Explique précisément le rôle d’un Middleman et ses responsabilités :</label>
-                <textarea name="mid3" required></textarea>
+                <div class="category-header">Informations Blox Fruits</div>
+                <label>Disponibilités précises (heures/jours) :</label>
+                <input type="text" name="mid_disp">
+                <label>Depuis combien de temps joues-tu à Blox Fruits ? Donne ton niveau actuel :</label>
+                <input type="text" name="mid_lvl">
+                <label>Évalue ta connaissance des valeurs de fruits/items (/10) :</label>
+                <textarea name="mid_val"></textarea>
+                <label>Décris étape par étape comment tu sécurises un trade entre deux joueurs :</label>
+                <textarea name="mid_process"></textarea>
             </div>
-            <div class="glass-card">
-                <label>Que fais-tu si un joueur t’accuse de scam sans preuve ?</label>
-                <textarea name="mid4" required></textarea>
-                <label>Acceptes-tu qu'un abus entraîne un ban définitif ?</label>
-                <select name="mid5"><option>Oui</option><option>Non</option></select>
-                <span class="staff-tag">@🛡️ STAFF</span>
-            </div>
-            <button type="submit" class="submit-btn">Envoyer Candidature Middleman</button>
-        </form>
-    </div>
+            <button type="submit" class="submit-btn">Soumettre Candidature Middleman</button>
+        </div>
 
-    <div id="anim" class="form-content">
-        <form action="https://formspree.io/f/xnjbrvez" method="POST">
+        <div id="section-anim" class="form-content">
             <input type="hidden" name="Role" value="ANIMATEUR TEST">
             <div class="glass-card">
-                <div class="cat-title">Motivation</div>
+                <div class="category-header">Motivation & Créativité</div>
                 <label>Pourquoi souhaites-tu devenir animateur ici ?</label>
-                <textarea name="a1" required></textarea>
-                <label>Propose une idée d’animation originale que tu pourrais organiser :</label>
-                <textarea name="a2" required></textarea>
-                <label>Comment réagirais-tu si deux membres se disputaient pendant un événement ?</label>
-                <textarea name="a3" required></textarea>
-                <span class="staff-tag">@🛡️ STAFF</span>
+                <textarea name="anim_q1"></textarea>
+                <label>Quels types d’événements ou d’animations pourrais-tu proposer ?</label>
+                <textarea name="anim_q2"></textarea>
+                <label>Crée-nous une annonce complète pour un jeu de ton choix (date, heure, règles, etc.).</label>
+                <textarea name="anim_q3" rows="5"></textarea>
             </div>
-            <button type="submit" class="submit-btn">Envoyer Candidature Animateur</button>
-        </form>
-    </div>
+            <button type="submit" class="submit-btn">Soumettre Candidature Animateur</button>
+        </div>
+    </form>
 
-    <footer>DYNASTY FAMILY’S © 2026 - GEAR 5 SYSTEM</footer>
+    <div class="staff-tag">@🛡️ STAFF</div>
+    <footer>DYNASTY FAMILY’S © 2026</footer>
 </div>
 
 <script>
-    function switchTab(evt, tabName) {
-        var i, tabContent, tabBtns;
-        tabContent = document.getElementsByClassName("form-content");
-        for (i = 0; i < tabContent.length; i++) {
-            tabContent[i].classList.remove("active");
-        }
-        tabBtns = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tabBtns.length; i++) {
-            tabBtns[i].classList.remove("active");
-        }
-        document.getElementById(tabName).classList.add("active");
-        evt.currentTarget.classList.add("active");
+    function showForm(type) {
+        const sections = ['bot', 'mod', 'mid', 'anim'];
+        sections.forEach(s => {
+            document.getElementById('section-' + s).classList.remove('active');
+        });
+        document.getElementById('section-' + type).classList.add('active');
+        
+        const btns = document.querySelectorAll('.tab-btn');
+        btns.forEach(b => b.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+        
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
