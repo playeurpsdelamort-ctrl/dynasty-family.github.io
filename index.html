@@ -132,3 +132,110 @@
             <textarea name="m9" required></textarea>
             <label>10. Un membre conteste publiquement une sanction. Comment gères-tu cela ?</label>
             <textarea name="m10" required></textarea>
+            <label>11. Une vague de raid survient la nuit. Quelles sont tes mesures d’urgence ?</label>
+            <textarea name="m11" required></textarea>
+            <label>12. Un modérateur abuse de ses permissions. Quelle est ta réaction ?</label>
+            <textarea name="m12" required></textarea>
+        </div>
+        <div class="glass-card">
+            <div class="group-title">IV. POSTURE & ÉTHIQUE</div>
+            <label>13. Comment maintiens-tu ton objectivité face à la pression ?</label>
+            <textarea name="m13" required></textarea>
+            <label>14. Comment différencies-tu un troll d’un membre réellement problématique ?</label>
+            <textarea name="m14" required></textarea>
+            <label>15. Penses-tu que la fermeté doit primer sur la pédagogie ?</label>
+            <textarea name="m15" required></textarea>
+            <label>16. Définis le principe d’impartialité dans la modération.</label>
+            <textarea name="m16" required></textarea>
+            <label>17. Si un ami proche enfreint le règlement, quelle est ta démarche ?</label>
+            <textarea name="m17" required></textarea>
+            <label>18. Comment éviter les biais personnels dans tes décisions ?</label>
+            <textarea name="m18" required></textarea>
+        </div>
+        <div class="glass-card">
+            <div class="group-title">V. TECHNIQUE & STRATÉGIE</div>
+            <label>19. Explique le fonctionnement des sanctions progressives.</label>
+            <textarea name="m19" required></textarea>
+            <label>20. Décris le rôle des logs et leur importance.</label>
+            <textarea name="m20" required></textarea>
+            <label>21. As-tu déjà configuré un bot de modération ? (Détails).</label>
+            <textarea name="m21" required></textarea>
+            <label>22. Quelles améliorations structurelles proposerais-tu pour l'équipe ?</label>
+            <textarea name="m22" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">SOUMETTRE CANDIDATURE DIVINE</button>
+    </form>
+
+    <form id="form-anim" class="form-content" action="https://formspree.io/f/xnjbrvez" method="POST">
+        <input type="hidden" name="Role" value="ANIMATEUR">
+        <div class="glass-card">
+            <label>Pseudo Discord & Âge</label>
+            <input type="text" name="identite" required placeholder="Ex: Brook#4321 (20 ans)">
+        </div>
+        <div class="glass-card">
+            <div class="group-title">CRÉATIVITÉ & RÉACTIVITÉ</div>
+            <label>1. Depuis combien de temps es-tu sur le serveur ?</label>
+            <input type="text" name="a1" required>
+            <label>2. Tes expériences passées en tant qu'animateur ?</label>
+            <textarea name="a2" required></textarea>
+            <label>3. Pourquoi souhaites-tu devenir animateur ici ?</label>
+            <textarea name="a3" required></textarea>
+            <label>4. Quelles qualités penses-tu apporter ?</label>
+            <textarea name="a4" required></textarea>
+            <label>5. Réaction face à un membre irrespectueux en event ?</label>
+            <textarea name="a5" required></textarea>
+            <label>6. Préfères-tu travailler seul ou en équipe ?</label>
+            <textarea name="a6" required></textarea>
+            <label>7. Comment gères-tu le stress ou les conflits ?</label>
+            <textarea name="a7" required></textarea>
+            <label>8. Utilisation des perms hors event : autorisé ?</label>
+            <textarea name="a8" required></textarea>
+            <label>9. Quels types d’événements pourrais-tu proposer ?</label>
+            <textarea name="a9" required></textarea>
+            <label>10. Propose une idée d’animation originale détaillée.</label>
+            <textarea name="a10" required></textarea>
+            <label>11. Une idée d'événement rapide (flash) ?</label>
+            <textarea name="a11" required></textarea>
+            <label>12. Qu’est-ce qui rend une animation réussie selon toi ?</label>
+            <textarea name="a12" required></textarea>
+            <label>13. Rédige une annonce d'event complète (règles, date...).</label>
+            <textarea name="a13" rows="5" required></textarea>
+            <label>14. Deux membres se disputent en plein event : que fais-tu ?</label>
+            <textarea name="a14" required></textarea>
+            <label>15. Tes disponibilités régulières ?</label>
+            <input type="text" name="a15" required>
+            <label>16. Gestion du spam pendant une animation ?</label>
+            <textarea name="a16" required></textarea>
+            <label>17. Que fais-tu si ton event est un échec (bug/vide) ?</label>
+            <textarea name="a17" required></textarea>
+            <label>18. Un collègue animateur ne suit pas les règles : réaction ?</label>
+            <textarea name="a18" required></textarea>
+            <label>19. Comment rendre une annonce engageante ?</label>
+            <textarea name="a19" required></textarea>
+            <label>20. Maîtrises-tu les bots d'event (Giveaway, mini-jeux...) ?</label>
+            <textarea name="a20" required></textarea>
+            <label>21. Sais-tu gérer les permissions de salons en temps réel ?</label>
+            <textarea name="a21" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">POSTULER POUR L'AMBIANCE G5</button>
+    </form>
+
+    <footer>DYNASTY FAMILY’S © 2026</footer>
+</div>
+
+<script>
+    function switchTab(type) {
+        document.querySelectorAll('.form-content').forEach(f => f.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        if(type === 'mod') {
+            document.getElementById('form-mod').classList.add('active');
+            document.getElementById('btn-mod').classList.add('active');
+        } else {
+            document.getElementById('form-anim').classList.add('active');
+            document.getElementById('btn-anim').classList.add('active');
+        }
+        window.scrollTo(0,0);
+    }
+</script>
+</body>
+</html>
