@@ -2,20 +2,20 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Dynasty - Panel Admin</title>
+    <title>Dynasty Staff</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="star-field"></div>
     <div class="container">
+        <h1>Panel Administration</h1>
         <div class="glass-card">
-            <h1>Panel Staff</h1>
-            <p>Accès autorisé avec succès.</p>
-            <button class="btn" onclick="window.location.href='https://formspree.io/submissions/xnjbrvez'">Voir les candidatures</button>
-            <br><br>
-            <a href="index.html" class="staff-link">Se déconnecter</a>
+            <p>Connecté en tant qu'administrateur.</p>
+            <button class="btn" onclick="window.open('https://formspree.io/submissions/xnjbrvez')">Voir les candidatures</button>
+            <a href="index.html" class="staff-link">Déconnexion</a>
         </div>
     </div>
     <script src="script-stars.js"></script>
+    <script>if(localStorage.getItem('role') !== 'admin') window.location.href="index.html";</script>
 </body>
 </html>
