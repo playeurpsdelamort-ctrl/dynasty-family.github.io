@@ -65,9 +65,8 @@
             z-index: 100; 
             backdrop-filter: blur(10px);
             max-width: 100%;
-            overflow-x: auto;
-            scrollbar-width: none;
         }
+
         .tab-btn {
             flex: 0 0 auto;
             padding: 12px 18px; 
@@ -106,7 +105,8 @@
         textarea { 
             width: 100%; padding: 14px; background: rgba(0,0,0,0.5); 
             border: 1px solid #475569; color: #fff; border-radius: 12px; 
-            font-size: 16px; outline: none; transition: 0.2s; min-height: 100px;
+            font-size: 16px; outline: none; transition: 0.2s; min-height: 120px;
+            font-family: inherit;
         }
         textarea:focus { border-color: var(--gold); background: rgba(0,0,0,0.7); }
 
@@ -157,7 +157,7 @@
                 <label>3. Décris le cycle de vie complet d’un bot Discord depuis l’authentification OAuth2 jusqu’au traitement d’un événement (event dispatch → handler → réponse).</label>
                 <textarea name="bot_q3" required></textarea>
 
-                <label>4. Quels sont les risques liés au stockage local d’un token bot ? Propose une architecture sécurisée pour la gestion des secrets (ex : variables d’environnement, vault, rotation).</label>
+                <label>4. Quels sont les risques liés au stockage local d’un token bot ? Propose une architecture sécurisée pour la gestion des secrets (ex : variables d’environnement chiffrées, vault, rotation de token).</label>
                 <textarea name="bot_q4" required></textarea>
             </div>
 
@@ -169,16 +169,16 @@
                 <label>6. Détaille les permissions pouvant provoquer une compromission massive du serveur si mal configurées (ex : Manage Roles, Administrator, Manage Webhooks…). Explique les scénarios d’attaque possibles.</label>
                 <textarea name="bot_q6" required></textarea>
 
-                <label>7. Comment protéger un bot contre : Injection de commandes, Escalade de privilèges, Spam API / Rate limit abuse, et Exploitation via faille NPM/PyPI ?</label>
+                <label>7. Comment protéger un bot contre : Injection de commandes, Escalade de privilèges, Spam API / Rate limit abuse, Exploitation via faille dans une dépendance NPM/PyPI ?</label>
                 <textarea name="bot_q7" required></textarea>
 
-                <label>8. Propose un protocole de prévention anti-raid intégrant : Détection comportementale, Limitation de fréquence (rate limiting), Journalisation et Mode lockdown dynamique.</label>
+                <label>8. Propose un protocole de prévention anti-raid intégrant : Détection comportementale, Limitation de fréquence (rate limiting), Journalisation automatisée et Mode lockdown dynamique.</label>
                 <textarea name="bot_q8" required></textarea>
             </div>
 
             <div class="glass-card">
                 <div class="category-header">III. Résilience & Gestion de crise</div>
-                <label>9. Un bot critique tombe en panne durant un raid actif. Décris un plan de continuité opérationnelle (PCA) : urgence immédiate – stabilisation – restauration complète.</label>
+                <label>9. Un bot critique tombe en panne durant un raid actif. Décris un plan de continuité opérationnelle (PCA) structuré en trois phases : urgence immédiate – stabilisation – restauration complète.</label>
                 <textarea name="bot_q9" required></textarea>
 
                 <label>10. Comment implémenterais-tu un système de failover automatique pour garantir une haute disponibilité (HA) ?</label>
@@ -187,31 +187,31 @@
                 <label>11. Décris une méthode de monitoring proactive (logs centralisés, alertes webhook, uptime monitoring, métriques CPU/RAM).</label>
                 <textarea name="bot_q11" required></textarea>
 
-                <label>12. Un bot exécute des actions imprévues sans modification de code. Quelle serait ta démarche d’audit technique ?</label>
+                <label>12. Un bot commence à exécuter des actions imprévues sans modification récente du code. Quelle serait ta démarche d’audit technique ?</label>
                 <textarea name="bot_q12" required></textarea>
             </div>
 
             <div class="glass-card">
                 <div class="category-header">IV. Conflits & Interopérabilité</div>
-                <label>13. Deux bots entrent en conflit (préfixe identique ou événements redondants). Explique comment diagnostiquer précisément la source du conflit.</label>
+                <label>13. Deux bots entrent en conflit à cause d’un préfixe identique ou d’événements redondants. Explique comment diagnostiquer précisément la source du conflit.</label>
                 <textarea name="bot_q13" required></textarea>
 
                 <label>14. Comment éviter les collisions de permissions lorsque plusieurs bots gèrent les rôles automatiquement ?</label>
                 <textarea name="bot_q14" required></textarea>
 
-                <label>15. Un bot mute accidentellement un administrateur à cause d’un mauvais algorithme. Analyse les failles de conception possibles.</label>
+                <label>15. Un bot mute accidentellement un administrateur à cause d’un mauvais algorithme de détection. Analyse les failles de conception qui ont permis cette erreur.</label>
                 <textarea name="bot_q15" required></textarea>
             </div>
 
             <div class="glass-card">
                 <div class="category-header">V. Développement & Optimisation</div>
-                <label>16. Différence entre architecture monolithique et modulaire ? Laquelle privilégier pour un serveur à forte croissance ?</label>
+                <label>16. Explique la différence entre une architecture monolithique et modulaire pour un bot. Laquelle privilégierais-tu pour un serveur à forte croissance ?</label>
                 <textarea name="bot_q16" required></textarea>
 
                 <label>17. Comment optimiser un bot pour réduire la consommation mémoire et éviter les memory leaks ?</label>
                 <textarea name="bot_q17" required></textarea>
 
-                <label>18. Avantages et inconvénients : JSON local, Base SQL, Base NoSQL, Redis cache ?</label>
+                <label>18. Quels sont les avantages et inconvénients d’un stockage : JSON local, Base SQL, Base NoSQL, Redis cache ?</label>
                 <textarea name="bot_q18" required></textarea>
 
                 <label>19. Comment implémenter un système de permissions hiérarchique interne au bot indépendant des rôles Discord ?</label>
@@ -219,20 +219,20 @@
             </div>
 
             <div class="glass-card">
-                <div class="category-header">VI. Gouvernance & Stratégie</div>
-                <label>20. Dans quels cas justifierais-tu la création d’un bot propriétaire plutôt qu’un bot public reconnu ?</label>
+                <div class="category-header">VI. Gouvernance & Décision Stratégique</div>
+                <label>20. Dans quels cas justifierais-tu la création d’un bot propriétaire plutôt que l’utilisation d’un bot public reconnu ?</label>
                 <textarea name="bot_q20" required></textarea>
 
                 <label>21. Comment évaluer la fiabilité d’un bot public avant de l’ajouter au serveur ?</label>
                 <textarea name="bot_q21" required></textarea>
 
-                <label>22. Quelle serait ta politique concernant l’attribution du rôle Administrateur à un bot ? (Réponse argumentée).</label>
+                <label>22. Quelle serait ta politique concernant l’attribution du rôle Administrateur à un bot ? Donne une réponse argumentée, technique et sécuritaire.</label>
                 <textarea name="bot_q22" required></textarea>
             </div>
 
             <div class="glass-card">
-                <div class="category-header">VII. Étude de cas (Expert)</div>
-                <label>23. Serveur de 15k membres sous raid, exploitation de commande et saturation API. Décris ta stratégie : Actions, Mesures, Comms, Rapport.</label>
+                <div class="category-header">VII. Étude de cas finale (Expert)</div>
+                <label>23. Ton serveur subit : Raid coordonné, exploitation de commande mal filtrée et saturation API. Décris ta stratégie complète (Actions, Mesures, Comms, Rapport).</label>
                 <textarea name="bot_q23" required></textarea>
                 <span class="staff-tag">@🛡️ Staff</span>
             </div>
@@ -244,7 +244,9 @@
             <input type="hidden" name="Role" value="MODERATEUR TEST">
             <div class="glass-card">
                 <div class="category-header">Modérateur Test</div>
-                <p style="text-align:center">Utilisez le bouton "Modo Test" pour accéder aux 22 questions de modération.</p>
+                <label>Présente ton parcours sur Discord de manière détaillée (ancienneté, types de serveurs, rôles, responsabilités).</label>
+                <textarea name="mod_q1"></textarea>
+                <p style="text-align:center; color:var(--gold); font-size:0.8rem;">(Questions de modération disponibles dans cet onglet)</p>
             </div>
         </div>
 
@@ -254,6 +256,7 @@
         <div id="section-anim" class="form-content">
             <div class="glass-card"><p style="text-align:center">Formulaire Animateur en attente.</p></div>
         </div>
+
     </form>
 
     <footer>DYNASTY FAMILY’S © 2026</footer>
