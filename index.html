@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynasty Family's - Recrutement</title>
+    <title>Dynasty Family's - Accueil</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -31,7 +32,7 @@
             <div id="view-admin" style="display:none;">
                 <div class="input-group">
                     <label>Login Staff</label>
-                    <input type="text" id="admin-user" placeholder="Identifiant">
+                    <input type="text" id="admin-user" placeholder="admin">
                 </div>
                 <div class="input-group">
                     <label>Mot de passe</label>
@@ -78,7 +79,9 @@
         function login() {
             const u = document.getElementById('admin-user').value;
             const p = document.getElementById('admin-pass').value;
-            if(u === "Admin" && p === "Gear5") {
+            
+            // NOUVEAUX IDENTIFIANTS
+            if(u === "admin" && p === ".9R4yEsXeNz-FCtQTx6Q") {
                 localStorage.setItem('role', 'admin');
                 window.location.href = "admin-view.html";
             } else {
