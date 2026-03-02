@@ -2,216 +2,80 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examen Bot Manager - Dynasty Family's</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Examen Bot - Dynasty Family's</title>
     <style>
-        /* ESTHÉTIQUE BASÉE SUR LES CAPTURES (image_27535a & image_267605) */
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #050a18; /* Bleu nuit profond */
-            background-image: 
-                radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 30px),
-                radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 40px);
-            background-size: 400px 400px, 250px 250px;
-            background-attachment: fixed;
-            color: #ffffff;
-            font-family: 'Segoe UI', sans-serif;
-            overflow: hidden; /* Empêche le scroll pendant l'examen */
-        }
-
-        .container {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        /* LOGO & TITRES (image_267605) */
-        .logo-main {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            border: 3px solid #ff8c00;
-            box-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
-            margin-bottom: 15px;
-            object-fit: cover;
-        }
-
-        .main-title {
-            color: #ff8c00; /* Orange néon */
-            font-style: italic; /* Style italique */
-            font-weight: 900;
-            text-transform: uppercase;
-            font-size: 1.8rem;
-            margin: 0;
-            letter-spacing: 1px;
-        }
-
-        /* CARTE DE L'EXAMEN */
-        .glass-card {
-            width: 100%;
-            max-width: 800px;
-            background: rgba(13, 20, 38, 0.95); /* */
-            border: 1px solid rgba(255, 140, 0, 0.2);
-            border-radius: 15px;
-            padding: 35px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
-            margin-top: 20px;
-        }
-
-        /* BARRE DE PROGRESSION */
-        .progress-container {
-            width: 100%;
-            background: rgba(255,255,255,0.1);
-            height: 4px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: #ff8c00;
-            width: 0%;
-            transition: 0.4s ease;
-            box-shadow: 0 0 10px #ff8c00;
-        }
-
-        /* SYSTÈME D'ÉTAPES (UNE PAR UNE) */
-        .step { display: none; animation: slideIn 0.4s ease; text-align: left; }
-        .step.active { display: block; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .question-num { color: #ff8c00; font-weight: 900; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 10px; display: block; }
-        .question-text { font-size: 1.15rem; line-height: 1.5; margin-bottom: 20px; font-weight: 600; color: #f3f4f6; }
-
-        textarea {
-            width: 100%;
-            min-height: 220px;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: #fff;
-            padding: 18px;
-            font-family: inherit;
-            font-size: 1rem;
-            resize: none;
-            box-sizing: border-box;
-            transition: 0.3s;
-        }
-
-        textarea:focus { outline: none; border-color: #ff8c00; }
-
-        /* BOUTONS NAVIGATION */
-        .nav-btns { display: flex; justify-content: space-between; margin-top: 30px; gap: 15px; }
-        .btn-nav { padding: 14px 28px; border-radius: 8px; font-weight: 900; cursor: pointer; transition: 0.3s; border: none; text-transform: uppercase; font-size: 0.85rem; }
-        .btn-prev { background: rgba(255,255,255,0.05); color: #94a3b8; border: 1px solid rgba(255,255,255,0.1); }
-        .btn-next { background: #ff8c00; color: #000; flex-grow: 1; }
-        .btn-next:hover { box-shadow: 0 0 20px rgba(255, 140, 0, 0.4); transform: scale(1.02); }
+        body { margin:0; background:#050a18; color:white; font-family:sans-serif; display:flex; flex-direction:column; align-items:center; min-height:100vh; padding:15px; box-sizing:border-box; }
+        .header { text-align:center; margin-bottom:15px; }
+        .logo { width:70px; height:70px; border-radius:50%; border:2px solid #ff8c00; }
+        .title { color:#ff8c00; font-style:italic; font-size:1.2rem; margin:5px 0; text-transform:uppercase; }
+        .card { width:100%; max-width:600px; background:rgba(13,20,38,0.95); border-radius:15px; border:1px solid rgba(255,140,0,0.3); padding:20px; box-sizing:border-box; }
+        .progress-bg { width:100%; height:4px; background:rgba(255,255,255,0.1); margin-bottom:20px; border-radius:10px; }
+        .progress-bar { height:100%; background:#ff8c00; width:0%; transition:0.3s; box-shadow:0 0 10px #ff8c00; }
+        .step { display:none; animation:fadeIn 0.3s; }
+        .step.active { display:block; }
+        @keyframes fadeIn { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+        .q-num { color:#ff8c00; font-size:0.7rem; font-weight:bold; text-transform:uppercase; }
+        .q-text { font-size:1.05rem; margin:10px 0 20px 0; font-weight:600; line-height:1.4; }
+        textarea { width:100%; min-height:180px; background:#000; border:1px solid #333; border-radius:10px; color:#fff; padding:15px; font-size:16px; box-sizing:border-box; resize:none; }
+        textarea:focus { border-color:#ff8c00; outline:none; }
+        .btns { display:flex; flex-direction:column; gap:10px; margin-top:20px; }
+        .btn { padding:16px; border-radius:10px; border:none; font-weight:bold; text-transform:uppercase; cursor:pointer; font-size:0.9rem; }
+        .btn-next { background:#ff8c00; color:#000; order:1; }
+        .btn-prev { background:rgba(255,255,255,0.05); color:#94a3b8; order:2; }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo-main">
-        <h1 class="main-title">Candidature Bot Manager</h1>
-        <p style="color: #ff8c00; font-weight: bold; font-size: 0.8rem; margin: 5px 0 20px 0;">DYNASTY FAMILY'S • EXAMEN TECHNIQUE</p>
-
-        <div class="glass-card">
-            <div class="progress-container"><div class="progress-bar" id="progress"></div></div>
-
-            <form action="https://formspree.io/f/xnjbrvez" method="POST" id="exam-form">
-                <input type="hidden" name="Pseudo_Discord" id="hidden-pseudo">
-                <input type="hidden" name="Poste" value="Bot Manager">
-
-                <div id="steps-container">
-                    </div>
-
-                <div class="nav-btns">
-                    <button type="button" class="btn-nav btn-prev" id="prevBtn" onclick="changeStep(-1)" style="visibility: hidden;">Précédent</button>
-                    <button type="button" class="btn-nav btn-next" id="nextBtn" onclick="changeStep(1)">Démarrer</button>
-                </div>
-            </form>
-        </div>
-        <a href="hub.html" style="color: #64748b; text-decoration: none; margin-top: 20px; font-size: 0.75rem; opacity: 0.6;">Annuler et quitter</a>
+    <div class="header">
+        <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo">
+        <div class="title">Candidature Bot Manager</div>
     </div>
-
+    <div class="card">
+        <div class="progress-bg"><div class="progress-bar" id="bar"></div></div>
+        <form action="https://formspree.io/f/xnjbrvez" method="POST" id="exam-form">
+            <input type="hidden" name="Pseudo" id="hid-user">
+            <input type="hidden" name="Poste" value="Bot Manager">
+            <div id="steps-container"></div>
+            <div class="btns">
+                <button type="button" class="btn btn-next" id="nextBtn" onclick="changeStep(1)">Démarrer</button>
+                <button type="button" class="btn btn-prev" id="prevBtn" onclick="changeStep(-1)" style="display:none">Précédent</button>
+            </div>
+        </form>
+    </div>
     <script>
-        // LISTE DES 23 QUESTIONS
         const questions = [
-            "Analyse comparativement une architecture self-hosted, cloud-managed et serverless pour un bot Discord. Discute des implications en matière de latence, scalabilité horizontale, résilience et coûts d’exploitation.",
-            "Explique les différences fondamentales entre : Gateway Intents privilégiés, Webhooks et Slash Commands (Interactions API). Dans quels contextes privilégierais-tu chacun ?",
-            "Décris le cycle de vie complet d’un bot Discord depuis l’authentification OAuth2 jusqu’au traitement d’un événement (event dispatch → handler → réponse).",
-            "Quels sont les risques liés au stockage local d’un token bot ? Propose une architecture sécurisée pour la gestion des secrets (ex : variables d’environnement chiffrées, vault, rotation de token).",
-            "Analyse le principe du Least Privilege (Moindre Privilège) dans le contexte d’un bot Discord. Comment l’implémenter concrètement ?",
-            "Détaille les permissions pouvant provoquer une compromission massive du serveur si mal configurées (ex : Manage Roles, Administrator, Manage Webhooks…). Explique les scénarios d’attaque possibles.",
-            "Comment protéger un bot contre : Injection de commandes, Escalade de privilèges, Spam API / Rate limit abuse, Exploitation via faille dans une dépendance NPM/PyPI.",
-            "Propose un protocole de prévention anti-raid intégrant : Détection comportementale, Limitation de fréquence (rate limiting), Journalisation automatisée et Mode lockdown dynamique.",
-            "Un bot critique tombe en panne durant un raid actif. Décris un plan de continuité opérationnelle (PCA) structuré en trois phases : urgence immédiate – stabilisation – restauration complète.",
-            "Comment implémenterais-tu un système de failover automatique pour garantir une haute disponibilité (HA) ?",
-            "Décris une méthode de monitoring proactive (logs centralisés, alertes webhook, uptime monitoring, métriques CPU/RAM).",
-            "Un bot commence à exécuter des actions imprévues sans modification récente du code. Quelle serait ta démarche d’audit technique ?",
-            "Deux bots entrent en conflit à cause d’un préfixe identique ou d’événements redondants. Explique comment diagnostiquer précisément la source du conflit.",
-            "Comment éviter les collisions de permissions lorsque plusieurs bots gèrent les rôles automatiquement ?",
-            "Un bot mute accidentellement un administrateur à cause d’un mauvais algorithme de détection. Analyse les failles de conception qui ont permis cette erreur.",
-            "Explique la différence entre une architecture monolithique et modulaire pour un bot. Laquelle privilégierais-tu pour un serveur à forte croissance ?",
-            "Comment optimiser un bot pour réduire la consommation mémoire et éviter les memory leaks ?",
-            "Quels sont les avantages et inconvénients d’un stockage : JSON local, Base SQL, Base NoSQL, Redis cache ?",
-            "Comment implémenter un système de permissions hiérarchique interne au bot indépendant des rôles Discord ?",
-            "Dans quels cas justifierais-tu la création d’un bot propriétaire plutôt que l’utilisation d’un bot public reconnu ?",
-            "Comment évaluer la fiabilité d’un bot public avant de l’ajouter au serveur ?",
-            "Quelle serait ta politique concernant l’attribution du rôle Administrateur à un bot ? Donne une réponse argumentée, technique et sécuritaire.",
-            "ÉTUDE DE CAS : Ton serveur de 15 000 membres subit un raid coordonné, une tentative d’exploitation d’un bot et une saturation API. Décris ta stratégie complète (Actions, Tech, Comm, Rapport)."
+            "Quels bots de modération maîtrises-tu ?",
+            "Configuration d'un système d'Auto-mod complexe ?",
+            "Comment sécurises-tu contre les raids ?",
+            "Gestion des permissions rôles sensibles ?",
+            "Notions en Webhooks ou API Discord ?",
+            "Création d'un système de logs efficace ?",
+            "Que fais-tu si le bot principal tombe ?",
+            "Conflits de rôles et hiérarchie ?",
+            "As-tu déjà créé un bot (JS/Python) ?",
+            "Méthode pour tester une nouvelle config ?"
         ];
-
+        document.getElementById('hid-user').value = localStorage.getItem('user') || "Anonyme";
         const container = document.getElementById('steps-container');
-        document.getElementById('hidden-pseudo').value = localStorage.getItem('user') || "Anonyme";
-
-        // Injection des questions dans le DOM
         questions.forEach((q, i) => {
-            const div = document.createElement('div');
-            div.className = 'step';
-            div.innerHTML = `
-                <span class="question-num">Question ${i + 1} / ${questions.length}</span>
-                <div class="question-text">${q}</div>
-                <textarea name="reponse_q${i+1}" placeholder="Ta réponse technique ici..." required></textarea>
-            `;
+            const div = document.createElement('div'); div.className = 'step';
+            div.innerHTML = `<span class="q-num">Question ${i+1}/${questions.length}</span><div class="q-text">${q}</div><textarea name="R${i+1}" required></textarea>`;
             container.appendChild(div);
         });
-
-        let currentStep = -1;
-        const steps = document.querySelectorAll('.step');
-
+        let current = -1; const steps = document.querySelectorAll('.step');
         function changeStep(n) {
-            // Empêche de passer si vide
-            if (n === 1 && currentStep >= 0) {
-                const area = steps[currentStep].querySelector('textarea');
-                if (!area.value.trim()) { alert("Réponse obligatoire pour continuer."); return; }
-            }
-
-            if (currentStep >= 0) steps[currentStep].classList.remove('active');
-            currentStep += n;
-
-            if (currentStep >= steps.length) {
-                document.getElementById('exam-form').submit();
-                return;
-            }
-
-            steps[currentStep].classList.add('active');
-            updateUI();
+            if (n === 1 && current >= 0 && !steps[current].querySelector('textarea').value.trim()) return alert("Champ requis !");
+            if (current >= 0) steps[current].classList.remove('active');
+            current += n;
+            if (current >= steps.length) return document.getElementById('exam-form').submit();
+            steps[current].classList.add('active');
+            document.getElementById('bar').style.width = ((current+1)/steps.length)*100 + "%";
+            document.getElementById('prevBtn').style.display = current > 0 ? "block" : "none";
+            document.getElementById('nextBtn').innerText = current === steps.length -1 ? "Terminer" : (current === -1 ? "Démarrer" : "Suivant");
+            if(current === -1) changeStep(1);
+            window.scrollTo(0,0);
         }
-
-        function updateUI() {
-            const progress = ((currentStep + 1) / steps.length) * 100;
-            document.getElementById('progress').style.width = progress + "%";
-            document.getElementById('prevBtn').style.visibility = currentStep > 0 ? 'visible' : 'hidden';
-            document.getElementById('nextBtn').innerText = currentStep === steps.length - 1 ? "Soumettre l'examen" : (currentStep === -1 ? "Commencer" : "Suivant");
-            
-            if(currentStep === -1) changeStep(1);
-        }
-        updateUI();
+        changeStep(1);
     </script>
 </body>
 </html>
