@@ -2,32 +2,155 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Dynasty Hub</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Hub - Dynasty Family's</title>
     <style>
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin-top: 20px; }
-        .role-btn { background: rgba(0,0,0,0.4); border: 1px solid var(--gold); padding: 20px; border-radius: 15px; color: white; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .role-btn:hover { background: var(--gold); color: black; transform: translateY(-3px); }
+        /* DESIGN DYNASTY FAMILY'S (Cohérence avec les examens) */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050a18;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 40px);
+            background-size: 400px 400px, 250px 250px;
+            background-attachment: fixed;
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .hub-container {
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .logo-main {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 3px solid #ff8c00;
+            box-shadow: 0 0 30px rgba(255, 140, 0, 0.4);
+            margin-bottom: 20px;
+        }
+
+        .welcome-text {
+            color: #ff8c00;
+            font-style: italic;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .user-badge {
+            background: rgba(255, 140, 0, 0.1);
+            border: 1px solid #ff8c00;
+            color: #ff8c00;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+
+        /* GRILLE DES POSTES */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .role-card {
+            background: rgba(13, 20, 38, 0.9);
+            border: 1px solid rgba(255, 140, 0, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            transition: 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .role-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff8c00;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 140, 0, 0.05);
+        }
+
+        .role-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .role-title {
+            color: #ff8c00;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .role-desc {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        .footer-text {
+            margin-top: 50px;
+            font-size: 0.75rem;
+            color: #475569;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
-    <div id="star-field"></div>
-    <div class="container">
-        <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo">
-        <h1>Dynasty Hub</h1>
-        <p>Bienvenue, <span id="user-display" style="color:var(--gold)"></span></p>
+
+    <div class="hub-container">
+        <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo-main" alt="Dynasty Logo">
         
-        <div class="glass-card">
-            <div class="grid">
-                <a href="modo-test.html" class="role-btn">🛡️ Modo</a>
-                <a href="bot-manager.html" class="role-btn">🤖 Bot Mgr</a>
-                <a href="middleman.html" class="role-btn">🤝 Middleman</a>
-                <a href="animateur.html" class="role-btn">🎉 Anim</a>
-            </div>
-            <a href="index.html" class="staff-link">Quitter</a>
+        <h1 class="welcome-text">Portail de Recrutement</h1>
+        <div class="user-badge" id="display-user">Candidat : ...</div>
+
+        <div class="roles-grid">
+            
+            <a href="moderateur.html" class="role-card">
+                <div class="role-icon">🛡️</div>
+                <div class="role-title">Modérateur</div>
+                <div class="role-desc">Discipline, impartialité et gestion de crise. 22 questions stratégiques.</div>
+            </a>
+
+            <a href="animateur.html" class="role-card">
+                <div class="role-icon">🎉</div>
+                <div class="role-title">Animateur</div>
+                <div class="role-desc">Créativité, dynamisme et gestion d'événements. 19 questions test.</div>
+            </a>
+
+            <a href="bot-manager.html" class="role-card">
+                <div class="role-icon">🤖</div>
+                <div class="role-title">Bot Manager</div>
+                <div class="role-desc">Architecture technique, sécurité et API. 23 questions expert.</div>
+            </a>
+
         </div>
+
+        <p class="footer-text">© 2026 DYNASTY FAMILY'S STAFF SYSTEM</p>
     </div>
-    <script src="script-stars.js"></script>
-    <script>document.getElementById('user-display').innerText = localStorage.getItem('user');</script>
+
+    <script>
+        // Affiche le pseudo enregistré à l'accueil (index.html)
+        const savedUser = localStorage.getItem('user') || "Anonyme";
+        document.getElementById('display-user').innerText = "Candidat : " + savedUser;
+    </script>
 </body>
 </html>
