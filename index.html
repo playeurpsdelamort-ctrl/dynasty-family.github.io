@@ -44,15 +44,16 @@
         }
 
         .instruction-box {
-            background: rgba(239, 68, 68, 0.15);
-            border: 1px solid var(--alert);
-            color: #fca5a5;
+            background: rgba(239, 68, 68, 0.2);
+            border: 2px solid var(--alert);
+            color: #fff;
             padding: 15px;
             border-radius: 12px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             margin-bottom: 20px;
             text-align: center;
-            line-height: 1.4;
+            line-height: 1.5;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
         }
 
         h1 { color: var(--gold); font-size: 1.6rem; text-transform: uppercase; letter-spacing: 3px; margin: 5px 0; font-weight: 900; }
@@ -103,6 +104,8 @@
             box-shadow: 0 10px 25px rgba(251, 146, 60, 0.4); margin-bottom: 50px;
         }
 
+        .staff-tag { color: var(--gold); font-weight: bold; text-align: center; margin-top: 20px; font-size: 0.9rem; }
+
         footer { text-align: center; color: #94a3b8; font-size: 0.7rem; padding-bottom: 30px; }
     </style>
 </head>
@@ -116,95 +119,39 @@
     </div>
 
     <div class="instruction-box">
-        <strong>⚠️ CONSIGNE IMPORTANTE :</strong><br>
-        Merci d’envoyer chaque question séparément sur Discord et d’attendre la réponse du candidat avant de passer à la suivante.
+        <strong>📢 NOTE POUR LES RECRUTEURS :</strong><br>
+        Voici les questions à copier-coller pour une candidature <strong>@Animateur Test</strong>.<br> 
+        Merci d’envoyer chaque question séparément et d’attendre la réponse du candidat avant de passer à la suivante.
     </div>
 
     <div class="tab-switcher">
         <button class="tab-btn active" id="btn-mod" onclick="showForm('mod')">Devenir Modo</button>
-        <button class="tab-btn" id="btn-anim" onclick="showForm('anim')">Devenir Anim</button>
+        <button class="tab-btn" id="btn-anim" onclick="showForm('anim')">Devenir Anim Test</button>
     </div>
 
     <div id="section-mod" class="form-content active">
         <form action="https://formspree.io/f/xnjbrvez" method="POST">
             <input type="hidden" name="Role" value="MODÉRATEUR">
-            
             <div class="glass-card">
                 <label>Pseudo Discord & Âge</label>
                 <input type="text" name="identite" required placeholder="Luffy#0001 (19 ans)">
             </div>
-
             <div class="glass-card">
                 <div class="category-header">📦 I. Parcours & Expérience</div>
                 <label>1. Présente ton parcours sur Discord (ancienneté, serveurs, rôles...).</label>
                 <textarea name="m1" required></textarea>
-                <label>2. Décris une expérience de modération difficile et tes décisions.</label>
+                <label>2. Décris une expérience de modération difficile.</label>
                 <textarea name="m2" required></textarea>
                 <label>3. As-tu déjà participé à l’élaboration d’un règlement ?</label>
                 <textarea name="m3" required></textarea>
             </div>
-
-            <div class="glass-card">
-                <div class="category-header">👁️ II. Vision du Rôle</div>
-                <label>4. Quelle est ta conception du rôle de modérateur ?</label>
-                <textarea name="m4" required></textarea>
-                <label>5. En quoi ta candidature se distingue-t-elle ?</label>
-                <textarea name="m5" required></textarea>
-                <label>6. Frontière entre autorité légitime et abus de pouvoir ?</label>
-                <textarea name="m6" required></textarea>
-                <label>7. Comment contribues-tu à un climat sain ?</label>
-                <textarea name="m7" required></textarea>
-            </div>
-
-            <div class="glass-card">
-                <div class="category-header">⚖️ III. Gestion de Conflit</div>
-                <label>8. Un membre influent enfreint le règlement. Stratégie ?</label>
-                <textarea name="m8" required></textarea>
-                <label>9. Conflit entre deux membres. Comment juges-tu ?</label>
-                <textarea name="m9" required></textarea>
-                <label>10. Un membre conteste publiquement une sanction ?</label>
-                <textarea name="m10" required></textarea>
-                <label>11. Raid nocturne : tes mesures d’urgence ?</label>
-                <textarea name="m11" required></textarea>
-                <label>12. Un collègue abuse de ses perms. Ta réaction ?</label>
-                <textarea name="m12" required></textarea>
-            </div>
-
-            <div class="glass-card">
-                <div class="category-header">🛡️ IV. Éthique & Posture</div>
-                <label>13. Objectivité face à la pression ?</label>
-                <textarea name="m13" required></textarea>
-                <label>14. Différence entre troll et membre problématique ?</label>
-                <textarea name="m14" required></textarea>
-                <label>15. Fermeté ou pédagogie ?</label>
-                <textarea name="m15" required></textarea>
-                <label>16. Définis l’impartialité.</label>
-                <textarea name="m16" required></textarea>
-                <label>17. Ton ami enfreint le règlement. Ta démarche ?</label>
-                <textarea name="m17" required></textarea>
-                <label>18. Comment éviter les biais personnels ?</label>
-                <textarea name="m18" required></textarea>
-            </div>
-
-            <div class="glass-card">
-                <div class="category-header">⚙️ V. Technique</div>
-                <label>19. Explique les sanctions progressives (warn -> ban).</label>
-                <textarea name="m19" required></textarea>
-                <label>20. Importance des logs ?</label>
-                <textarea name="m20" required></textarea>
-                <label>21. Expérience avec les bots de modération ?</label>
-                <textarea name="m21" required></textarea>
-                <label>22. Améliorations pour l'équipe ?</label>
-                <textarea name="m22" required></textarea>
-            </div>
-            
             <button type="submit" class="submit-btn">Soumettre Candidature Modo</button>
         </form>
     </div>
 
     <div id="section-anim" class="form-content">
         <form action="https://formspree.io/f/xnjbrvez" method="POST">
-            <input type="hidden" name="Role" value="ANIMATEUR">
+            <input type="hidden" name="Role" value="ANIMATEUR TEST">
             
             <div class="glass-card">
                 <label>Pseudo Discord & Âge</label>
@@ -212,60 +159,69 @@
             </div>
 
             <div class="glass-card">
-                <div class="category-header">🎭 I. Expérience & Motivations</div>
-                <label>1. Temps sur le serveur ?</label>
+                <div class="category-header">📋 Informations générales</div>
+                <label>1. Depuis combien de temps es-tu sur le serveur ?</label>
                 <input type="text" name="a1" required>
-                <label>2. Tes expériences passées d'animateur ?</label>
+                <label>2. As-tu déjà été animateur sur un autre serveur ? Si oui, explique ton rôle et ce que tu faisais exactement.</label>
                 <textarea name="a2" required></textarea>
+            </div>
+
+            <div class="glass-card">
+                <div class="category-header">🔥 Motivation et personnalité</div>
                 <label>3. Pourquoi souhaites-tu devenir animateur ici ?</label>
                 <textarea name="a3" required></textarea>
-                <label>4. Qualités apportées ?</label>
+                <label>4. Quelles qualités penses-tu apporter à notre serveur en tant qu’animateur ?</label>
                 <textarea name="a4" required></textarea>
-                <label>5. Membre irrespectueux en event ?</label>
+                <label>5. Comment réagirais-tu face à un membre irrespectueux ou qui enfreint les règles ?</label>
                 <textarea name="a5" required></textarea>
-                <label>6. Solo ou équipe ? Pourquoi ?</label>
+                <label>6. Préfères-tu travailler seul ou en équipe ? Pourquoi ?</label>
                 <textarea name="a6" required></textarea>
-                <label>7. Gestion du stress/conflit ?</label>
+                <label>7. Comment gères-tu le stress ou les situations conflictuelles ?</label>
                 <textarea name="a7" required></textarea>
-                <label>8. Perms hors event autorisées ?</label>
+                <label>8. Pour toi, un animateur a-t-il le droit d’utiliser ses permissions en dehors des events ?</label>
                 <textarea name="a8" required></textarea>
             </div>
 
             <div class="glass-card">
-                <div class="category-header">🎨 II. Créativité & Projets</div>
-                <label>9. Types d’événements proposés ?</label>
+                <div class="category-header">🎨 Connaissance du serveur / créativité</div>
+                <label>9. Quels types d’événements ou d’animations pourrais-tu proposer ?</label>
                 <textarea name="a9" required></textarea>
-                <label>10. Détaille une idée d’animation originale.</label>
+                <label>10. Propose une idée d’animation originale que tu pourrais organiser.</label>
                 <textarea name="a10" required></textarea>
-                <label>11. Idée d'événement "flash" rapide ?</label>
+                <label>11. Si tu devais créer un petit événement rapide pour les membres, que ferais-tu ?</label>
                 <textarea name="a11" required></textarea>
-                <label>12. C'est quoi une animation réussie ?</label>
+                <label>12. Selon toi, qu’est-ce qui rend une animation réussie ?</label>
                 <textarea name="a12" required></textarea>
-                <label>13. Rédige une annonce complète pour un jeu.</label>
-                <textarea name="a13" rows="4" required></textarea>
-                <label>14. Dispute entre membres en plein event ?</label>
-                <textarea name="a14" required></textarea>
+                <label>13. Crée-nous une annonce complète pour un jeu de ton choix (date, heure, jeu, description, règles, etc.).</label>
+                <textarea name="a13" rows="5" required></textarea>
             </div>
 
             <div class="glass-card">
-                <div class="category-header">🛠️ III. Logistique & Technique</div>
-                <label>15. Tes disponibilités ?</label>
+                <div class="category-header">⚡ Gestion et réactivité</div>
+                <label>14. Comment réagirais-tu si deux membres se disputaient pendant un événement ?</label>
+                <textarea name="a14" required></textarea>
+                <label>15. Serais-tu disponible pour organiser des événements régulièrement ? Si oui, quand ?</label>
                 <input type="text" name="a15" required>
-                <label>16. Gestion du spam pendant un event ?</label>
+                <label>16. Un membre spam dans le chat pendant un événement, que fais-tu ?</label>
                 <textarea name="a16" required></textarea>
-                <label>17. Ton event échoue (vide). Réaction ?</label>
+                <label>17. Un événement échoue (bug ou manque de participants), comment réagis-tu ?</label>
                 <textarea name="a17" required></textarea>
-                <label>18. Un collègue ne suit pas les règles ?</label>
+                <label>18. Tu remarques qu’un autre animateur ne suit pas les règles, que fais-tu ?</label>
                 <textarea name="a18" required></textarea>
-                <label>19. Comment rendre une info engageante ?</label>
+                <label>19. Tu dois annoncer une information importante de façon engageante, comment fais-tu ?</label>
                 <textarea name="a19" required></textarea>
-                <label>20. Maîtrise des bots d'animation ?</label>
+            </div>
+
+            <div class="glass-card">
+                <div class="category-header">💻 Compétences techniques</div>
+                <label>20. Sais-tu utiliser les commandes de bots pour animer (ex : giveaway, sondages, mini-jeux) ?</label>
                 <textarea name="a20" required></textarea>
-                <label>21. Gestion vocale/textuelle en simultané ?</label>
+                <label>21. Sais-tu gérer les salons vocaux et textuels pendant un événement ?</label>
                 <textarea name="a21" required></textarea>
             </div>
 
-            <button type="submit" class="submit-btn">Soumettre Candidature Anim</button>
+            <p class="staff-tag">@🛡️ Staff</p>
+            <button type="submit" class="submit-btn">Envoyer Candidature Test</button>
         </form>
     </div>
 
