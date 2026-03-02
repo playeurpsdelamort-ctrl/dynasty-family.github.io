@@ -2,31 +2,29 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dynasty Family's - Accueil</title>
+    <title>Dynasty Family's - Login</title>
     <style>
-        body { margin:0; background:#050a18; color:white; font-family:'Segoe UI',sans-serif; display:flex; justify-content:center; align-items:center; min-height:100vh; }
-        .login-card { width:90%; max-width:400px; background:rgba(13,20,38,0.95); padding:40px 30px; border-radius:20px; border:1px solid #ff8c00; text-align:center; box-shadow:0 10px 40px rgba(0,0,0,0.5); }
-        .logo { width:90px; height:90px; border-radius:50%; border:2px solid #ff8c00; margin-bottom:20px; }
-        h1 { color:#ff8c00; font-style:italic; font-size:1.8rem; text-transform:uppercase; margin-bottom:25px; }
-        input { width:100%; padding:16px; margin-bottom:20px; border-radius:12px; border:1px solid rgba(255,255,255,0.1); background:#000; color:#fff; font-size:16px; box-sizing:border-box; outline:none; }
-        input:focus { border-color:#ff8c00; }
-        button { width:100%; padding:18px; border-radius:12px; border:none; background:#ff8c00; color:#000; font-weight:900; cursor:pointer; text-transform:uppercase; font-size:1rem; transition:0.3s; }
-        button:active { transform:scale(0.98); }
+        body { margin: 0; background: #050a18; color: white; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
+        .login-card { width: 400px; background: rgba(13, 20, 38, 0.9); padding: 50px; border-radius: 15px; border: 1px solid #ff8c00; text-align: center; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        .logo { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #ff8c00; margin-bottom: 30px; }
+        h1 { color: #ff8c00; font-style: italic; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
+        input { width: 100%; padding: 15px; margin-bottom: 25px; border-radius: 5px; border: 1px solid #333; background: #000; color: #fff; font-size: 16px; text-align: center; }
+        button { width: 100%; padding: 15px; border-radius: 5px; border: none; background: #ff8c00; color: #000; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        button:hover { background: #e67e00; letter-spacing: 1px; }
     </style>
 </head>
 <body>
     <div class="login-card">
         <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo">
         <h1>Dynasty Family's</h1>
-        <input type="text" id="username" placeholder="Pseudo Discord..." autocomplete="off">
-        <button onclick="start()">Accéder au Hub</button>
+        <input type="text" id="username" placeholder="Pseudo Discord">
+        <button onclick="start()">Ouvrir le Hub</button>
     </div>
     <script>
         function start() {
             const u = document.getElementById('username').value;
-            if(u.trim().length > 2) { localStorage.setItem('user', u); window.location.href = "hub.html"; }
-            else { alert("Pseudo invalide"); }
+            if(u.length > 2) { localStorage.setItem('user', u); window.location.href = "hub.html"; }
+            else { alert("Pseudo requis"); }
         }
     </script>
 </body>
