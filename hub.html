@@ -2,24 +2,30 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Dynasty Family's - Hub</title>
+    <title>Dynasty Hub</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body { display: block; padding: 50px 20px; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 900px; margin: auto; }
+        .nav-card { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid var(--gold); color: white; text-decoration: none; transition: 0.3s; }
+        .nav-card:hover { background: var(--gold); color: black; }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Portail G5</h1>
-        <p style="text-align:center;">Bienvenue, <b id="display-user"></b>. Choisis ton formulaire :</p>
-        
-        <div class="grid">
-            <a href="modo-test.html" class="glass-card btn">🛡️ Modo Test</a>
-            <a href="bot-manager.html" class="glass-card btn">🤖 Bot Manager</a>
-            <a href="middleman.html" class="glass-card btn">🤝 Middleman</a>
-            <a href="animateur.html" class="glass-card btn">🎉 Animateur</a>
-        </div>
+    <h1>Bienvenue, <span id="display-user" style="color:#fff"></span></h1>
+    <p>Choisis le rôle pour lequel tu souhaites postuler :</p>
+    <br>
+    <div class="grid">
+        <a href="modo-test.html" class="nav-card">🛡️ Modo Test</a>
+        <a href="bot-manager.html" class="nav-card">🤖 Bot Manager</a>
+        <a href="middleman.html" class="nav-card">🤝 Middleman</a>
+        <a href="animateur.html" class="nav-card">🎉 Animateur</a>
     </div>
+    <br>
+    <a href="index.html" class="admin-link">Retour</a>
 
     <script>
-        document.getElementById('display-user').innerText = localStorage.getItem('user') || "Candidat";
+        document.getElementById('display-user').innerText = localStorage.getItem('user');
     </script>
 </body>
 </html>
