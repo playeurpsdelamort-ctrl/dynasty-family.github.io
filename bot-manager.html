@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidature Bot Manager - Dynasty</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container { min-height: 100vh; padding: 40px 20px; display: block; }
+        .glass-card { max-width: 700px; margin: auto; text-align: left; }
+        .section-title { 
+            color: var(--gold); 
+            border-bottom: 1px solid var(--gold-glow); 
+            padding-bottom: 10px; 
+            margin: 30px 0 20px 0; 
+            text-transform: uppercase; 
+            font-size: 0.9rem; 
+            letter-spacing: 2px;
+        }
+        label { font-size: 0.9rem; margin-top: 20px; display: block; }
+        textarea { 
+            width: 100%; 
+            padding: 12px; 
+            border-radius: 8px; 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            background: rgba(0, 0, 0, 0.4); 
+            color: white; 
+            box-sizing: border-box; 
+            min-height: 80px; 
+            font-family: inherit;
+            resize: vertical;
+        }
+        textarea:focus { border-color: var(--gold); outline: none; }
+        .btn-submit { margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <div id="star-field"></div>
+
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo">
+            <h1>Bot Manager</h1>
+            <div class="subtitle">Architecture & Résilience</div>
+        </div>
+
+        <div class="glass-card">
+            <form action="https://formspree.io/f/xnjbrvez" method="POST">
+                <input type="hidden" name="Pseudo_Discord" id="hidden-pseudo">
+                <input type="hidden" name="Poste" value="Bot Manager">
+
+                <div class="section-title">I. Parcours & Motivations</div>
+                <label>Pourquoi avoir choisi de postuler pour le poste de Bot Manager au sein de la Dynasty ?</label>
+                <textarea name="motivations" required></textarea>
+
+                <label>Quelles sont vos expériences passées en gestion de bots Discord (développement ou configuration) ?</label>
+                <textarea name="experiences" required></textarea>
+
+                <div class="section-title">II. Compétences Techniques</div>
+                <label>Comment sécurisez-vous le token d'un bot pour éviter les fuites (Leaks) ?</label>
+                <textarea name="securite_token" required></textarea>
+
+                <label>Un bot subit des ratelimits constants. Quelles solutions mettez-vous en place ?</label>
+                <textarea name="ratelimit_solution" required></textarea>
+
+                <label>Quelle architecture privilégiez-vous pour un bot qui doit tenir sur plusieurs serveurs (Sharding, Clusters...) ? Pourquoi ?</label>
+                <textarea name="architecture" required></textarea>
+
+                <div class="section-title">III. Mise en Situation</div>
+                <label>Le bot principal de la Dynasty tombe en panne pendant un événement majeur. Quelle est votre procédure d'urgence ?</label>
+                <textarea name="scenario_panne" required></textarea>
+
+                <label>On vous demande d'intégrer une fonctionnalité de logs avancés pour surveiller les raids. Comment procédez-vous ?</label>
+                <textarea name="anti_raid" required></textarea>
+
+                <div class="section-title">IV. Engagement</div>
+                <label>Quelles seraient vos disponibilités hebdomadaires pour la maintenance des outils ?</label>
+                <textarea name="disponibilites" required></textarea>
+
+                <button type="submit" class="btn btn-submit">Envoyer ma candidature</button>
+                <a href="hub.html" class="staff-link" style="text-align: center;">Annuler et retourner au hub</a>
+            </form>
+        </div>
+    </div>
+
+    <script src="script-stars.js"></script>
+    <script>
+        // Récupère le pseudo stocké à l'accueil pour l'envoyer avec le formulaire
+        document.getElementById('hidden-pseudo').value = localStorage.getItem('user') || "Anonyme";
+    </script>
+</body>
+</html>
