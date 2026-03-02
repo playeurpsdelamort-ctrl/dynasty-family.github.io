@@ -5,37 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynasty Family's - Recrutement</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="glass-card">
-        <div class="logo-container">
-            <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo" alt="Dynasty Logo">
-        </div>
+        <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo" alt="Logo">
         
         <h1>Dynasty Family's</h1>
         
-        <div id="candidat-view">
+        <div id="candidat-view" style="width: 100%;">
             <input type="text" id="pseudo" placeholder="Pseudo Discord">
-            <button class="btn" onclick="startCandidature()">Commencer le test</button>
+            <button class="btn" onclick="startCandidature()">Entrer</button>
             <span class="admin-link" onclick="toggleAdmin()">Accès Staff</span>
         </div>
 
-        <div id="admin-view" style="display:none;">
-            <input type="text" id="admin-user" placeholder="Login Admin">
+        <div id="admin-view" style="display:none; width: 100%;">
+            <input type="text" id="admin-user" placeholder="Login Staff">
             <input type="password" id="admin-pass" placeholder="Mot de passe">
-            <button class="btn" onclick="loginAdmin()">Connexion Staff</button>
+            <button class="btn" style="background:#fff;" onclick="loginAdmin()">Connexion</button>
             <span class="admin-link" onclick="toggleAdmin()">Retour</span>
         </div>
     </div>
 
     <script>
         function toggleAdmin() {
-            const cv = document.getElementById('candidat-view');
-            const av = document.getElementById('admin-view');
-            cv.style.display = cv.style.display === 'none' ? 'block' : 'none';
-            av.style.display = av.style.display === 'none' ? 'block' : 'none';
+            const c = document.getElementById('candidat-view');
+            const a = document.getElementById('admin-view');
+            c.style.display = c.style.display === 'none' ? 'block' : 'none';
+            a.style.display = a.style.display === 'none' ? 'block' : 'none';
         }
 
         function startCandidature() {
@@ -43,21 +40,16 @@
             if(p !== "") {
                 localStorage.setItem('user', p);
                 window.location.href = "hub.html";
-            } else {
-                alert("Veuillez entrer votre pseudo Discord.");
-            }
+            } else { alert("Entre ton pseudo Discord !"); }
         }
 
         function loginAdmin() {
             const u = document.getElementById('admin-user').value;
             const p = document.getElementById('admin-pass').value;
-            // Identifiants par défaut
-            if(u === "Admin" && p === "Dynasty2026") {
+            if(u === "Admin" && p === "Dynasty2024") {
                 localStorage.setItem('role', 'admin');
                 window.location.href = "admin-view.html";
-            } else {
-                alert("Identifiants incorrects.");
-            }
+            } else { alert("Accès refusé"); }
         }
     </script>
 </body>
