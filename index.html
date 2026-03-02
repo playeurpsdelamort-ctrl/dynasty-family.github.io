@@ -35,12 +35,20 @@
         .container { width: 100%; max-width: 850px; margin: 10px auto; padding: 20px 10px; position: relative; z-index: 5; }
 
         .header { text-align: center; margin-bottom: 30px; }
+        
+        /* STYLE DU LOGO INCORPORÉ */
         .logo { 
-            width: 130px; height: 130px; border-radius: 50%; 
-            border: 3px solid #fff; box-shadow: 0 0 30px rgba(251, 146, 60, 0.7);
-            object-fit: cover; background: #000;
+            width: 130px; 
+            height: 130px; 
+            border-radius: 50%; 
+            border: 3px solid #fff; /* Bordure blanche Gear 5 */
+            box-shadow: 0 0 30px rgba(251, 146, 60, 0.7); /* Lueur dorée */
+            object-fit: cover; 
+            background: #000;
+            margin-bottom: 15px;
         }
-        h1 { color: var(--gold); font-size: 1.8rem; text-transform: uppercase; letter-spacing: 3px; margin: 15px 0 5px; font-weight: 900; }
+
+        h1 { color: var(--gold); font-size: 1.8rem; text-transform: uppercase; letter-spacing: 3px; margin: 5px 0 5px; font-weight: 900; }
         .subtitle { color: var(--gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; }
 
         .tab-switcher {
@@ -95,7 +103,7 @@
 <div class="container">
     <div class="header">
         <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" alt="Logo Gear 5" class="logo">
-        <h1>𝘿𝙮𝙣𝙖𝙨𝙩𝙮 𝙁𝙖𝙢𝙞𝙡𝙮’𝙨</h1>
+        <h1>𝘿𝙮𝙣𝙖𝙨𝙩𝙮 𝙁𝙖𝙢𝙞𝙡𝙮’ｓ</h1>
         <p class="subtitle">RECRUTEMENT DIVINEMENT FUN</p>
     </div>
 
@@ -107,76 +115,57 @@
     <div id="section-mod" class="form-content active">
         <form action="https://formspree.io/f/xnjbrvez" method="POST">
             <input type="hidden" name="Candidature" value="MODÉRATEUR">
-            
             <div class="glass-card">
                 <label>Pseudo Discord & Âge</label>
                 <input type="text" name="identite" required placeholder="Luffy#1234 (19 ans)">
             </div>
-
             <div class="glass-card">
                 <div class="group-title">I. PARCOURS & EXPÉRIENCE</div>
-                <label>1. Présente ton parcours sur Discord de manière détaillée (ancienneté, types de serveurs, rôles...).</label>
+                <label>1. Présente ton parcours sur Discord (ancienneté, rôles...).</label>
                 <textarea name="m1" required></textarea>
-                <label>2. Décris une expérience concrète de modération difficile et tes décisions stratégiques.</label>
+                <label>2. Décris une expérience concrète de modération difficile.</label>
                 <textarea name="m2" required></textarea>
-                <label>3. As-tu déjà participé à l’élaboration d’un règlement ? Explique ta méthodologie.</label>
+                <label>3. As-tu déjà participé à l’élaboration d’un règlement ?</label>
                 <textarea name="m3" required></textarea>
-            </div>
-
-            <div class="glass-card">
-                <div class="group-title">II. MOTIVATION & VISION</div>
-                <label>4. Quelle est ta conception du rôle de modérateur au sein d’une communauté structurée ?</label>
+                <label>4. Conception du rôle de modérateur ?</label>
                 <textarea name="m4" required></textarea>
-                <label>5. En quoi ta candidature se distingue-t-elle des autres ?</label>
+                <label>5. Pourquoi toi et pas un autre ?</label>
                 <textarea name="m5" required></textarea>
-                <label>6. Quelle est la frontière entre autorité légitime et abus de pouvoir ?</label>
+                <label>6. Frontière entre autorité et abus ?</label>
                 <textarea name="m6" required></textarea>
-                <label>7. Comment contribues-tu à instaurer un climat sain dans une communauté ?</label>
+                <label>7. Comment instaurer un climat sain ?</label>
                 <textarea name="m7" required></textarea>
-            </div>
-
-            <div class="glass-card">
-                <div class="group-title">III. ANALYSE & GESTION</div>
-                <label>8. Un membre influent enfreint le règlement. Quelle stratégie adoptes-tu ?</label>
+                <label>8. Membre influent en infraction : ta réaction ?</label>
                 <textarea name="m8" required></textarea>
-                <label>9. Deux membres se provoquent mutuellement. Comment établis-tu les responsabilités ?</label>
+                <label>9. Conflit entre deux membres : comment juger ?</label>
                 <textarea name="m9" required></textarea>
-                <label>10. Un membre conteste publiquement une sanction. Comment gères-tu cela ?</label>
+                <label>10. Contestation publique d'une sanction : gestion ?</label>
                 <textarea name="m10" required></textarea>
-                <label>11. Une vague de raid survient la nuit. Quelles sont tes mesures d’urgence ?</label>
+                <label>11. Raid de nuit : mesures d'urgence ?</label>
                 <textarea name="m11" required></textarea>
-                <label>12. Un modérateur abuse de ses permissions. Quelle est ta réaction ?</label>
+                <label>12. Un modérateur abuse de ses perms : réaction ?</label>
                 <textarea name="m12" required></textarea>
-            </div>
-
-            <div class="glass-card">
-                <div class="group-title">IV. POSTURE & ÉTHIQUE</div>
-                <label>13. Comment maintiens-tu ton objectivité face à la pression ?</label>
+                <label>13. Objectivité face à la pression ?</label>
                 <textarea name="m13" required></textarea>
-                <label>14. Comment différencies-tu un troll d’un membre réellement problématique ?</label>
+                <label>14. Troll vs Membre problématique ?</label>
                 <textarea name="m14" required></textarea>
-                <label>15. Penses-tu que la fermeté doit primer sur la pédagogie ?</label>
+                <label>15. Fermeté ou pédagogie ?</label>
                 <textarea name="m15" required></textarea>
-                <label>16. Définis le principe d’impartialité dans la modération.</label>
+                <label>16. Définis l'impartialité.</label>
                 <textarea name="m16" required></textarea>
-                <label>17. Si un ami proche enfreint le règlement, quelle est ta démarche ?</label>
+                <label>17. Ton ami enfreint le règlement : démarche ?</label>
                 <textarea name="m17" required></textarea>
-                <label>18. Comment éviter les biais personnels dans tes décisions ?</label>
+                <label>18. Éviter les biais personnels ?</label>
                 <textarea name="m18" required></textarea>
-            </div>
-
-            <div class="glass-card">
-                <div class="group-title">V. TECHNIQUE & STRATÉGIE</div>
-                <label>19. Explique le fonctionnement des sanctions progressives (warn → mute → kick → ban).</label>
+                <label>19. Explique les sanctions progressives.</label>
                 <textarea name="m19" required></textarea>
-                <label>20. Décris le rôle des logs et leur importance.</label>
+                <label>20. Rôle et importance des logs ?</label>
                 <textarea name="m20" required></textarea>
-                <label>21. As-tu déjà configuré un bot de modération ? (Détails).</label>
+                <label>21. Config de bots de modération ?</label>
                 <textarea name="m21" required></textarea>
-                <label>22. Quelles améliorations structurelles proposerais-tu pour l'équipe ?</label>
+                <label>22. Améliorations structurelles proposées ?</label>
                 <textarea name="m22" required></textarea>
             </div>
-
             <button type="submit" class="submit-btn">SOUMETTRE CANDIDATURE DIVINE</button>
         </form>
     </div>
@@ -184,66 +173,55 @@
     <div id="section-anim" class="form-content">
         <form action="https://formspree.io/f/xnjbrvez" method="POST">
             <input type="hidden" name="Candidature" value="ANIMATEUR">
-            
             <div class="glass-card">
                 <label>Pseudo Discord & Âge</label>
                 <input type="text" name="identite" required placeholder="Brook#1234 (20 ans)">
             </div>
-
             <div class="glass-card">
-                <div class="group-title">INFOS & MOTIVATION</div>
-                <label>1. Depuis combien de temps es-tu sur le serveur ?</label>
+                <div class="group-title">INFOS & CRÉATIVITÉ</div>
+                <label>1. Depuis combien de temps es-tu là ?</label>
                 <input type="text" name="a1" required>
-                <label>2. Tes expériences passées en tant qu'animateur ?</label>
+                <label>2. Expériences d'animateur ?</label>
                 <textarea name="a2" required></textarea>
-                <label>3. Pourquoi souhaites-tu devenir animateur ici ?</label>
+                <label>3. Pourquoi ici ?</label>
                 <textarea name="a3" required></textarea>
-                <label>4. Quelles qualités penses-tu apporter ?</label>
+                <label>4. Qualités apportées ?</label>
                 <textarea name="a4" required></textarea>
-                <label>5. Réaction face à un membre irrespectueux en event ?</label>
+                <label>5. Membre irrespectueux en event ?</label>
                 <textarea name="a5" required></textarea>
-                <label>6. Préfères-tu travailler seul ou en équipe ? Pourquoi ?</label>
+                <label>6. Solo ou équipe ?</label>
                 <textarea name="a6" required></textarea>
-                <label>7. Comment gères-tu le stress ou les situations conflictuelles ?</label>
+                <label>7. Gestion du stress ?</label>
                 <textarea name="a7" required></textarea>
-                <label>8. Un animateur a-t-il le droit d’utiliser ses permissions hors event ?</label>
+                <label>8. Perms hors event autorisées ?</label>
                 <textarea name="a8" required></textarea>
-            </div>
-
-            <div class="glass-card">
-                <div class="group-title">CRÉATIVITÉ & RÉACTIVITÉ</div>
-                <label>9. Quels types d’événements pourrais-tu proposer ?</label>
+                <label>9. Types d'events proposés ?</label>
                 <textarea name="a9" required></textarea>
-                <label>10. Propose une idée d’animation originale détaillée.</label>
+                <label>10. Idée d'animation originale ?</label>
                 <textarea name="a10" required></textarea>
-                <label>11. Si tu devais créer un petit événement rapide pour les membres, que ferais-tu ?</label>
+                <label>11. Idée d'event flash ?</label>
                 <textarea name="a11" required></textarea>
-                <label>12. Selon toi, qu’est-ce qui rend une animation réussie ?</label>
+                <label>12. C'est quoi une anim réussie ?</label>
                 <textarea name="a12" required></textarea>
-                <label>13. Rédige une annonce complète pour un jeu (date, règles, etc.).</label>
-                <textarea name="a13" rows="5" required></textarea>
-                <label>14. Réaction si deux membres se disputent pendant un événement ?</label>
+                <label>13. Rédige une annonce d'event complète.</label>
+                <textarea name="a13" rows="4" required></textarea>
+                <label>14. Dispute en event : réaction ?</label>
                 <textarea name="a14" required></textarea>
-            </div>
-
-            <div class="glass-card">
-                <div class="group-title">LOGISTIQUE & TECHNIQUE</div>
-                <label>15. Tes disponibilités pour organiser des événements ?</label>
+                <label>15. Tes disponibilités ?</label>
                 <input type="text" name="a15" required>
-                <label>16. Un membre spam dans le chat pendant un événement, que fais-tu ?</label>
+                <label>16. Gestion du spam en event ?</label>
                 <textarea name="a16" required></textarea>
-                <label>17. Ton événement échoue (bug ou manque de gens), comment réagis-tu ?</label>
+                <label>17. Event échec : réaction ?</label>
                 <textarea name="a17" required></textarea>
-                <label>18. Tu remarques qu’un autre animateur ne suit pas les règles, que fais-tu ?</label>
+                <label>18. Collègue enfreignant les règles ?</label>
                 <textarea name="a18" required></textarea>
-                <label>19. Comment annoncer une info importante de façon engageante ?</label>
+                <label>19. Annonce attirante : comment faire ?</label>
                 <textarea name="a19" required></textarea>
-                <label>20. Sais-tu utiliser les commandes de bots pour animer (giveaway, mini-jeux) ?</label>
+                <label>20. Maîtrise des bots d'event ?</label>
                 <textarea name="a20" required></textarea>
-                <label>21. Sais-tu gérer les salons vocaux et textuels pendant un événement ?</label>
+                <label>21. Gestion vocale/textuelle en direct ?</label>
                 <textarea name="a21" required></textarea>
             </div>
-
             <button type="submit" class="submit-btn">POSTULER POUR L'AMBIANCE G5</button>
         </form>
     </div>
