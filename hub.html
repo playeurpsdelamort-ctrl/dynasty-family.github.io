@@ -2,124 +2,32 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynasty Hub - Sélection du Rôle</title>
+    <title>Dynasty Hub</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Ajustements spécifiques pour le Hub */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 20px;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        .role-card {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(251, 146, 60, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            text-decoration: none;
-            color: white;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .role-card:hover {
-            background: var(--gold);
-            color: black;
-            transform: translateY(-5px);
-            box-shadow: 0 0 20px var(--gold-glow);
-        }
-
-        .role-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .role-name {
-            font-weight: 900;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-
-        .welcome-text {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-
-        .welcome-text span {
-            color: var(--gold);
-            font-weight: bold;
-        }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin-top: 20px; }
+        .role-btn { background: rgba(0,0,0,0.4); border: 1px solid var(--gold); padding: 20px; border-radius: 15px; color: white; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .role-btn:hover { background: var(--gold); color: black; transform: translateY(-3px); }
     </style>
 </head>
 <body>
-
     <div id="star-field"></div>
-
-    <div class="container" style="max-width: 600px;">
-        <div class="logo-container">
-            <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo" alt="Luffy Gear 5">
-        </div>
-
+    <div class="container">
+        <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo">
         <h1>Dynasty Hub</h1>
-        <div class="welcome-text">Salutations, <span id="user-display">Candidat</span> !</div>
-        <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 30px;">
-            Sélectionne le poste pour lequel tu souhaites passer tes tests.
-        </p>
-
+        <p>Bienvenue, <span id="user-display" style="color:var(--gold)"></span></p>
+        
         <div class="glass-card">
             <div class="grid">
-                <a href="bot-manager.html" class="role-card">
-                    <div class="role-icon">🤖</div>
-                    <div class="role-name">Bot Manager</div>
-                </a>
-
-                <a href="middleman.html" class="role-card">
-                    <div class="role-icon">🤝</div>
-                    <div class="role-name">Middleman</div>
-                </a>
-
-                <a href="animateur.html" class="role-card">
-                    <div class="role-icon">🎉</div>
-                    <div class="role-name">Animateur</div>
-                </a>
-
-                <a href="modo-test.html" class="role-card">
-                    <div class="role-icon">🛡️</div>
-                    <div class="role-name">Modérateur</div>
-                </a>
+                <a href="modo-test.html" class="role-btn">🛡️ Modo</a>
+                <a href="bot-manager.html" class="role-btn">🤖 Bot Mgr</a>
+                <a href="middleman.html" class="role-btn">🤝 Middleman</a>
+                <a href="animateur.html" class="role-btn">🎉 Anim</a>
             </div>
-            
-            <a href="index.html" class="staff-link" style="margin-top: 30px;">← Retour à l'accueil</a>
+            <a href="index.html" class="staff-link">Quitter</a>
         </div>
     </div>
-
-    <script>
-        // Récupération du pseudo stocké
-        const user = localStorage.getItem('user') || "Candidat";
-        document.getElementById('user-display').innerText = user;
-
-        // Génération des étoiles (identique à index.html)
-        const field = document.getElementById('star-field');
-        for (let i = 0; i < 100; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            const size = Math.random() * 3 + 'px';
-            star.style.width = size;
-            star.style.height = size;
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
-            field.appendChild(star);
-        }
-    </script>
+    <script src="script-stars.js"></script>
+    <script>document.getElementById('user-display').innerText = localStorage.getItem('user');</script>
 </body>
 </html>
