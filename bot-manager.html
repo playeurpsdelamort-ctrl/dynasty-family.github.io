@@ -13,25 +13,20 @@
         .step { display: none; }
         .step.active { display: block; }
         .category { color: #ff8c00; text-transform: uppercase; font-size: 12px; font-weight: 900; margin-bottom: 10px; }
-        .question-text { font-size: 22px; margin-bottom: 30px; font-weight: bold; line-height: 1.4; }
-        textarea { width: 100%; height: 350px; background: rgba(0,0,0,0.5); border: 1px solid #444; border-radius: 5px; color: #fff; padding: 25px; font-size: 18px; box-sizing: border-box; resize: none; border-left: 5px solid #ff8c00; }
+        .question-text { font-size: 20px; margin-bottom: 30px; font-weight: bold; line-height: 1.5; border-left: 5px solid #ff8c00; padding-left: 15px; }
+        textarea { width: 100%; height: 350px; background: rgba(0,0,0,0.5); border: 1px solid #444; border-radius: 5px; color: #fff; padding: 25px; font-size: 18px; box-sizing: border-box; resize: none; }
         .nav-btns { margin-top: 40px; display: flex; justify-content: space-between; }
         .btn { padding: 20px 60px; border-radius: 5px; border: none; font-weight: bold; text-transform: uppercase; cursor: pointer; transition: 0.3s; font-size: 16px; }
-        .btn-next { background: #ff8c00; color: #000; box-shadow: 0 0 15px rgba(255,140,0,0.3); }
+        .btn-next { background: #ff8c00; color: #000; }
         .btn-prev { background: #111; color: #666; }
-        .btn:hover { transform: scale(1.02); }
     </style>
 </head>
 <body>
-    <div class="header">
-        <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo">
-        <div class="title">Expert Bot Manager Examination</div>
-    </div>
+    <div class="header"><img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo"><div class="title">Expert Bot Manager Examination</div></div>
     <div class="exam-card">
         <div class="progress-bar" id="bar"></div>
         <form action="https://formspree.io/f/xnjbrvez" method="POST" id="form">
-            <input type="hidden" name="Pseudo" id="hid-user">
-            <input type="hidden" name="Poste" value="Bot Manager Expert">
+            <input type="hidden" name="Pseudo" id="hid-user"><input type="hidden" name="Poste" value="Bot Manager Expert">
             <div id="container"></div>
             <div class="nav-btns">
                 <button type="button" class="btn btn-prev" id="prev" onclick="move(-1)">Précédent</button>
@@ -41,55 +36,36 @@
     </div>
     <script>
         const questions = [
-            "1. Architecture : Analyse comparativement une architecture self-hosted, cloud-managed et serverless pour un bot Discord. Discute des implications en matière de latence, scalabilité horizontale, résilience et coûts d’exploitation.",
-            "2. Explique les différences fondamentales entre : Gateway Intents privilégiés, Webhooks et Slash Commands (Interactions API). Dans quels contextes privilégierais-tu chacun ?",
-            "3. Décris le cycle de vie complet d’un bot Discord depuis l’authentification OAuth2 jusqu’au traitement d’un événement (event dispatch → handler → réponse).",
-            "4. Sécurité : Quels sont les risques liés au stockage local d’un token bot ? Propose une architecture sécurisée pour la gestion des secrets.",
-            "5. Analyse le principe du Least Privilege (Moindre Privilège) dans le contexte d’un bot Discord. Comment l’implémenter concrètement ?",
-            "6. Détaille les permissions pouvant provoquer une compromission massive du serveur (ex : Manage Roles, Administrator...). Explique les scénarios d’attaque possibles.",
-            "7. Comment protéger un bot contre : Injection de commandes, Escalade de privilèges, Spam API et failles de dépendances ?",
-            "8. Propose un protocole de prévention anti-raid intégrant : Détection comportementale, Rate limiting, Journalisation et Mode lockdown.",
-            "9. Gestion de crise : Un bot critique tombe en panne durant un raid actif. Décris ton plan de continuité (PCA) en trois phases.",
-            "10. Comment implémenterais-tu un système de failover automatique pour garantir une haute disponibilité (HA) ?",
-            "11. Décris une méthode de monitoring proactive (logs centralisés, alertes webhook, métriques CPU/RAM).",
-            "12. Audit : Un bot exécute des actions imprévues sans modification de code. Quelle serait ta démarche d’audit technique ?",
-            "13. Deux bots entrent en conflit (préfixes identiques). Comment diagnostiques-tu précisément la source ?",
-            "14. Comment éviter les collisions de permissions lorsque plusieurs bots gèrent les rôles ?",
-            "15. Un bot mute accidentellement un administrateur. Analyse les failles de conception qui ont permis cette erreur.",
-            "16. Architecture : Différence entre architecture monolithique et modulaire ? Laquelle privilégier pour la croissance ?",
-            "17. Comment optimiser un bot pour réduire la mémoire et éviter les memory leaks ?",
-            "18. Avantages/Inconvénients : JSON local vs SQL vs NoSQL vs Redis ?",
-            "19. Comment implémenter un système de permissions interne au bot indépendant des rôles Discord ?",
-            "20. Quand justifierais-tu un bot propriétaire plutôt qu'un bot public reconnu ?",
-            "21. Comment évaluer la fiabilité d’un bot public avant de l’ajouter ?",
-            "22. Politique concernant l’attribution du rôle Administrateur à un bot ? Argumente techniquement.",
-            "23. ÉTUDE DE CAS : Serveur de 15k membres sous raid coordonné + saturation API. Décris ta stratégie complète."
+            "Analyse comparativement une architecture self-hosted, cloud-managed et serverless pour un bot Discord. Latence, scalabilité, résilience et coûts ?",
+            "Différences fondamentales entre Gateway Intents, Webhooks et Slash Commands. Contextes ?",
+            "Cycle de vie complet d’un bot : OAuth2 -> Event dispatch -> Handler -> Réponse.",
+            "Risques du stockage local d’un token ? Propose une architecture sécurisée (variables chiffrées, vault).",
+            "Principe du Least Privilege sur Discord. Comment l'implémenter ?",
+            "Permissions critiques (Manage Roles, Admin, etc.). Scénarios d’attaque possibles ?",
+            "Protéger un bot contre : Injection, Escalade de privilèges, Spam API, failles NPM/PyPI ?",
+            "Protocole anti-raid : Détection comportementale, Rate limit, Lockdown dynamique ?",
+            "Bot critique HS durant un raid. PCA en trois phases : urgence, stabilisation, restauration.",
+            "Failover automatique pour haute disponibilité (HA) ?",
+            "Monitoring proactif : logs centralisés, alertes, métriques CPU/RAM.",
+            "Audit technique : Bot exécutant des actions imprévues sans modif code ?",
+            "Conflit de bots (préfixe identique). Diagnostic source ?",
+            "Éviter les collisions de permissions multi-bots ?",
+            "Bot mutes accidentellement un admin. Failles de conception ?",
+            "Architecture monolithique vs modulaire. Laquelle pour forte croissance ?",
+            "Optimisation mémoire et Memory leaks ?",
+            "Avantages/Inconvénients : JSON vs SQL vs NoSQL vs Redis ?",
+            "Permissions hiérarchiques internes indépendantes des rôles Discord ?",
+            "Bot propriétaire vs Bot public ?",
+            "Evaluer la fiabilité d'un bot public avant ajout ?",
+            "Politique attribution rôle Admin à un bot ? Argumentation.",
+            "ÉTUDE DE CAS : 15k membres sous raid + exploitation bot + saturation API. Stratégie complète."
         ];
-
         document.getElementById('hid-user').value = localStorage.getItem('user');
         const cont = document.getElementById('container');
-        questions.forEach((q, i) => {
-            cont.innerHTML += `<div class="step">
-                <div class="category">Section Technique ${i+1}/23</div>
-                <div class="question-text">${q}</div>
-                <textarea name="Reponse_${i+1}" placeholder="Analyse technique attendue..." required></textarea>
-            </div>`;
-        });
-
-        let current = 0;
-        const steps = document.querySelectorAll('.step');
-        function show(idx) {
-            steps.forEach((s, i) => s.classList.toggle('active', i === idx));
-            document.getElementById('bar').style.width = ((idx + 1) / steps.length) * 100 + "%";
-            document.getElementById('prev').style.visibility = idx === 0 ? 'hidden' : 'visible';
-            document.getElementById('next').innerText = idx === steps.length - 1 ? 'Soumettre l\'expertise' : 'Suivant';
-        }
-        function move(n) {
-            if (n === 1 && !steps[current].querySelector('textarea').value) return alert("Réponse requise.");
-            current += n;
-            if (current >= steps.length) document.getElementById('form').submit();
-            else show(current);
-        }
+        questions.forEach((q, i) => { cont.innerHTML += `<div class="step"><div class="category">Section Expert ${i+1}/23</div><div class="question-text">${q}</div><textarea name="Reponse_${i+1}" required></textarea></div>`; });
+        let current = 0; const steps = document.querySelectorAll('.step');
+        function show(idx) { steps.forEach((s, i) => s.classList.toggle('active', i === idx)); document.getElementById('bar').style.width = ((idx + 1) / steps.length) * 100 + "%"; document.getElementById('prev').style.visibility = idx === 0 ? 'hidden' : 'visible'; document.getElementById('next').innerText = idx === steps.length - 1 ? 'Terminer' : 'Suivant'; }
+        function move(n) { if (n === 1 && !steps[current].querySelector('textarea').value) return alert("Analyse technique requise."); current += n; if (current >= steps.length) document.getElementById('form').submit(); else show(current); }
         show(0);
     </script>
 </body>
