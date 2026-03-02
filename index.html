@@ -6,71 +6,71 @@
     <title>Dynasty Family’s - Recrutement</title>
     <style>
         :root { 
-            --accent: #38bdf8; 
-            --accent-glow: rgba(56, 189, 248, 0.4);
-            --bg: #020617; 
-            --card: rgba(15, 23, 42, 0.9);
-            --border: rgba(56, 189, 248, 0.2);
+            --gold: #fb923c; 
+            --bg-dark: #020617; 
+            --card-glass: rgba(15, 23, 42, 0.8);
+            --text-main: #f1f5f9;
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body { 
-            background: radial-gradient(circle at top right, #1e293b 0%, var(--bg) 100%); 
-            color: #f1f5f9; 
-            font-family: 'Segoe UI', Roboto, sans-serif; 
+            background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+            color: var(--text-main); 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
             margin: 0; padding: 10px; min-height: 100vh;
         }
 
-        .container { 
-            width: 100%; max-width: 850px; margin: 10px auto;
-            background: var(--card); backdrop-filter: blur(20px); 
-            padding: 30px 20px; border-radius: 28px; 
-            border: 1px solid var(--border); box-shadow: 0 25px 50px rgba(0,0,0,0.8);
-        }
+        .container { width: 100%; max-width: 850px; margin: 10px auto; padding: 20px 10px; }
 
-        .header { text-align: center; margin-bottom: 25px; }
-        .logo { width: 110px; height: 110px; border-radius: 50%; border: 3px solid var(--accent); box-shadow: 0 0 25px var(--accent-glow); object-fit: cover; }
-        h1 { color: var(--accent); font-size: 1.6rem; text-transform: uppercase; letter-spacing: 4px; margin: 15px 0 5px; font-weight: 900; }
-        .subtitle { color: #94a3b8; font-size: 0.85rem; margin-bottom: 25px; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .logo { 
+            width: 120px; height: 120px; border-radius: 50%; 
+            border: 3px solid #fff; box-shadow: 0 0 20px rgba(251, 146, 60, 0.4);
+            object-fit: cover;
+        }
+        h1 { color: var(--gold); font-size: 1.8rem; text-transform: uppercase; letter-spacing: 3px; margin: 15px 0 5px; font-weight: 900; }
+        .subtitle { color: #94a3b8; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
 
         .tab-switcher {
-            display: flex; background: rgba(0, 0, 0, 0.5); padding: 6px; 
-            border-radius: 18px; margin-bottom: 30px; gap: 5px; border: 1px solid var(--border);
+            display: flex; background: rgba(0,0,0,0.4); padding: 5px; 
+            border-radius: 50px; margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.1);
         }
-
         .tab-btn {
-            flex: 1; padding: 14px 5px; border: none; background: transparent; 
-            color: #64748b; cursor: pointer; font-weight: 800; border-radius: 12px; 
-            font-size: 0.75rem; transition: 0.3s; text-transform: uppercase;
+            flex: 1; padding: 14px; border: none; background: transparent; 
+            color: #64748b; cursor: pointer; font-weight: 800; border-radius: 50px; 
+            font-size: 0.8rem; text-transform: uppercase; transition: 0.3s;
         }
+        .tab-btn.active { background: var(--gold); color: #000; }
 
-        .tab-btn.active { background: var(--accent); color: #020617; box-shadow: 0 4px 15px var(--accent-glow); }
-
-        .form-content { display: none; animation: fadeIn 0.5s ease; }
+        .form-content { display: none; animation: fadeIn 0.4s ease; }
         .form-content.active { display: block; }
-
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .group-title { 
-            color: var(--accent); font-size: 0.85rem; font-weight: 900; 
-            text-transform: uppercase; margin: 40px 0 15px; 
-            border-left: 4px solid var(--accent); padding-left: 12px;
-            background: rgba(56, 189, 248, 0.05); padding-top: 8px; padding-bottom: 8px;
+        .glass-card {
+            background: var(--card-glass); border-radius: 20px; 
+            padding: 25px; border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-bottom: 25px;
         }
 
-        label { display: block; margin-top: 25px; margin-bottom: 10px; font-size: 0.95rem; color: #e2e8f0; font-weight: 600; line-height: 1.4; }
-        input, textarea { 
-            width: 100%; padding: 15px; background: rgba(15, 23, 42, 0.7); 
-            border: 1px solid #334155; color: #fff; border-radius: 14px; 
-            font-size: 1rem; outline: none; transition: 0.3s;
+        .group-title { 
+            color: var(--gold); font-size: 0.85rem; font-weight: 900; 
+            text-transform: uppercase; margin-bottom: 20px; 
+            border-bottom: 1px solid rgba(251, 146, 60, 0.2); padding-bottom: 8px;
         }
-        input:focus, textarea:focus { border-color: var(--accent); background: rgba(30, 41, 59, 0.9); }
+
+        label { display: block; margin-top: 25px; margin-bottom: 10px; font-size: 0.95rem; font-weight: 600; color: #fff; }
+        input, textarea { 
+            width: 100%; padding: 15px; background: rgba(0,0,0,0.3); 
+            border: 1px solid #334155; color: #fff; border-radius: 12px; font-size: 1rem;
+        }
+        input:focus, textarea:focus { border-color: var(--gold); outline: none; }
 
         .submit-btn { 
-            width: 100%; padding: 22px; background: var(--accent); border: none; 
-            color: #020617; font-weight: 900; border-radius: 18px; cursor: pointer; 
-            text-transform: uppercase; font-size: 1.1rem; margin-top: 40px;
+            width: 100%; padding: 20px; background: var(--gold); 
+            border: none; color: #000; font-weight: 900; border-radius: 50px; 
+            cursor: pointer; text-transform: uppercase; font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(251, 146, 60, 0.3);
         }
 
         footer { text-align: center; margin-top: 40px; color: #475569; font-size: 0.8rem; }
@@ -82,171 +82,152 @@
     <div class="header">
         <img src="dinastyfamilli.jpg" alt="Logo" class="logo">
         <h1>𝘿𝙮𝙣𝙖𝙨𝙩𝙮 𝙁𝙖𝙢𝙞𝙡𝙮’𝙨</h1>
-        <p class="subtitle">⚓ Recrutement Officiel ⚓</p>
+        <p class="subtitle">Recrutement Divinement Fun</p>
     </div>
 
     <div class="tab-switcher">
-        <button class="tab-btn active" id="btn-mod" onclick="switchTab('mod')">Modérateur</button>
-        <button class="tab-btn" id="btn-anim" onclick="switchTab('anim')">Animateur</button>
+        <button class="tab-btn active" id="btn-mod" onclick="switchTab('mod')">Devenir Modo</button>
+        <button class="tab-btn" id="btn-anim" onclick="switchTab('anim')">Devenir Anim</button>
     </div>
 
     <form id="form-mod" class="form-content active" action="https://formspree.io/f/xnjbrvez" method="POST">
-        <input type="hidden" name="_subject" value="Candidature MODÉRATEUR">
+        <input type="hidden" name="Role" value="MODERATEUR">
         
-        <label>Pseudo Discord & Âge</label>
-        <input type="text" name="identité" required placeholder="Ex: Sanji#1234 (18 ans)">
+        <div class="glass-card">
+            <label>Pseudo Discord & Âge</label>
+            <input type="text" name="identite" required placeholder="Ex: Luffy#1234 (19 ans)">
+        </div>
 
-        <div class="group-title">I. Parcours & Expérience</div>
-        <label>1. Présente ton parcours sur Discord de manière détaillée (ancienneté, types de serveurs fréquentés, rôles occupés, responsabilités assumées).</label>
-        <textarea name="m1" required></textarea>
+        <div class="glass-card">
+            <div class="group-title">I. PARCOURS & EXPÉRIENCE</div>
+            <label>1. Présente ton parcours sur Discord de manière détaillée (ancienneté, types de serveurs, rôles...).</label>
+            <textarea name="m1" required></textarea>
+            <label>2. Décris une expérience concrète de modération difficile et tes décisions stratégiques.</label>
+            <textarea name="m2" required></textarea>
+            <label>3. As-tu déjà participé à l’élaboration d’un règlement ? Explique ta méthodologie.</label>
+            <textarea name="m3" required></textarea>
+        </div>
 
-        <label>2. Décris une expérience concrète de modération difficile que tu as vécue et explique les décisions stratégiques que tu as prises.</label>
-        <textarea name="m2" required></textarea>
+        <div class="glass-card">
+            <div class="group-title">II. MOTIVATION & VISION</div>
+            <label>4. Quelle est ta conception du rôle de modérateur au sein d’une communauté structurée ?</label>
+            <textarea name="m4" required></textarea>
+            <label>5. En quoi ta candidature se distingue-t-elle des autres ?</label>
+            <textarea name="m5" required></textarea>
+            <label>6. Quelle est la frontière entre autorité légitime et abus de pouvoir ?</label>
+            <textarea name="m6" required></textarea>
+            <label>7. Comment contribues-tu à instaurer un climat sain dans une communauté ?</label>
+            <textarea name="m7" required></textarea>
+        </div>
 
-        <label>3. As-tu déjà participé à l’élaboration ou à l’amélioration d’un règlement ? Si oui, explique ta méthodologie.</label>
-        <textarea name="m3" required></textarea>
+        <div class="glass-card">
+            <div class="group-title">III. ANALYSE & GESTION</div>
+            <label>8. Un membre influent enfreint le règlement. Quelle stratégie adoptes-tu ?</label>
+            <textarea name="m8" required></textarea>
+            <label>9. Deux membres se provoquent mutuellement. Comment établis-tu les responsabilités ?</label>
+            <textarea name="m9" required></textarea>
+            <label>10. Un membre conteste publiquement une sanction. Comment gères-tu cela ?</label>
+            <textarea name="m10" required></textarea>
+            <label>11. Une vague de raid survient la nuit. Quelles sont tes mesures d’urgence ?</label>
+            <textarea name="m11" required></textarea>
+            <label>12. Un modérateur abuse de ses permissions. Quelle est ta réaction ?</label>
+            <textarea name="m12" required></textarea>
+        </div>
 
-        <div class="group-title">II. Motivation & Vision</div>
-        <label>4. Quelle est ta conception du rôle de modérateur au sein d’une communauté structurée ?</label>
-        <textarea name="m4" required></textarea>
+        <div class="glass-card">
+            <div class="group-title">IV. POSTURE & ÉTHIQUE</div>
+            <label>13. Comment maintiens-tu ton objectivité face à la pression ?</label>
+            <textarea name="m13" required></textarea>
+            <label>14. Comment différencies-tu un troll d’un membre réellement problématique ?</label>
+            <textarea name="m14" required></textarea>
+            <label>15. Penses-tu que la fermeté doit primer sur la pédagogie ?</label>
+            <textarea name="m15" required></textarea>
+            <label>16. Définis le principe d’impartialité dans la modération.</label>
+            <textarea name="m16" required></textarea>
+            <label>17. Si un ami proche enfreint le règlement, quelle est ta démarche ?</label>
+            <textarea name="m17" required></textarea>
+            <label>18. Comment éviter les biais personnels dans tes décisions ?</label>
+            <textarea name="m18" required></textarea>
+        </div>
 
-        <label>5. En quoi ta candidature se distingue-t-elle des autres ?</label>
-        <textarea name="m5" required></textarea>
+        <div class="glass-card">
+            <div class="group-title">V. TECHNIQUE & STRATÉGIE</div>
+            <label>19. Explique le fonctionnement des sanctions progressives.</label>
+            <textarea name="m19" required></textarea>
+            <label>20. Décris le rôle des logs et leur importance.</label>
+            <textarea name="m20" required></textarea>
+            <label>21. As-tu déjà configuré un bot de modération ? (Détails).</label>
+            <textarea name="m21" required></textarea>
+            <label>22. Quelles améliorations structurelles proposerais-tu pour l'équipe ?</label>
+            <textarea name="m22" required></textarea>
+        </div>
 
-        <label>6. Quelle est, selon toi, la frontière entre autorité légitime et abus de pouvoir ?</label>
-        <textarea name="m6" required></textarea>
-
-        <label>7. Comment contribues-tu à instaurer un climat sain et durable dans une communauté en ligne ?</label>
-        <textarea name="m7" required></textarea>
-
-        <div class="group-title">III. Analyse & Gestion</div>
-        <label>8. Un membre influent enfreint volontairement le règlement. Quelle stratégie adoptes-tu ?</label>
-        <textarea name="m8" required></textarea>
-
-        <label>9. Deux membres se provoquent mutuellement, mais aucun ne semble totalement innocent. Comment établis-tu les responsabilités ?</label>
-        <textarea name="m9" required></textarea>
-
-        <label>10. Un membre conteste publiquement une sanction appliquée. Comment gères-tu la situation ?</label>
-        <textarea name="m10" required></textarea>
-
-        <label>11. Une vague de raid survient en pleine nuit. Explique précisément les mesures d’urgence que tu prends.</label>
-        <textarea name="m11" required></textarea>
-
-        <label>12. Un modérateur abuse de ses permissions. Quelle est ta réaction et pourquoi ?</label>
-        <textarea name="m12" required></textarea>
-
-        <div class="group-title">IV. Gestion Émotionnelle</div>
-        <label>13. Comment maintiens-tu ton objectivité face à la pression, aux critiques ou aux provocations ?</label>
-        <textarea name="m13" required></textarea>
-
-        <label>14. Comment différencies-tu un simple troll d’un membre réellement problématique ?</label>
-        <textarea name="m14" required></textarea>
-
-        <label>15. Penses-tu que la fermeté doit primer sur la pédagogie ? Argumente ta réponse.</label>
-        <textarea name="m15" required></textarea>
-
-        <div class="group-title">V. Impartialité & Éthique</div>
-        <label>16. Définis le principe d’impartialité dans le cadre d’une modération.</label>
-        <textarea name="m16" required></textarea>
-
-        <label>17. Si un ami proche enfreint le règlement, quelle serait ta démarche exacte ?</label>
-        <textarea name="m17" required></textarea>
-
-        <label>18. Comment éviter les biais personnels dans la prise de décision ?</label>
-        <textarea name="m18" required></textarea>
-
-        <div class="group-title">VI. Compétences Techniques</div>
-        <label>19. Explique le fonctionnement des sanctions progressives (warn → mute → kick → ban).</label>
-        <textarea name="m19" required></textarea>
-
-        <label>20. Décris le rôle des logs et pourquoi ils sont essentiels dans une modération professionnelle.</label>
-        <textarea name="m20" required></textarea>
-
-        <label>21. As-tu déjà configuré un bot de modération ? Décris précisément ce que tu as fait.</label>
-        <textarea name="m21" required></textarea>
-
-        <div class="group-title">VII. Question Stratégique Finale</div>
-        <label>22. Si tu étais responsable, quelles améliorations structurelles mettrais-tu en place ?</label>
-        <textarea name="m22" required></textarea>
-
-        <button type="submit" class="submit-btn">Envoyer Candidature Modo</button>
+        <button type="submit" class="submit-btn">Postuler pour la Modération</button>
     </form>
 
     <form id="form-anim" class="form-content" action="https://formspree.io/f/xnjbrvez" method="POST">
-        <input type="hidden" name="_subject" value="Candidature ANIMATEUR">
+        <input type="hidden" name="Role" value="ANIMATEUR">
         
-        <label>Pseudo Discord & Âge</label>
-        <input type="text" name="identité" required placeholder="Ex: Brook#4321 (20 ans)">
+        <div class="glass-card">
+            <label>Pseudo Discord & Âge</label>
+            <input type="text" name="identite" required placeholder="Ex: Brook#4321 (20 ans)">
+        </div>
 
-        <div class="group-title">Informations générales</div>
-        <label>1. Depuis combien de temps es-tu sur le serveur ?</label>
-        <input type="text" name="a1" required>
+        <div class="glass-card">
+            <div class="group-title">INFOS & MOTIVATION</div>
+            <label>1. Depuis combien de temps es-tu sur le serveur ?</label>
+            <input type="text" name="a1" required>
+            <label>2. Tes expériences passées en tant qu'animateur ?</label>
+            <textarea name="a2" required></textarea>
+            <label>3. Pourquoi souhaites-tu devenir animateur ici ?</label>
+            <textarea name="a3" required></textarea>
+            <label>4. Quelles qualités penses-tu apporter ?</label>
+            <textarea name="a4" required></textarea>
+            <label>5. Réaction face à un membre irrespectueux en event ?</label>
+            <textarea name="a5" required></textarea>
+            <label>6. Préfères-tu travailler seul ou en équipe ?</label>
+            <textarea name="a6" required></textarea>
+            <label>7. Comment gères-tu le stress ou les conflits ?</label>
+            <textarea name="a7" required></textarea>
+            <label>8. Utilisation des perms hors event : autorisé ?</label>
+            <textarea name="a8" required></textarea>
+        </div>
 
-        <label>2. As-tu déjà été animateur ailleurs ? Explique ton rôle précisément.</label>
-        <textarea name="a2" required></textarea>
+        <div class="glass-card">
+            <div class="group-title">CRÉATIVITÉ & RÉACTIVITÉ</div>
+            <label>9. Quels types d’événements pourrais-tu proposer ?</label>
+            <textarea name="a9" required></textarea>
+            <label>10. Propose une idée d’animation originale détaillée.</label>
+            <textarea name="a10" required></textarea>
+            <label>11. Une idée d'événement rapide (flash) ?</label>
+            <textarea name="a11" required></textarea>
+            <label>12. Qu’est-ce qui rend une animation réussie selon toi ?</label>
+            <textarea name="a12" required></textarea>
+            <label>13. Rédige une annonce d'event complète (règles, date...).</label>
+            <textarea name="a13" rows="5" required></textarea>
+            <label>14. Deux membres se disputent en plein event : que fais-tu ?</label>
+            <textarea name="a14" required></textarea>
+        </div>
 
-        <div class="group-title">Motivation et personnalité</div>
-        <label>3. Pourquoi souhaites-tu devenir animateur ici ?</label>
-        <textarea name="a3" required></textarea>
+        <div class="glass-card">
+            <div class="group-title">LOGISTIQUE & TECHNIQUE</div>
+            <label>15. Tes disponibilités régulières ?</label>
+            <input type="text" name="a15" required>
+            <label>16. Gestion du spam pendant une animation ?</label>
+            <textarea name="a16" required></textarea>
+            <label>17. Que fais-tu si ton event est un échec (bug/vide) ?</label>
+            <textarea name="a17" required></textarea>
+            <label>18. Un collègue animateur ne suit pas les règles : réaction ?</label>
+            <textarea name="a18" required></textarea>
+            <label>19. Comment rendre une annonce engageante ?</label>
+            <textarea name="a19" required></textarea>
+            <label>20. Maîtrises-tu les bots d'event (Giveaway, mini-jeux...) ?</label>
+            <textarea name="a20" required></textarea>
+            <label>21. Sais-tu gérer les permissions de salons en temps réel ?</label>
+            <textarea name="a21" required></textarea>
+        </div>
 
-        <label>4. Quelles qualités penses-tu apporter à notre serveur ?</label>
-        <textarea name="a4" required></textarea>
-
-        <label>5. Comment réagirais-tu face à un membre irrespectueux ?</label>
-        <textarea name="a5" required></textarea>
-
-        <label>6. Préfères-tu travailler seul ou en équipe ? Pourquoi ?</label>
-        <textarea name="a6" required></textarea>
-
-        <label>7. Comment gères-tu le stress ou les situations conflictuelles ?</label>
-        <textarea name="a7" required></textarea>
-
-        <label>8. Un animateur a-t-il le droit d’utiliser ses permissions hors event ?</label>
-        <textarea name="a8" required></textarea>
-
-        <div class="group-title">Connaissance / Créativité</div>
-        <label>9. Quels types d’événements ou d’animations pourrais-tu proposer ?</label>
-        <textarea name="a9" required></textarea>
-
-        <label>10. Propose une idée d’animation originale détaillée.</label>
-        <textarea name="a10" required></textarea>
-
-        <label>11. Si tu devais créer un petit événement rapide pour les membres, que ferais-tu ?</label>
-        <textarea name="a11" required></textarea>
-
-        <label>12. Selon toi, qu’est-ce qui rend une animation réussie ?</label>
-        <textarea name="a12" required></textarea>
-
-        <label>13. Crée une annonce complète pour un jeu (date, règles, etc.).</label>
-        <textarea name="a13" rows="5" required></textarea>
-
-        <div class="group-title">Gestion et réactivité</div>
-        <label>14. Réaction si deux membres se disputent pendant un événement ?</label>
-        <textarea name="a14" required></textarea>
-
-        <label>15. Disponibilités pour organiser des événements ? (Quand ?)</label>
-        <input type="text" name="a15" required>
-
-        <label>16. Un membre spam dans le chat pendant un événement, que fais-tu ?</label>
-        <textarea name="a16" required></textarea>
-
-        <label>17. Ton événement échoue (bug ou manque de gens), comment réagis-tu ?</label>
-        <textarea name="a17" required></textarea>
-
-        <label>18. Tu remarques qu’un autre animateur ne suit pas les règles, que fais-tu ?</label>
-        <textarea name="a18" required></textarea>
-
-        <label>19. Comment annoncer une info importante de façon engageante ?</label>
-        <textarea name="a19" required></textarea>
-
-        <div class="group-title">Compétences techniques</div>
-        <label>20. Sais-tu utiliser les commandes de bots pour animer (giveaway, mini-jeux) ?</label>
-        <textarea name="a20" required></textarea>
-
-        <label>21. Sais-tu gérer les salons vocaux et textuels pendant un événement ?</label>
-        <textarea name="a21" required></textarea>
-
-        <button type="submit" class="submit-btn">Envoyer Candidature Anim</button>
+        <button type="submit" class="submit-btn">Postuler pour l'Animation</button>
     </form>
 
     <footer>DYNASTY FAMILY’S © 2026</footer>
@@ -256,8 +237,14 @@
     function switchTab(type) {
         document.querySelectorAll('.form-content').forEach(f => f.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        if(type === 'mod') { document.getElementById('form-mod').classList.add('active'); document.getElementById('btn-mod').classList.add('active'); }
-        else { document.getElementById('form-anim').classList.add('active'); document.getElementById('btn-anim').classList.add('active'); }
+        if(type === 'mod') {
+            document.getElementById('form-mod').classList.add('active');
+            document.getElementById('btn-mod').classList.add('active');
+        } else {
+            document.getElementById('form-anim').classList.add('active');
+            document.getElementById('btn-anim').classList.add('active');
+        }
+        window.scrollTo(0,0);
     }
 </script>
 </body>
