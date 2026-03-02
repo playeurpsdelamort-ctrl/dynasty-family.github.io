@@ -177,6 +177,7 @@
         const steps = document.querySelectorAll('.step');
 
         function changeStep(n) {
+            // Validation du champ
             if (n === 1 && currentStep >= 0) {
                 const area = steps[currentStep].querySelector('textarea');
                 if (!area.value.trim()) { alert("Merci de fournir une réponse."); return; }
@@ -185,6 +186,7 @@
             if (currentStep >= 0) steps[currentStep].classList.remove('active');
             currentStep += n;
 
+            // Envoi du formulaire à la fin
             if (currentStep >= steps.length) {
                 document.getElementById('exam-form').submit();
                 return;
