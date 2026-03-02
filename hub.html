@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Hub - Dynasty Family's</title>
     <style>
-        /* DESIGN DYNASTY FAMILY'S (Cohérence avec les examens) */
+        /* DESIGN DYNASTY FAMILY'S */
         body {
             margin: 0;
             padding: 0;
@@ -25,7 +25,7 @@
 
         .hub-container {
             width: 100%;
-            max-width: 900px;
+            max-width: 1000px;
             text-align: center;
             padding: 40px 20px;
         }
@@ -62,8 +62,8 @@
         /* GRILLE DES POSTES */
         .roles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
             margin-top: 20px;
         }
 
@@ -71,13 +71,15 @@
             background: rgba(13, 20, 38, 0.9);
             border: 1px solid rgba(255, 140, 0, 0.2);
             border-radius: 15px;
-            padding: 30px;
+            padding: 25px;
             transition: 0.3s ease;
             text-decoration: none;
             color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
+            height: 100%;
+            box-sizing: border-box;
         }
 
         .role-card:hover {
@@ -88,7 +90,7 @@
         }
 
         .role-icon {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 15px;
         }
 
@@ -96,12 +98,12 @@
             color: #ff8c00;
             font-weight: 900;
             text-transform: uppercase;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 10px;
         }
 
         .role-desc {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #94a3b8;
             line-height: 1.4;
         }
@@ -127,19 +129,25 @@
             <a href="moderateur.html" class="role-card">
                 <div class="role-icon">🛡️</div>
                 <div class="role-title">Modérateur</div>
-                <div class="role-desc">Discipline, impartialité et gestion de crise. 22 questions stratégiques.</div>
+                <div class="role-desc">Maintenir l'ordre, gérer les conflits et appliquer le règlement avec impartialité.</div>
             </a>
 
             <a href="animateur.html" class="role-card">
                 <div class="role-icon">🎉</div>
                 <div class="role-title">Animateur</div>
-                <div class="role-desc">Créativité, dynamisme et gestion d'événements. 19 questions test.</div>
+                <div class="role-desc">Créer des événements, dynamiser le chat et divertir la communauté.</div>
+            </a>
+
+            <a href="middleman.html" class="role-card">
+                <div class="role-icon">🤝</div>
+                <div class="role-title">Middleman</div>
+                <div class="role-desc">Sécuriser les échanges Blox Fruits et garantir la confiance entre joueurs.</div>
             </a>
 
             <a href="bot-manager.html" class="role-card">
                 <div class="role-icon">🤖</div>
                 <div class="role-title">Bot Manager</div>
-                <div class="role-desc">Architecture technique, sécurité et API. 23 questions expert.</div>
+                <div class="role-desc">Gestion technique, configuration des bots et sécurité informatique.</div>
             </a>
 
         </div>
@@ -148,7 +156,7 @@
     </div>
 
     <script>
-        // Affiche le pseudo enregistré à l'accueil (index.html)
+        // Récupération du pseudo depuis l'accueil
         const savedUser = localStorage.getItem('user') || "Anonyme";
         document.getElementById('display-user').innerText = "Candidat : " + savedUser;
     </script>
