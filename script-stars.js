@@ -1,6 +1,7 @@
-const field = document.getElementById('star-field');
-if (field) {
-    for (let i = 0; i < 150; i++) {
+function generateStars() {
+    const field = document.getElementById('star-field');
+    if (!field) return;
+    for (let i = 0; i < 120; i++) {
         const star = document.createElement('div');
         star.className = 'star';
         const size = Math.random() * 3 + 'px';
@@ -12,3 +13,4 @@ if (field) {
         field.appendChild(star);
     }
 }
+generateStars();
