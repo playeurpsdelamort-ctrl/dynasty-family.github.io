@@ -14,18 +14,19 @@
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-        /* Fond Espace Profond Étoilé */
+        /* FOND HYPER-ÉTOILÉ (Multi-couches) */
         body { 
             background: #000;
             background-image: 
-                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 50px 160px, #ddd, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 25px 35px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 100px, #eee, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 120px 210px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 150px 40px, #ddd, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 200px 150px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 250px 80px, #fff, rgba(0,0,0,0)),
                 linear-gradient(135deg, #020617 0%, #0f172a 100%);
             background-repeat: repeat;
-            background-size: 200px 200px, 150px 150px, 250px 250px, 300px 300px, 120px 120px, 100% 100%;
+            background-size: 250px 250px, 300px 300px, 350px 350px, 200px 200px, 400px 400px, 280px 280px, 100% 100%;
             color: var(--text-main); 
             font-family: 'Segoe UI', system-ui, sans-serif; 
             margin: 0; padding: 10px; min-height: 100vh;
@@ -36,7 +37,7 @@
         .header { text-align: center; margin-bottom: 30px; }
         .logo { 
             width: 130px; height: 130px; border-radius: 50%; 
-            border: 3px solid #fff; box-shadow: 0 0 30px rgba(251, 146, 60, 0.6);
+            border: 3px solid #fff; box-shadow: 0 0 30px rgba(251, 146, 60, 0.7);
             object-fit: cover; background: #000;
         }
         h1 { color: var(--gold); font-size: 1.8rem; text-transform: uppercase; letter-spacing: 3px; margin: 15px 0 5px; font-weight: 900; }
@@ -44,7 +45,7 @@
 
         /* --- Onglets --- */
         .tab-switcher {
-            display: flex; background: rgba(0,0,0,0.7); padding: 6px; 
+            display: flex; background: rgba(0,0,0,0.8); padding: 6px; 
             border-radius: 50px; margin-bottom: 30px; border: 1px solid var(--gold);
         }
         .tab-btn {
@@ -95,8 +96,8 @@
 
 <div class="container">
     <div class="header">
-        <img src="dinastyfamilli.jpg" alt="Logo Gear 5" class="logo">
-        <h1>𝘿𝙮𝙣𝙖𝙨𝙩𝙮 𝙁𝙖𝙢𝙞𝙡𝙮’𝙨</h1>
+        <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" alt="Logo Gear 5" class="logo">
+        <h1>𝘿𝙮𝙣𝙖𝙨𝙩𝙮 𝙁𝙖𝙢𝙞𝙡𝙮’ｓ</h1>
         <p class="subtitle">RECRUTEMENT DIVINEMENT FUN</p>
     </div>
 
@@ -108,24 +109,18 @@
     <div id="section-mod" class="form-content active">
         <form action="https://formspree.io/f/xnjbrvez" method="POST">
             <input type="hidden" name="Candidature" value="MODÉRATEUR">
-            
             <div class="glass-card">
                 <label>Pseudo Discord & Âge</label>
                 <input type="text" name="identite" required placeholder="Luffy#1234 (19 ans)">
             </div>
-
             <div class="glass-card">
-                <div class="group-title">I. PARCOURS & EXPÉRIENCE</div>
+                <div class="group-title">QUESTIONS DE MODÉRATION</div>
                 <label>1. Présente ton parcours sur Discord de manière détaillée (ancienneté, types de serveurs, rôles...).</label>
                 <textarea name="m1" required></textarea>
                 <label>2. Décris une expérience concrète de modération difficile et tes décisions stratégiques.</label>
                 <textarea name="m2" required></textarea>
                 <label>3. As-tu déjà participé à l’élaboration d’un règlement ? Explique ta méthodologie.</label>
                 <textarea name="m3" required></textarea>
-            </div>
-
-            <div class="glass-card">
-                <div class="group-title">II. MOTIVATION & VISION</div>
                 <label>4. Quelle est ta conception du rôle de modérateur au sein d’une communauté structurée ?</label>
                 <textarea name="m4" required></textarea>
                 <label>5. En quoi ta candidature se distingue-t-elle des autres ?</label>
@@ -134,10 +129,6 @@
                 <textarea name="m6" required></textarea>
                 <label>7. Comment contribues-tu à instaurer un climat sain dans une communauté ?</label>
                 <textarea name="m7" required></textarea>
-            </div>
-
-            <div class="glass-card">
-                <div class="group-title">III. ANALYSE & GESTION</div>
                 <label>8. Un membre influent enfreint le règlement. Quelle stratégie adoptes-tu ?</label>
                 <textarea name="m8" required></textarea>
                 <label>9. Deux membres se provoquent mutuellement. Comment établis-tu les responsabilités ?</label>
@@ -148,10 +139,6 @@
                 <textarea name="m11" required></textarea>
                 <label>12. Un modérateur abuse de ses permissions. Quelle est ta réaction ?</label>
                 <textarea name="m12" required></textarea>
-            </div>
-
-            <div class="glass-card">
-                <div class="group-title">IV. POSTURE & ÉTHIQUE</div>
                 <label>13. Comment maintiens-tu ton objectivité face à la pression ?</label>
                 <textarea name="m13" required></textarea>
                 <label>14. Comment différencies-tu un troll d’un membre réellement problématique ?</label>
@@ -164,10 +151,6 @@
                 <textarea name="m17" required></textarea>
                 <label>18. Comment éviter les biais personnels dans tes décisions ?</label>
                 <textarea name="m18" required></textarea>
-            </div>
-
-            <div class="glass-card">
-                <div class="group-title">V. TECHNIQUE & STRATÉGIE</div>
                 <label>19. Explique le fonctionnement des sanctions progressives (warn → mute → kick → ban).</label>
                 <textarea name="m19" required></textarea>
                 <label>20. Décris le rôle des logs et leur importance.</label>
@@ -177,7 +160,6 @@
                 <label>22. Quelles améliorations structurelles proposerais-tu pour l'équipe ?</label>
                 <textarea name="m22" required></textarea>
             </div>
-
             <button type="submit" class="submit-btn">SOUMETTRE CANDIDATURE DIVINE</button>
         </form>
     </div>
@@ -185,14 +167,12 @@
     <div id="section-anim" class="form-content">
         <form action="https://formspree.io/f/xnjbrvez" method="POST">
             <input type="hidden" name="Candidature" value="ANIMATEUR">
-            
             <div class="glass-card">
                 <label>Pseudo Discord & Âge</label>
                 <input type="text" name="identite" required placeholder="Brook#1234 (20 ans)">
             </div>
-
             <div class="glass-card">
-                <div class="group-title">INFOS & MOTIVATION</div>
+                <div class="group-title">QUESTIONS D'ANIMATION</div>
                 <label>1. Depuis combien de temps es-tu sur le serveur ?</label>
                 <input type="text" name="a1" required>
                 <label>2. Tes expériences passées en tant qu'animateur ?</label>
@@ -209,10 +189,6 @@
                 <textarea name="a7" required></textarea>
                 <label>8. Un animateur a-t-il le droit d’utiliser ses permissions hors event ?</label>
                 <textarea name="a8" required></textarea>
-            </div>
-
-            <div class="glass-card">
-                <div class="group-title">CRÉATIVITÉ & RÉACTIVITÉ</div>
                 <label>9. Quels types d’événements pourrais-tu proposer ?</label>
                 <textarea name="a9" required></textarea>
                 <label>10. Propose une idée d’animation originale détaillée.</label>
@@ -225,10 +201,6 @@
                 <textarea name="a13" rows="5" required></textarea>
                 <label>14. Réaction si deux membres se disputent pendant un événement ?</label>
                 <textarea name="a14" required></textarea>
-            </div>
-
-            <div class="glass-card">
-                <div class="group-title">LOGISTIQUE & TECHNIQUE</div>
                 <label>15. Tes disponibilités pour organiser des événements ?</label>
                 <input type="text" name="a15" required>
                 <label>16. Un membre spam dans le chat pendant un événement, que fais-tu ?</label>
@@ -244,7 +216,6 @@
                 <label>21. Sais-tu gérer les salons vocaux et textuels pendant un événement ?</label>
                 <textarea name="a21" required></textarea>
             </div>
-
             <button type="submit" class="submit-btn">POSTULER POUR L'AMBIANCE G5</button>
         </form>
     </div>
