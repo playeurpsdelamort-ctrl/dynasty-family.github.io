@@ -2,54 +2,37 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynasty Family’s - Connexion</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        :root { --gold: #fb923c; --bg: #020617; }
-        body { 
-            background: var(--bg); color: white; font-family: sans-serif;
-            display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;
-            background-image: linear-gradient(135deg, #020617 0%, #0f172a 100%);
-        }
-        .login-card {
-            background: rgba(15, 23, 42, 0.9); padding: 40px; border-radius: 20px;
-            border: 1px solid var(--gold); text-align: center; width: 90%; max-width: 400px;
-        }
-        .logo { width: 100px; border-radius: 50%; border: 2px solid white; margin-bottom: 20px; }
-        h1 { color: var(--gold); font-size: 1.4rem; text-transform: uppercase; letter-spacing: 2px; }
-        input { 
-            width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; 
-            border: 1px solid #475569; background: #000; color: white; box-sizing: border-box;
-        }
-        button { 
-            width: 100%; padding: 15px; background: var(--gold); border: none; 
-            border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px;
-        }
-        #error { color: #ef4444; font-size: 0.8rem; margin-top: 10px; display: none; }
+        body { display: flex; align-items: center; justify-content: center; }
+        .login-box { max-width: 400px; text-align: center; }
+        .logo { width: 100px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 20px; }
     </style>
 </head>
 <body>
-    <div class="login-card">
+    <div class="glass-card login-box">
         <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo">
-        <h1>Accès Recrutement</h1>
-        <input type="text" id="discord_user" placeholder="Ton Pseudo Discord (ex: Membre#0000)">
-        <input type="password" id="access_code" placeholder="Code d'accès">
-        <button onclick="login()">Se Connecter</button>
-        <p id="error">Identifiants incorrects ou accès non autorisé.</p>
+        <h1>Connexion</h1>
+        <input type="text" id="user" placeholder="Pseudo Discord">
+        <br><br>
+        <input type="password" id="pass" placeholder="Code d'accès">
+        <br><br>
+        <button class="btn" onclick="login()">Entrer</button>
+        <p id="error" style="color:red; display:none; margin-top:15px;">Accès refusé.</p>
     </div>
 
     <script>
         function login() {
-            const user = document.getElementById('discord_user').value;
-            const code = document.getElementById('access_code').value;
-            
-            // Système de vérification simple (à modifier selon tes besoins)
-            if(user !== "" && code === "G5_DYNASTY") {
-                localStorage.setItem('dynasty_user', user);
+            const u = document.getElementById('user').value;
+            const p = document.getElementById('pass').value;
+            if(u === "Admin_Dynasty" && p === "ADMIN_GOLD") {
+                localStorage.setItem('user', u);
+                window.location.href = "admin-view.html";
+            } else if(p === "G5_DYNASTY") {
+                localStorage.setItem('user', u);
                 window.location.href = "hub.html";
-            } else {
-                document.getElementById('error').style.display = 'block';
-            }
+            } else { document.getElementById('error').style.display='block'; }
         }
     </script>
 </body>
