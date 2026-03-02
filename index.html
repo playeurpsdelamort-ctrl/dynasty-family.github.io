@@ -2,25 +2,26 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Dynasty Family's - Recrutement</title>
+    <title>Dynasty Family's - Accueil</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="glass-card" id="login-box">
-        <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo">
+    <div class="glass-card">
+        <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo" alt="Logo">
+        
         <h1>Recrutement G5</h1>
         
         <div id="candidat-view">
             <input type="text" id="pseudo" placeholder="Ton Pseudo Discord">
             <button class="btn" onclick="startCandidature()">Commencer</button>
-            <a class="admin-link" onclick="toggleAdmin()">Accès Staff uniquement</a>
+            <span class="admin-link" onclick="toggleAdmin()">Accès Staff uniquement</span>
         </div>
 
         <div id="admin-view" style="display:none;">
             <input type="text" id="admin-user" placeholder="Login Admin">
             <input type="password" id="admin-pass" placeholder="Mot de passe">
-            <button class="btn" style="background:#fff" onclick="loginAdmin()">Connexion Staff</button>
-            <a class="admin-link" onclick="toggleAdmin()">Retour candidat</a>
+            <button class="btn" style="background:#fff; color:#000;" onclick="loginAdmin()">Connexion Staff</button>
+            <span class="admin-link" onclick="toggleAdmin()">Retour candidat</span>
         </div>
     </div>
 
@@ -28,8 +29,8 @@
         function toggleAdmin() {
             const c = document.getElementById('candidat-view');
             const a = document.getElementById('admin-view');
-            c.style.display = c.style.display === 'none' ? 'block' : 'none';
-            a.style.display = a.style.display === 'none' ? 'block' : 'none';
+            c.style.display = (c.style.display === 'none') ? 'block' : 'none';
+            a.style.display = (a.style.display === 'none') ? 'block' : 'none';
         }
 
         function startCandidature() {
@@ -38,18 +39,22 @@
                 localStorage.setItem('user', pseudo);
                 localStorage.setItem('role', 'candidat');
                 window.location.href = "hub.html";
-            } else { alert("Entre ton pseudo !"); }
+            } else { 
+                alert("Merci d'entrer ton pseudo Discord pour continuer."); 
+            }
         }
 
         function loginAdmin() {
             const u = document.getElementById('admin-user').value;
             const p = document.getElementById('admin-pass').value;
-            // Identifiants Admin
+            // Identifiants à personnaliser
             if(u === "Admin" && p === "Dynasty2024") {
                 localStorage.setItem('user', u);
                 localStorage.setItem('role', 'admin');
                 window.location.href = "admin-view.html";
-            } else { alert("Identifiants incorrects"); }
+            } else { 
+                alert("Identifiants Staff incorrects."); 
+            }
         }
     </script>
 </body>
