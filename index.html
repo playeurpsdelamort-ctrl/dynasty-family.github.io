@@ -2,37 +2,54 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Dynasty Family’s - Connexion</title>
+    <title>Dynasty Family's - Recrutement</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        body { display: flex; align-items: center; justify-content: center; }
-        .login-box { max-width: 400px; text-align: center; }
-        .logo { width: 100px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 20px; }
-    </style>
 </head>
 <body>
-    <div class="glass-card login-box">
+    <div class="glass-card" id="login-box">
         <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo">
-        <h1>Connexion</h1>
-        <input type="text" id="user" placeholder="Pseudo Discord">
-        <br><br>
-        <input type="password" id="pass" placeholder="Code d'accès">
-        <br><br>
-        <button class="btn" onclick="login()">Entrer</button>
-        <p id="error" style="color:red; display:none; margin-top:15px;">Accès refusé.</p>
+        <h1>Recrutement G5</h1>
+        
+        <div id="candidat-view">
+            <input type="text" id="pseudo" placeholder="Ton Pseudo Discord">
+            <button class="btn" onclick="startCandidature()">Commencer</button>
+            <a class="admin-link" onclick="toggleAdmin()">Accès Staff uniquement</a>
+        </div>
+
+        <div id="admin-view" style="display:none;">
+            <input type="text" id="admin-user" placeholder="Login Admin">
+            <input type="password" id="admin-pass" placeholder="Mot de passe">
+            <button class="btn" style="background:#fff" onclick="loginAdmin()">Connexion Staff</button>
+            <a class="admin-link" onclick="toggleAdmin()">Retour candidat</a>
+        </div>
     </div>
 
     <script>
-        function login() {
-            const u = document.getElementById('user').value;
-            const p = document.getElementById('pass').value;
-            if(u === "Admin_Dynasty" && p === "ADMIN_GOLD") {
-                localStorage.setItem('user', u);
-                window.location.href = "admin-view.html";
-            } else if(p === "G5_DYNASTY") {
-                localStorage.setItem('user', u);
+        function toggleAdmin() {
+            const c = document.getElementById('candidat-view');
+            const a = document.getElementById('admin-view');
+            c.style.display = c.style.display === 'none' ? 'block' : 'none';
+            a.style.display = a.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function startCandidature() {
+            const pseudo = document.getElementById('pseudo').value;
+            if(pseudo.trim() !== "") {
+                localStorage.setItem('user', pseudo);
+                localStorage.setItem('role', 'candidat');
                 window.location.href = "hub.html";
-            } else { document.getElementById('error').style.display='block'; }
+            } else { alert("Entre ton pseudo !"); }
+        }
+
+        function loginAdmin() {
+            const u = document.getElementById('admin-user').value;
+            const p = document.getElementById('admin-pass').value;
+            // Identifiants Admin
+            if(u === "Admin" && p === "Dynasty2024") {
+                localStorage.setItem('user', u);
+                localStorage.setItem('role', 'admin');
+                window.location.href = "admin-view.html";
+            } else { alert("Identifiants incorrects"); }
         }
     </script>
 </body>
