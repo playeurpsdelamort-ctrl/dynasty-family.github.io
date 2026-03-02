@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Candidature Bot Manager - Dynasty</title>
+    <title>Candidature Bot Manager - Dynasty Family's</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .container { min-height: 100vh; padding: 40px 20px; display: block; }
-        .glass-card { max-width: 700px; margin: auto; text-align: left; }
-        .section-title { 
-            color: var(--gold); 
-            border-bottom: 1px solid var(--gold-glow); 
-            padding-bottom: 10px; 
-            margin: 30px 0 20px 0; 
-            text-transform: uppercase; 
-            font-size: 0.9rem; 
-            letter-spacing: 2px;
+        .glass-card { max-width: 850px; margin: auto; text-align: left; padding: 40px; }
+        
+        .section-header {
+            background: linear-gradient(90deg, var(--gold-glow), transparent);
+            padding: 10px 15px;
+            border-left: 4px solid var(--gold);
+            margin: 40px 0 20px 0;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
         }
-        label { font-size: 0.9rem; margin-top: 20px; display: block; }
+
+        .question-block { margin-bottom: 25px; }
+        
+        label { 
+            display: block; 
+            font-size: 0.95rem; 
+            margin-bottom: 10px; 
+            line-height: 1.5;
+            color: #e5e7eb;
+        }
+
         textarea { 
             width: 100%; 
             padding: 12px; 
@@ -26,67 +38,177 @@
             background: rgba(0, 0, 0, 0.4); 
             color: white; 
             box-sizing: border-box; 
-            min-height: 80px; 
+            min-height: 100px; 
             font-family: inherit;
             resize: vertical;
+            transition: 0.3s;
         }
-        textarea:focus { border-color: var(--gold); outline: none; }
-        .btn-submit { margin-top: 40px; }
+
+        textarea:focus { border-color: var(--gold); outline: none; background: rgba(0,0,0,0.6); }
+
+        .btn-submit { margin-top: 50px; font-size: 1.1rem; }
+        
+        ul { margin: 5px 0 10px 20px; color: var(--gold); font-size: 0.85rem; }
     </style>
 </head>
 <body>
     <div id="star-field"></div>
 
     <div class="container">
-        <div style="text-align: center; margin-bottom: 30px;">
+        <div style="text-align: center; margin-bottom: 40px;">
             <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo">
-            <h1>Bot Manager</h1>
-            <div class="subtitle">Architecture & Résilience</div>
+            <h1>Candidature Bot Manager</h1>
+            <div class="subtitle">Examen Technique de Haut Niveau</div>
         </div>
 
         <div class="glass-card">
             <form action="https://formspree.io/f/xnjbrvez" method="POST">
-                <input type="hidden" name="Pseudo_Discord" id="hidden-pseudo">
+                
+                <input type="hidden" name="Pseudo_Discord" id="form-pseudo">
                 <input type="hidden" name="Poste" value="Bot Manager">
 
-                <div class="section-title">I. Parcours & Motivations</div>
-                <label>Pourquoi avoir choisi de postuler pour le poste de Bot Manager au sein de la Dynasty ?</label>
-                <textarea name="motivations" required></textarea>
+                <div class="section-header">I. Architecture & Hébergement</div>
+                
+                <div class="question-block">
+                    <label>1. Analyse comparativement une architecture self-hosted, cloud-managed et serverless pour un bot Discord. Discute des implications en matière de latence, scalabilité, résilience et coûts.</label>
+                    <textarea name="Q1_Architecture_Compare" required></textarea>
+                </div>
 
-                <label>Quelles sont vos expériences passées en gestion de bots Discord (développement ou configuration) ?</label>
-                <textarea name="experiences" required></textarea>
+                <div class="question-block">
+                    <label>2. Explique les différences fondamentales entre les Gateway Intents, Webhooks et Slash Commands. Dans quels contextes les privilégier ?</label>
+                    <textarea name="Q2_Intents_Webhooks_Slash" required></textarea>
+                </div>
 
-                <div class="section-title">II. Compétences Techniques</div>
-                <label>Comment sécurisez-vous le token d'un bot pour éviter les fuites (Leaks) ?</label>
-                <textarea name="securite_token" required></textarea>
+                <div class="question-block">
+                    <label>3. Décris le cycle de vie complet d’un bot depuis l’authentification OAuth2 jusqu’au traitement d’un événement.</label>
+                    <textarea name="Q3_Cycle_De_Vie" required></textarea>
+                </div>
 
-                <label>Un bot subit des ratelimits constants. Quelles solutions mettez-vous en place ?</label>
-                <textarea name="ratelimit_solution" required></textarea>
+                <div class="question-block">
+                    <label>4. Quels sont les risques du stockage local d'un token ? Propose une architecture sécurisée pour la gestion des secrets.</label>
+                    <textarea name="Q4_Gestion_Secrets" required></textarea>
+                </div>
 
-                <label>Quelle architecture privilégiez-vous pour un bot qui doit tenir sur plusieurs serveurs (Sharding, Clusters...) ? Pourquoi ?</label>
-                <textarea name="architecture" required></textarea>
+                <div class="section-header">II. Permissions & Sécurité Avancée</div>
 
-                <div class="section-title">III. Mise en Situation</div>
-                <label>Le bot principal de la Dynasty tombe en panne pendant un événement majeur. Quelle est votre procédure d'urgence ?</label>
-                <textarea name="scenario_panne" required></textarea>
+                <div class="question-block">
+                    <label>5. Analyse le principe du Least Privilege (Moindre Privilège). Comment l'implémenter concrètement ?</label>
+                    <textarea name="Q5_Least_Privilege" required></textarea>
+                </div>
 
-                <label>On vous demande d'intégrer une fonctionnalité de logs avancés pour surveiller les raids. Comment procédez-vous ?</label>
-                <textarea name="anti_raid" required></textarea>
+                <div class="question-block">
+                    <label>6. Détaille les permissions dangereuses (Manage Roles, Admin...) et explique les scénarios d’attaque possibles.</label>
+                    <textarea name="Q6_Permissions_Risques" required></textarea>
+                </div>
 
-                <div class="section-title">IV. Engagement</div>
-                <label>Quelles seraient vos disponibilités hebdomadaires pour la maintenance des outils ?</label>
-                <textarea name="disponibilites" required></textarea>
+                <div class="question-block">
+                    <label>7. Comment protéger un bot contre l'injection de commandes, l'escalade de privilèges et le Rate limit abuse ?</label>
+                    <textarea name="Q7_Protections_Techniques" required></textarea>
+                </div>
 
-                <button type="submit" class="btn btn-submit">Envoyer ma candidature</button>
-                <a href="hub.html" class="staff-link" style="text-align: center;">Annuler et retourner au hub</a>
+                <div class="question-block">
+                    <label>8. Propose un protocole anti-raid intégrant détection comportementale, rate limiting et lockdown dynamique.</label>
+                    <textarea name="Q8_Protocole_AntiRaid" required></textarea>
+                </div>
+
+                <div class="section-header">III. Résilience & Gestion de crise</div>
+
+                <div class="question-block">
+                    <label>9. Un bot critique tombe en panne durant un raid. Décris ton PCA (Urgence - Stabilisation - Restauration).</label>
+                    <textarea name="Q9_PCA_Crise" required></textarea>
+                </div>
+
+                <div class="question-block">
+                    <label>10. Comment implémenterais-tu un système de failover automatique pour garantir une haute disponibilité (HA) ?</label>
+                    <textarea name="Q10_Failover_HA" required></textarea>
+                </div>
+
+                <div class="question-block">
+                    <label>11. Décris une méthode de monitoring proactive (logs centralisés, métriques CPU/RAM, alertes).</label>
+                    <textarea name="Q11_Monitoring" required></textarea>
+                </div>
+
+                <div class="question-block">
+                    <label>12. Un bot exécute des actions imprévues sans modif de code. Quelle est ta démarche d’audit technique ?</label>
+                    <textarea name="Q12_Audit_Technique" required></textarea>
+                </div>
+
+                <div class="section-header">IV. Conflits & Interopérabilité</div>
+
+                <div class="question-block">
+                    <label>13. Deux bots entrent en conflit (préfixe/événements). Comment diagnostiquer la source ?</label>
+                    <textarea name="Q13_Diagnostic_Conflit" required></textarea>
+                </div>
+
+                <div class="question-block">
+                    <label>14. Comment éviter les collisions de permissions lors de la gestion automatisée des rôles par plusieurs bots ?</label>
+                    <textarea name="Q14_Collisions_Roles" required></textarea>
+                </div>
+
+                <div class="question-block">
+                    <label>15. Un bot mute accidentellement un admin. Analyse les failles de conception possibles.</label>
+                    <textarea name="Q15_Erreur_Conception" required></textarea>
+                </div>
+
+                <div class="section-header">V. Développement & Optimisation</div>
+
+                <div class="question-block">
+                    <label>16. Architecture monolithique vs modulaire : laquelle privilégier pour un serveur à forte croissance ?</label>
+                    <textarea name="Q16_Monolithe_vs_Modulaire" required></textarea>
+                </div>
+
+                <div class="question-block">
+                    <label>17. Comment optimiser un bot pour réduire la RAM et éviter les memory leaks ?</label>
+                    <textarea name="Q17_Optimisation_Memory" required></textarea>
+                </div>
+
+                <div class="question-block">
+                    <label>18. Avantages/Inconvénients du stockage : JSON, SQL, NoSQL et Redis.</label>
+                    <textarea name="Q18_Bases_Donnees" required></textarea>
+                </div>
+
+                <div class="question-block">
+                    <label>19. Comment implémenter un système de permissions hiérarchique interne indépendant de Discord ?</label>
+                    <textarea name="Q19_Permissions_Internes" required></textarea>
+                </div>
+
+                <div class="section-header">VI. Gouvernance & Stratégie</div>
+
+                <div class="question-block">
+                    <label>20. Quand justifier la création d’un bot propriétaire plutôt qu’un bot public ?</label>
+                    <textarea name="Q20_Proprietaire_vs_Public" required></textarea>
+                </div>
+
+                <div class="question-block">
+                    <label>21. Comment évaluer la fiabilité d’un bot public avant de l’ajouter ?</label>
+                    <textarea name="Q21_Fiabilite_Bot_Public" required></textarea>
+                </div>
+
+                <div class="question-block">
+                    <label>22. Quelle est ta politique concernant l’attribution du rôle Administrateur à un bot ? Argumente.</label>
+                    <textarea name="Q22_Politique_Admin" required></textarea>
+                </div>
+
+                <div class="section-header">VII. Étude de cas (Expert)</div>
+
+                <div class="question-block">
+                    <label>23. Cas pratique : Raid coordonné + Tentative d'exploit bot + Saturation API sur 15k membres. Décris ta stratégie complète.</label>
+                    <textarea name="Q23_Etude_Cas_Expert" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-submit">Soumettre ma candidature expert</button>
+                
+                <div style="text-align: center;">
+                    <a href="hub.html" class="staff-link">← Retour au Hub</a>
+                </div>
             </form>
         </div>
     </div>
 
     <script src="script-stars.js"></script>
     <script>
-        // Récupère le pseudo stocké à l'accueil pour l'envoyer avec le formulaire
-        document.getElementById('hidden-pseudo').value = localStorage.getItem('user') || "Anonyme";
+        // Injecte le pseudo stocké lors de la connexion
+        document.getElementById('form-pseudo').value = localStorage.getItem('user') || "Anonyme";
     </script>
 </body>
 </html>
