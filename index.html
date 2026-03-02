@@ -137,8 +137,8 @@
 
     <div class="tab-switcher-container">
         <div class="tab-switcher">
-            <button class="tab-btn active" onclick="showForm('bot', event)">Bot Manager</button>
-            <button class="tab-btn" onclick="showForm('mod', event)">Modo Test</button>
+            <button class="tab-btn" onclick="showForm('bot', event)">Bot Manager</button>
+            <button class="tab-btn active" onclick="showForm('mod', event)">Modo Test</button>
             <button class="tab-btn" onclick="showForm('mid', event)">Middleman</button>
             <button class="tab-btn" onclick="showForm('anim', event)">Anim Test</button>
         </div>
@@ -146,124 +146,114 @@
 
     <form action="https://formspree.io/f/xnjbrvez" method="POST">
         
-        <div id="section-bot" class="form-content active">
-            <input type="hidden" name="Role" value="BOT MANAGER">
+        <div id="section-mod" class="form-content active">
+            <input type="hidden" name="Role" value="MODERATEUR TEST">
             
             <div class="glass-card">
-                <div class="category-header">I. Architecture & Hébergement</div>
-                <label>1. Analyse comparativement une architecture self-hosted, cloud-managed et serverless pour un bot Discord. Discute des implications en matière de latence, scalabilité horizontale, résilience et coûts d’exploitation.</label>
-                <textarea name="bot_q1" required></textarea>
+                <div class="category-header">I. Parcours & Expérience</div>
+                <label>1. Présente ton parcours sur Discord de manière détaillée (ancienneté, types de serveurs, rôles, responsabilités).</label>
+                <textarea name="mod_q1" required></textarea>
 
-                <label>2. Explique les différences fondamentales entre : Gateway Intents privilégiés, Webhooks, et Slash Commands (Interactions API). Dans quels contextes privilégierais-tu chacun ?</label>
-                <textarea name="bot_q2" required></textarea>
+                <label>2. Décris une expérience concrète de modération difficile et explique les décisions stratégiques que tu as prises.</label>
+                <textarea name="mod_q2" required></textarea>
 
-                <label>3. Décris le cycle de vie complet d’un bot Discord depuis l’authentification OAuth2 jusqu’au traitement d’un événement (event dispatch → handler → réponse).</label>
-                <textarea name="bot_q3" required></textarea>
-
-                <label>4. Quels sont les risques liés au stockage local d’un token bot ? Propose une architecture sécurisée pour la gestion des secrets (ex : variables d’environnement, vault, rotation).</label>
-                <textarea name="bot_q4" required></textarea>
+                <label>3. As-tu déjà participé à l’élaboration ou à l’amélioration d’un règlement ? Explique ta méthodologie.</label>
+                <textarea name="mod_q3" required></textarea>
             </div>
 
             <div class="glass-card">
-                <div class="category-header">II. Permissions & Sécurité Avancée</div>
-                <label>5. Analyse le principe du Least Privilege (Moindre Privilège) dans le contexte d’un bot Discord. Comment l’implémenter concrètement ?</label>
-                <textarea name="bot_q5" required></textarea>
+                <div class="category-header">II. Motivation & Vision</div>
+                <label>4. Quelle est ta conception du rôle de modérateur au sein d’une communauté structurée ?</label>
+                <textarea name="mod_q4" required></textarea>
 
-                <label>6. Détaille les permissions pouvant provoquer une compromission massive du serveur si mal configurées (ex : Manage Roles, Administrator, Manage Webhooks…). Explique les scénarios d’attaque possibles.</label>
-                <textarea name="bot_q6" required></textarea>
+                <label>5. En quoi ta candidature se distingue-t-elle des autres ?</label>
+                <textarea name="mod_q5" required></textarea>
 
-                <label>7. Comment protéger un bot contre : Injection de commandes, Escalade de privilèges, Spam API / Rate limit abuse, et Exploitation via faille dans une dépendance NPM/PyPI ?</label>
-                <textarea name="bot_q7" required></textarea>
+                <label>6. Quelle est, selon toi, la frontière entre autorité légitime et abus de pouvoir ?</label>
+                <textarea name="mod_q6" required></textarea>
 
-                <label>8. Propose un protocole de prévention anti-raid intégrant : Détection comportementale, Limitation de fréquence (rate limiting), Journalisation automatisée, et Mode lockdown dynamique.</label>
-                <textarea name="bot_q8" required></textarea>
+                <label>7. Comment contribues-tu à instaurer un climat sain et durable dans une communauté en ligne ?</label>
+                <textarea name="mod_q7" required></textarea>
             </div>
 
             <div class="glass-card">
-                <div class="category-header">III. Résilience & Gestion de crise</div>
-                <label>9. Un bot critique tombe en panne durant un raid actif. Décris un plan de continuité opérationnelle (PCA) structuré en trois phases : urgence immédiate – stabilisation – restauration complète.</label>
-                <textarea name="bot_q9" required></textarea>
+                <div class="category-header">III. Analyse & Gestion de situations complexes</div>
+                <label>8. Un membre influent enfreint volontairement le règlement. Quelle stratégie adoptes-tu ?</label>
+                <textarea name="mod_q8" required></textarea>
 
-                <label>10. Comment implémenterais-tu un système de failover automatique pour garantir une haute disponibilité (HA) ?</label>
-                <textarea name="bot_q10" required></textarea>
+                <label>9. Deux membres se provoquent mutuellement sans coupable évident. Comment établis-tu les responsabilités ?</label>
+                <textarea name="mod_q9" required></textarea>
 
-                <label>11. Décris une méthode de monitoring proactive (logs centralisés, alertes webhook, uptime monitoring, métriques CPU/RAM).</label>
-                <textarea name="bot_q11" required></textarea>
+                <label>10. Un membre conteste publiquement une sanction. Comment gères-tu la situation sans perdre en crédibilité ?</label>
+                <textarea name="mod_q10" required></textarea>
 
-                <label>12. Un bot commence à exécuter des actions imprévues sans modification récente du code. Quelle serait ta démarche d’audit technique ?</label>
-                <textarea name="bot_q12" required></textarea>
+                <label>11. Une vague de raid survient en pleine nuit. Explique précisément les mesures d’urgence que tu prends.</label>
+                <textarea name="mod_q11" required></textarea>
+
+                <label>12. Un modérateur abuse de ses permissions. Quelle est ta réaction et pourquoi ?</label>
+                <textarea name="mod_q12" required></textarea>
             </div>
 
             <div class="glass-card">
-                <div class="category-header">IV. Conflits & Interopérabilité</div>
-                <label>13. Deux bots entrent en conflit à cause d’un préfixe identique ou d’événements redondants. Explique comment diagnostiquer précisément la source du conflit.</label>
-                <textarea name="bot_q13" required></textarea>
+                <div class="category-header">IV. Gestion émotionnelle & Posture</div>
+                <label>13. Comment maintiens-tu ton objectivité face à la pression ou aux provocations répétées ?</label>
+                <textarea name="mod_q13" required></textarea>
 
-                <label>14. Comment éviter les collisions de permissions lorsque plusieurs bots gèrent les rôles automatiquement ?</label>
-                <textarea name="bot_q14" required></textarea>
+                <label>14. Comment différencies-tu un simple troll d’un membre réellement problématique ?</label>
+                <textarea name="mod_q14" required></textarea>
 
-                <label>15. Un bot mute accidentellement un administrateur à cause d’un mauvais algorithme de détection. Analyse les failles de conception qui ont permis cette erreur.</label>
-                <textarea name="bot_q15" required></textarea>
+                <label>15. Penses-tu que la fermeté doit primer sur la pédagogie ? Argumente ta réponse.</label>
+                <textarea name="mod_q15" required></textarea>
             </div>
 
             <div class="glass-card">
-                <div class="category-header">V. Développement & Optimisation</div>
-                <label>16. Explique la différence entre une architecture monolithique et modulaire pour un bot. Laquelle privilégierais-tu pour un serveur à forte croissance ?</label>
-                <textarea name="bot_q16" required></textarea>
+                <div class="category-header">V. Impartialité & Éthique</div>
+                <label>16. Définis le principe d’impartialité dans le cadre d’une modération.</label>
+                <textarea name="mod_q16" required></textarea>
 
-                <label>17. Comment optimiser un bot pour réduire la consommation mémoire et éviter les memory leaks ?</label>
-                <textarea name="bot_q17" required></textarea>
+                <label>17. Si un ami proche enfreint le règlement, quelle serait ta démarche exacte ?</label>
+                <textarea name="mod_q17" required></textarea>
 
-                <label>18. Quels sont les avantages et inconvénients d’un stockage : JSON local, Base SQL, Base NoSQL, et Redis cache ?</label>
-                <textarea name="bot_q18" required></textarea>
-
-                <label>19. Comment implémenter un système de permissions hiérarchique interne au bot indépendant des rôles Discord ?</label>
-                <textarea name="bot_q19" required></textarea>
+                <label>18. Comment éviter les biais personnels dans la prise de décision ?</label>
+                <textarea name="mod_q18" required></textarea>
             </div>
 
             <div class="glass-card">
-                <div class="category-header">VI. Gouvernance & Stratégie</div>
-                <label>20. Dans quels cas justifierais-tu la création d’un bot propriétaire plutôt que l’utilisation d’un bot public reconnu ?</label>
-                <textarea name="bot_q20" required></textarea>
+                <div class="category-header">VI. Compétences techniques</div>
+                <label>19. Explique le fonctionnement des sanctions progressives (warn → mute → kick → ban).</label>
+                <textarea name="mod_q19" required></textarea>
 
-                <label>21. Comment évaluer la fiabilité d’un bot public avant de l’ajouter au serveur ?</label>
-                <textarea name="bot_q21" required></textarea>
+                <label>20. Décris le rôle des logs et pourquoi ils sont essentiels dans une modération professionnelle.</label>
+                <textarea name="mod_q20" required></textarea>
 
-                <label>22. Quelle serait ta politique concernant l’attribution du rôle Administrateur à un bot ? (Réponse argumentée, technique et sécuritaire).</label>
-                <textarea name="bot_q22" required></textarea>
+                <label>21. As-tu déjà configuré un bot de modération (automod, antiraid...) ? Décris précisément tes actions.</label>
+                <textarea name="mod_q21" required></textarea>
             </div>
 
             <div class="glass-card">
-                <div class="category-header">VII. Étude de cas (Expert)</div>
-                <label>23. Ton serveur de 15 000 membres subit : Raid coordonné, tentative d'exploitation bot via commande mal filtrée, saturation API. Décris ta stratégie complète (Actions, Mesures, Comm, Rapport).</label>
-                <textarea name="bot_q23" required></textarea>
+                <div class="category-header">VII. Question stratégique finale</div>
+                <label>22. Quelles améliorations structurelles mettrais-tu en place pour optimiser l’efficacité de l’équipe de modération ?</label>
+                <textarea name="mod_q22" required></textarea>
                 <span class="staff-tag">@🛡️ Staff</span>
             </div>
             
-            <button type="submit" class="submit-btn">Soumettre la candidature Bot Manager</button>
+            <button type="submit" class="submit-btn">Soumettre la candidature Modo Test</button>
         </div>
 
-        <div id="section-mod" class="form-content">
+        <div id="section-bot" class="form-content">
+            <input type="hidden" name="Role" value="BOT MANAGER">
             <div class="glass-card">
-                <div class="category-header">Modérateur Test</div>
-                <p style="text-align:center">Le questionnaire Modérateur sera affiché ici.</p>
+                <div class="category-header">Bot Manager</div>
+                <p style="text-align:center">Le questionnaire Bot Manager est configuré avec ses 23 questions.</p>
             </div>
         </div>
-        
+
         <div id="section-mid" class="form-content">
-            <div class="glass-card">
-                <div class="category-header">Middleman</div>
-                <p style="text-align:center">Le questionnaire Middleman sera affiché ici.</p>
-            </div>
+            <div class="glass-card"><p style="text-align:center">Formulaire Middleman en attente.</p></div>
         </div>
-
         <div id="section-anim" class="form-content">
-            <div class="glass-card">
-                <div class="category-header">Animateur Test</div>
-                <p style="text-align:center">Le questionnaire Animateur sera affiché ici.</p>
-            </div>
+            <div class="glass-card"><p style="text-align:center">Formulaire Animateur en attente.</p></div>
         </div>
-
     </form>
 
     <footer>DYNASTY FAMILY’S © 2026</footer>
