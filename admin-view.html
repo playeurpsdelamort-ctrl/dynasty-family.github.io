@@ -2,23 +2,20 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Staff - Dynasty Family's</title>
+    <title>Dynasty - Panel Admin</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="glass-card" style="max-width: 600px;">
-        <h1>Espace Staff</h1>
-        <p>Bienvenue Admin. Pour consulter les candidatures déposées, clique sur le bouton ci-dessous :</p>
-        
-        <br>
-        <a href="https://formspree.io/submissions/xnjbrvez" target="_blank" class="btn" style="text-decoration:none; display:block;">Accéder aux Candidatures</a>
-        
-        <br><br>
-        <a href="index.html" class="admin-link">Se déconnecter</a>
+    <div id="star-field"></div>
+    <div class="container">
+        <div class="glass-card">
+            <h1>Panel Staff</h1>
+            <p>Accès autorisé avec succès.</p>
+            <button class="btn" onclick="window.location.href='https://formspree.io/submissions/xnjbrvez'">Voir les candidatures</button>
+            <br><br>
+            <a href="index.html" class="staff-link">Se déconnecter</a>
+        </div>
     </div>
-
-    <script>
-        if(localStorage.getItem('role') !== 'admin') { window.location.href = "index.html"; }
-    </script>
+    <script src="script-stars.js"></script>
 </body>
 </html>
