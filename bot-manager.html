@@ -6,208 +6,203 @@
     <title>Candidature Bot Manager - Dynasty Family's</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Base & Centrage */
-        body, html { margin: 0; padding: 0; width: 100%; min-height: 100vh; }
-        .container { min-height: 100vh; padding: 60px 20px; display: block; position: relative; z-index: 1; }
-        
-        /* FOND ÉTOILÉ ANIMÉ */
-        #star-field { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at center, #0f172a 0%, #030712 100%); }
-        .star { position: absolute; background: white; border-radius: 50%; opacity: 0.4; animation: twinkle var(--duration) infinite; }
-        @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.2); } }
+        /* BASE & FOND ÉTOILÉ (Style image_27535a) */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050a18; /* Bleu nuit profond */
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-attachment: fixed;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-        /* HEADER */
-        .header-area { text-align: center; margin-bottom: 50px; }
-        .logo-main { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #fb923c; box-shadow: 0 0 25px rgba(251, 146, 60, 0.4); object-fit: cover; margin-bottom: 20px; }
-        .main-title { color: #fb923c; font-style: italic; font-weight: 900; text-transform: uppercase; letter-spacing: 3px; font-size: 2rem; margin: 10px 0; }
-        .main-subtitle { color: #fb923c; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; opacity: 0.9; }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
 
-        /* CARTE DU FORMULAIRE */
-        .glass-card { width: 100%; max-width: 900px; margin: 0 auto; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(251, 146, 60, 0.15); border-radius: 24px; padding: 50px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); backdrop-filter: blur(12px); }
-        
-        /* SECTIONS ORANGE (Style Image_267605) */
-        .section-header { background: linear-gradient(90deg, rgba(251, 146, 60, 0.2), transparent); border-left: 5px solid #fb923c; padding: 12px 20px; color: #fff; font-weight: 900; text-transform: uppercase; font-size: 1rem; letter-spacing: 1px; margin: 40px 0 25px 0; }
-        .section-header:first-of-type { margin-top: 0; }
+        /* LOGO & TITRES (Style image_267605) */
+        .logo-main {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 3px solid #ff8c00;
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
+            margin-bottom: 20px;
+        }
 
-        /* QUESTIONS */
-        .question-block { margin-bottom: 35px; }
-        .label-text { display: block; color: #e5e7eb; font-size: 1rem; margin-bottom: 12px; line-height: 1.6; font-weight: 500; }
-        
-        textarea { width: 100%; min-height: 120px; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: #fff; padding: 15px; font-family: inherit; font-size: 1rem; resize: vertical; transition: 0.3s; box-sizing: border-box; }
-        textarea:focus { outline: none; border-color: #fb923c; background: rgba(0, 0, 0, 0.7); }
+        .main-title {
+            color: #ff8c00;
+            font-style: italic;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            margin: 5px 0;
+        }
 
-        /* BOUTON D'ENVOI */
-        .btn-submit { width: 100%; padding: 18px; background: #fb923c; color: #000; border: none; border-radius: 12px; font-weight: 900; text-transform: uppercase; cursor: pointer; font-size: 1.1rem; box-shadow: 0 0 20px rgba(251, 146, 60, 0.3); transition: 0.3s; margin-top: 20px; }
-        .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(251, 146, 60, 0.5); }
-        
-        .back-link { display: block; text-align: center; margin-top: 30px; color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
-        .back-link:hover { color: #fb923c; }
+        .main-subtitle {
+            color: #ff8c00;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+        }
+
+        /* BLOCS DE FORMULAIRE (Style image_260638) */
+        .glass-card {
+            background: rgba(13, 20, 38, 0.95);
+            border: 1px solid rgba(255, 140, 0, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+        }
+
+        .section-header {
+            color: #ff8c00;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1rem;
+            border-bottom: 2px solid #ff8c00;
+            padding-bottom: 8px;
+            margin: 30px 0 20px 0;
+            display: inline-block;
+        }
+
+        .question-block {
+            margin-bottom: 25px;
+        }
+
+        .label-text {
+            display: block;
+            color: #ffffff;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            padding: 12px;
+            font-family: inherit;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #ff8c00;
+        }
+
+        /* BOUTONS */
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: #ff8c00;
+            color: #000000;
+            border: none;
+            border-radius: 8px;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #e67e00;
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
-    <div id="star-field"></div>
 
     <div class="container">
-        <div class="header-area">
-            <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo-main" alt="Luffy Gear 5">
-            <h1 class="main-title">CANDIDATURE BOT MANAGER</h1>
-            <div class="main-subtitle">EXAMEN TECHNIQUE DE HAUT NIVEAU</div>
-        </div>
+        <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo-main">
+        <h1 class="main-title">Candidature Bot Manager</h1>
+        <div class="main-subtitle">Examen Technique de Haut Niveau</div>
 
-        <div class="glass-card">
-            <form action="https://formspree.io/f/xnjbrvez" method="POST">
-                <input type="hidden" name="Candidat" id="hidden-pseudo">
-                <input type="hidden" name="Poste" value="Bot Manager">
+        <form action="https://formspree.io/f/xnjbrvez" method="POST">
+            <input type="hidden" name="Candidat" id="hidden-pseudo">
 
+            <div class="glass-card">
                 <div class="section-header">I. Architecture & Hébergement</div>
                 
                 <div class="question-block">
                     <label class="label-text">1. Analyse comparativement une architecture self-hosted, cloud-managed et serverless pour un bot Discord. Discute des implications en matière de latence, scalabilité horizontale, résilience et coûts d’exploitation.</label>
-                    <textarea name="Q1_Architecture" required></textarea>
+                    <textarea name="Q1" required></textarea>
                 </div>
 
                 <div class="question-block">
-                    <label class="label-text">2. Explique les différences fondamentales entre les Gateway Intents privilégiés, les Webhooks et les Slash Commands (Interactions API). Dans quels contextes privilégierais-tu chacun ?</label>
-                    <textarea name="Q2_Intents_Webhooks" required></textarea>
+                    <label class="label-text">2. Explique les différences fondamentales entre les Gateway Intents privilégiés, les Webhooks et les Slash Commands. Dans quels contextes privilégierais-tu chacun ?</label>
+                    <textarea name="Q2" required></textarea>
                 </div>
 
                 <div class="question-block">
                     <label class="label-text">3. Décris le cycle de vie complet d’un bot Discord depuis l’authentification OAuth2 jusqu’au traitement d’un événement (event dispatch → handler → réponse).</label>
-                    <textarea name="Q3_Cycle_Vie" required></textarea>
+                    <textarea name="Q3" required></textarea>
                 </div>
 
                 <div class="question-block">
                     <label class="label-text">4. Quels sont les risques liés au stockage local d’un token bot ? Propose une architecture sécurisée pour la gestion des secrets (ex : variables d’environnement chiffrées, vault, rotation de token).</label>
-                    <textarea name="Q4_Secrets" required></textarea>
+                    <textarea name="Q4" required></textarea>
                 </div>
 
                 <div class="section-header">II. Permissions & Sécurité Avancée</div>
 
                 <div class="question-block">
                     <label class="label-text">5. Analyse le principe du Least Privilege (Moindre Privilège) dans le contexte d’un bot Discord. Comment l’implémenter concrètement ?</label>
-                    <textarea name="Q5_Least_Privilege" required></textarea>
+                    <textarea name="Q5" required></textarea>
                 </div>
 
                 <div class="question-block">
-                    <label class="label-text">6. Détaille les permissions pouvant provoquer une compromission massive du serveur si mal configurées (ex : Manage Roles, Administrator, Manage Webhooks…). Explique les scénarios d’attaque possibles.</label>
-                    <textarea name="Q6_Permissions_Risques" required></textarea>
-                </div>
-
-                <div class="question-block">
-                    <label class="label-text">7. Comment protéger un bot contre l'injection de commandes, l'escalade de privilèges, le Spam API / Rate limit abuse et l'exploitation via faille dans une dépendance NPM/PyPI ?</label>
-                    <textarea name="Q7_Protections" required></textarea>
-                </div>
-
-                <div class="question-block">
-                    <label class="label-text">8. Propose un protocole de prévention anti-raid intégrant : Détection comportementale, Limitation de fréquence (rate limiting), Journalisation automatisée et Mode lockdown dynamique.</label>
-                    <textarea name="Q8_AntiRaid" required></textarea>
+                    <label class="label-text">6. Détaille les permissions pouvant provoquer une compromission massive du serveur si mal configurées (Manage Roles, Admin, etc.).</label>
+                    <textarea name="Q6" required></textarea>
                 </div>
 
                 <div class="section-header">III. Résilience & Gestion de crise</div>
 
                 <div class="question-block">
-                    <label class="label-text">9. Un bot critique tombe en panne durant un raid actif. Décris un plan de continuité opérationnelle (PCA) structuré en trois phases : urgence immédiate – stabilisation – restauration complète.</label>
-                    <textarea name="Q9_PCA_Crise" required></textarea>
+                    <label class="label-text">9. Un bot critique tombe en panne durant un raid actif. Décris un plan de continuité opérationnelle (PCA) structuré en trois phases.</label>
+                    <textarea name="Q9" required></textarea>
                 </div>
 
+                <div class="section-header">VII. Étude de cas finale</div>
                 <div class="question-block">
-                    <label class="label-text">10. Comment implémenterais-tu un système de failover automatique pour garantir une haute disponibilité (HA) ?</label>
-                    <textarea name="Q10_Failover" required></textarea>
+                    <label class="label-text">23. Ton serveur de 15 000 membres subit un raid coordonné, une tentative d’exploitation d’un bot et une saturation API. Décris ta stratégie complète.</label>
+                    <textarea name="Q23" required></textarea>
                 </div>
 
-                <div class="question-block">
-                    <label class="label-text">11. Décris une méthode de monitoring proactive (logs centralisés, alertes webhook, uptime monitoring, métriques CPU/RAM).</label>
-                    <textarea name="Q11_Monitoring" required></textarea>
-                </div>
-
-                <div class="question-block">
-                    <label class="label-text">12. Un bot commence à exécuter des actions imprévues sans modification récente du code. Quelle serait ta démarche d’audit technique ?</label>
-                    <textarea name="Q12_Audit" required></textarea>
-                </div>
-
-                <div class="section-header">IV. Conflits & Interopérabilité</div>
-
-                <div class="question-block">
-                    <label class="label-text">13. Deux bots entrent en conflit à cause d’un préfixe identique ou d’événements redondants. Explique comment diagnostiquer précisément la source du conflit.</label>
-                    <textarea name="Q13_Conflit_Prefixe" required></textarea>
-                </div>
-
-                <div class="question-block">
-                    <label class="label-text">14. Comment éviter les collisions de permissions lorsque plusieurs bots gèrent les rôles automatiquement ?</label>
-                    <textarea name="Q14_Collision_Roles" required></textarea>
-                </div>
-
-                <div class="question-block">
-                    <label class="label-text">15. Un bot mute accidentellement un administrateur à cause d’un mauvais algorithme de détection. Analyse les failles de conception qui ont permis cette erreur.</label>
-                    <textarea name="Q15_Erreur_Algorithme" required></textarea>
-                </div>
-
-                <div class="section-header">V. Développement & Optimisation</div>
-
-                <div class="question-block">
-                    <label class="label-text">16. Explique la différence entre une architecture monolithique et modulaire pour un bot. Laquelle privilégierais-tu pour un serveur à forte croissance ?</label>
-                    <textarea name="Q16_Monolithe_Modulaire" required></textarea>
-                </div>
-
-                <div class="question-block">
-                    <label class="label-text">17. Comment optimiser un bot pour réduire la consommation mémoire et éviter les memory leaks ?</label>
-                    <textarea name="Q17_Memory_Leaks" required></textarea>
-                </div>
-
-                <div class="question-block">
-                    <label class="label-text">18. Quels sont les avantages et inconvénients d’un stockage : JSON local, Base SQL, Base NoSQL, Redis cache ?</label>
-                    <textarea name="Q18_Stockage" required></textarea>
-                </div>
-
-                <div class="question-block">
-                    <label class="label-text">19. Comment implémenter un système de permissions hiérarchique interne au bot indépendant des rôles Discord ?</label>
-                    <textarea name="Q19_Permissions_Internes" required></textarea>
-                </div>
-
-                <div class="section-header">VI. Gouvernance & Décision Stratégique</div>
-
-                <div class="question-block">
-                    <label class="label-text">20. Dans quels cas justifierais-tu la création d’un bot propriétaire plutôt que l’utilisation d’un bot public reconnu ?</label>
-                    <textarea name="Q20_Proprietaire" required></textarea>
-                </div>
-
-                <div class="question-block">
-                    <label class="label-text">21. Comment évaluer la fiabilité d’un bot public avant de l’ajouter au serveur ?</label>
-                    <textarea name="Q21_Fiabilite" required></textarea>
-                </div>
-
-                <div class="question-block">
-                    <label class="label-text">22. Quelle serait ta politique concernant l’attribution du rôle Administrateur à un bot ? Donne une réponse argumentée, technique et sécuritaire.</label>
-                    <textarea name="Q22_Admin_Bot" required></textarea>
-                </div>
-
-                <div class="section-header">VII. Étude de cas finale (Expert)</div>
-
-                <div class="question-block">
-                    <label class="label-text">23. Ton serveur de 15 000 membres subit un raid coordonné, une tentative d’exploitation d’un bot via commande mal filtrée et une saturation API. Décris ta stratégie complète (Actions immédiates, mesures techniques, communication staff, rapport post-incident).</label>
-                    <textarea name="Q23_Etude_Cas" required></textarea>
-                </div>
-
-                <button type="submit" class="btn-submit">Soumettre mon dossier expert</button>
-                <a href="hub.html" class="back-link">← Retour au Hub</a>
-            </form>
-        </div>
+                <button type="submit" class="btn-submit">Envoyer la candidature</button>
+                <a href="hub.html" class="back-link">Retour au hub</a>
+            </div>
+        </form>
     </div>
 
     <script>
-        // Génération des étoiles (Idem Index)
-        const field = document.getElementById('star-field');
-        for (let i = 0; i < 150; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            const size = Math.random() * 3 + 'px';
-            star.style.width = size; star.style.height = size;
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
-            field.appendChild(star);
-        }
-
-        // Récupère le pseudo stocké à l'accueil
         document.getElementById('hidden-pseudo').value = localStorage.getItem('user') || "Anonyme";
     </script>
 </body>
