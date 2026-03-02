@@ -28,7 +28,7 @@
 <body>
     <div class="header">
         <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo">
-        <div class="title" id="page-title">Candidature Modérateur</div>
+        <div class="title">Candidature Modérateur</div>
     </div>
     <div class="card">
         <div class="progress-bg"><div class="progress-bar" id="bar"></div></div>
@@ -44,55 +44,50 @@
     </div>
     <script>
         const questions = [
-            "Présente ton parcours Discord détaillé (ancienneté, rôles occupés).",
+            "Présente ton parcours Discord détaillé (ancienneté, rôles).",
             "Décris une expérience de modération difficile et tes décisions.",
             "As-tu déjà amélioré un règlement ? Explique ta méthode.",
             "Quelle est ta conception du rôle de modérateur ?",
-            "En quoi ta candidature se distingue-t-elle des autres ?",
+            "En quoi ta candidature se distingue-t-elle ?",
             "Quelle est la frontière entre autorité et abus de pouvoir ?",
-            "Comment instaure-tu un climat sain dans la communauté ?",
+            "Comment instaure-tu un climat sain ?",
             "Stratégie face à un membre influent qui enfreint les règles ?",
-            "Comment gères-tu deux membres qui se provoquent mutuellement ?",
+            "Comment gères-tu deux membres qui se provoquent ?",
             "Un membre conteste ta sanction publiquement. Que fais-tu ?",
             "Explique tes mesures d'urgence en cas de raid nocturne.",
             "Que fais-tu si un autre modérateur abuse de ses permissions ?",
-            "Comment maintiens-tu ton objectivité face aux provocations ?",
-            "Comment différencies-tu un troll d'un membre problématique ?",
+            "Comment maintiens-tu ton objectivité ?",
+            "Différence entre un simple troll et un membre problématique ?",
             "Fermeté ou pédagogie ? Argumente.",
             "Définis le principe d’impartialité.",
             "Si un ami proche enfreint le règlement, que fais-tu ?",
-            "Comment éviter les biais personnels dans tes décisions ?",
-            "Explique le fonctionnement des sanctions (warn -> mute -> kick -> ban).",
-            "Pourquoi les logs sont essentiels en modération ?",
-            "As-tu déjà configuré un bot de modération ? Détaille.",
-            "Quelles améliorations structurelles apporterais-tu à l'équipe ?"
+            "Comment éviter les biais personnels ?",
+            "Explique le fonctionnement des sanctions (warn -> ban).",
+            "Pourquoi les logs sont essentiels ?",
+            "As-tu déjà configuré un bot de modération ?",
+            "Améliorations structurelles pour l'équipe ?"
         ];
         document.getElementById('hid-user').value = localStorage.getItem('user') || "Anonyme";
         const container = document.getElementById('steps-container');
         questions.forEach((q, i) => {
-            const div = document.createElement('div');
-            div.className = 'step';
+            const div = document.createElement('div'); div.className = 'step';
             div.innerHTML = `<span class="q-num">Question ${i+1}/${questions.length}</span><div class="q-text">${q}</div><textarea name="R${i+1}" required></textarea>`;
             container.appendChild(div);
         });
-        let current = -1;
-        const steps = document.querySelectorAll('.step');
+        let current = -1; const steps = document.querySelectorAll('.step');
         function changeStep(n) {
             if (n === 1 && current >= 0 && !steps[current].querySelector('textarea').value.trim()) return alert("Réponds avant de continuer !");
             if (current >= 0) steps[current].classList.remove('active');
             current += n;
             if (current >= steps.length) return document.getElementById('exam-form').submit();
             steps[current].classList.add('active');
-            updateUI();
-            window.scrollTo(0,0);
-        }
-        function updateUI() {
             document.getElementById('bar').style.width = ((current+1)/steps.length)*100 + "%";
             document.getElementById('prevBtn').style.display = current > 0 ? "block" : "none";
-            document.getElementById('nextBtn').innerText = current === steps.length -1 ? "Envoyer ma candidature" : (current === -1 ? "Démarrer" : "Suivant");
+            document.getElementById('nextBtn').innerText = current === steps.length -1 ? "Envoyer" : (current === -1 ? "Démarrer" : "Suivant");
             if(current === -1) changeStep(1);
+            window.scrollTo(0,0);
         }
-        updateUI();
+        changeStep(1);
     </script>
 </body>
 </html>
