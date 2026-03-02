@@ -3,70 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Examen Bot Manager - Dynasty Family's</title>
+    <title>Expert Bot Manager - Dynasty Family's</title>
     <style>
         body { margin:0; background:#050a18; color:white; font-family:sans-serif; display:flex; flex-direction:column; align-items:center; min-height:100vh; padding:15px; box-sizing:border-box; }
         .header { text-align:center; margin-bottom:15px; }
-        .logo { width:70px; height:70px; border-radius:50%; border:2px solid #ff8c00; }
-        .title { color:#ff8c00; font-style:italic; font-size:1.2rem; margin:5px 0; text-transform:uppercase; }
-        .card { width:100%; max-width:600px; background:rgba(13,20,38,0.95); border-radius:15px; border:1px solid rgba(255,140,0,0.3); padding:20px; box-sizing:border-box; }
+        .logo { width:70px; height:70px; border-radius:50%; border:2px solid #ff8c00; box-shadow: 0 0 15px rgba(255,140,0,0.4); }
+        .title { color:#ff8c00; font-style:italic; font-size:1.1rem; margin:5px 0; text-transform:uppercase; font-weight: 900; }
+        .card { width:100%; max-width:700px; background:rgba(13,20,38,0.95); border-radius:15px; border:1px solid rgba(255,140,0,0.3); padding:20px; box-sizing:border-box; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .progress-bg { width:100%; height:4px; background:rgba(255,255,255,0.1); margin-bottom:20px; border-radius:10px; }
         .progress-bar { height:100%; background:#ff8c00; width:0%; transition:0.3s; box-shadow:0 0 10px #ff8c00; }
+        
         .step { display:none; animation:fadeIn 0.3s; }
         .step.active { display:block; }
         @keyframes fadeIn { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
-        .q-num { color:#ff8c00; font-size:0.7rem; font-weight:bold; text-transform:uppercase; }
-        .q-text { font-size:1.05rem; margin:10px 0 20px 0; font-weight:600; line-height:1.4; }
-        textarea { width:100%; min-height:180px; background:#000; border:1px solid #333; border-radius:10px; color:#fff; padding:15px; font-size:16px; box-sizing:border-box; resize:none; }
-        textarea:focus { border-color:#ff8c00; outline:none; }
+        
+        .category-tag { background: #ff8c00; color: #000; font-size: 0.65rem; padding: 2px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase; margin-bottom: 8px; display: inline-block; }
+        .q-num { color:#ff8c00; font-size:0.75rem; font-weight:bold; display: block; margin-bottom: 5px; }
+        .q-text { font-size:1rem; margin-bottom: 15px; font-weight:600; line-height:1.5; color: #e2e8f0; }
+        
+        textarea { width:100%; min-height:220px; background:#000; border:1px solid #333; border-radius:10px; color:#fff; padding:15px; font-size:16px; box-sizing:border-box; resize:none; line-height: 1.4; }
+        textarea:focus { border-color:#ff8c00; outline:none; background: rgba(255,140,0,0.02); }
+        
         .btns { display:flex; flex-direction:column; gap:10px; margin-top:20px; }
-        .btn { padding:16px; border-radius:10px; border:none; font-weight:bold; text-transform:uppercase; cursor:pointer; font-size:0.9rem; }
+        .btn { padding:18px; border-radius:10px; border:none; font-weight:bold; text-transform:uppercase; cursor:pointer; font-size:0.9rem; transition: 0.2s; }
         .btn-next { background:#ff8c00; color:#000; order:1; }
-        .btn-prev { background:rgba(255,255,255,0.05); color:#94a3b8; order:2; }
+        .btn-prev { background:rgba(255,255,255,0.05); color:#94a3b8; order:2; font-size: 0.8rem; }
+        .btn:active { transform: scale(0.98); }
     </style>
 </head>
 <body>
     <div class="header">
         <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo">
-        <div class="title">Candidature Bot Manager</div>
+        <div class="title">Examen Expert Bot Manager</div>
     </div>
+
     <div class="card">
         <div class="progress-bg"><div class="progress-bar" id="bar"></div></div>
         <form action="https://formspree.io/f/xnjbrvez" method="POST" id="exam-form">
             <input type="hidden" name="Pseudo" id="hid-user">
-            <input type="hidden" name="Poste" value="Bot Manager">
+            <input type="hidden" name="Poste" value="Bot Manager Expert">
+            
             <div id="steps-container"></div>
+
             <div class="btns">
-                <button type="button" class="btn btn-next" id="nextBtn" onclick="changeStep(1)">Démarrer</button>
-                <button type="button" class="btn btn-prev" id="prevBtn" onclick="changeStep(-1)" style="display:none">Précédent</button>
+                <button type="button" class="btn btn-next" id="nextBtn" onclick="changeStep(1)">Démarrer l'expertise</button>
+                <button type="button" class="btn btn-prev" id="prevBtn" onclick="changeStep(-1)" style="display:none">Question précédente</button>
             </div>
         </form>
     </div>
 
     <script>
         const questions = [
-            "Quels bots de modération maîtrises-tu le mieux (Dyno, MEE6, Carl-bot, Wick, etc.) ? Détaille ton expérience avec chacun.",
-            "Explique comment tu configurerais un système d'Auto-mod complexe pour filtrer les liens de scam et les mots interdits sans gêner les membres.",
-            "Comment sécurises-tu concrètement un serveur contre les raids massifs (self-bots) ? Quelles options de vérification privilégies-tu ?",
-            "Décris ta méthode pour gérer les permissions des rôles sensibles (Admin/Modo) afin d'éviter toute faille de sécurité (2FA, hiérarchie).",
-            "As-tu des notions en Webhooks ou en utilisation d'API Discord ? Si oui, donne un exemple d'utilisation utile pour le serveur.",
-            "Comment créerais-tu un système de logs efficace pour surveiller les suppressions de messages et les modifications de rôles sans surcharger le staff ?",
-            "Que fais-tu si le bot principal de modération tombe en panne en plein milieu d'une crise sur le serveur ?",
-            "Comment gères-tu les conflits de rôles ou les bugs de hiérarchie qui empêchent certains membres d'accéder à leurs salons ?",
-            "As-tu déjà créé ou hébergé tes propres bots (en Python, JS ou autre) ? Si oui, explique ce qu'ils faisaient précisément.",
-            "Quelle est ta méthodologie pour tester une nouvelle configuration de bot avant de la rendre publique sur tout le serveur ?"
+            { cat: "Architecture", q: "Analyse comparativement une architecture self-hosted, cloud-managed et serverless pour un bot Discord. Discute des implications en matière de latence, scalabilité horizontale, résilience et coûts d’exploitation." },
+            { cat: "Architecture", q: "Explique les différences fondamentales entre : Gateway Intents privilégiés, Webhooks, et Slash Commands (Interactions API). Dans quels contextes privilégierais-tu chacun ?" },
+            { cat: "Architecture", q: "Décris le cycle de vie complet d’un bot Discord depuis l’authentification OAuth2 jusqu’au traitement d’un événement (event dispatch → handler → réponse)." },
+            { cat: "Sécurité", q: "Quels sont les risques liés au stockage local d’un token bot ? Propose une architecture sécurisée pour la gestion des secrets (ex : variables d’environnement chiffrées, vault, rotation de token)." },
+            { cat: "Permissions", q: "Analyse le principe du Least Privilege (Moindre Privilège) dans le contexte d’un bot Discord. Comment l’implémenter concrètement ?" },
+            { cat: "Sécurité", q: "Détaille les permissions pouvant provoquer une compromission massive du serveur si mal configurées (ex : Manage Roles, Administrator, Manage Webhooks…). Explique les scénarios d’attaque possibles." },
+            { cat: "Sécurité", q: "Comment protéger un bot contre : Injection de commandes, Escalade de privilèges, Spam API / Rate limit abuse, et l'exploitation via faille dans une dépendance NPM/PyPI ?" },
+            { cat: "Sécurité", q: "Propose un protocole de prévention anti-raid intégrant : Détection comportementale, Limitation de fréquence (rate limiting), Journalisation automatisée et Mode lockdown dynamique." },
+            { cat: "Gestion de crise", q: "Un bot critique tombe en panne durant un raid actif. Décris un plan de continuité opérationnelle (PCA) structuré en trois phases : urgence immédiate – stabilisation – restauration complète." },
+            { cat: "Résilience", q: "Comment implémenterais-tu un système de failover automatique pour garantir une haute disponibilité (HA) ?" },
+            { cat: "Monitoring", q: "Décris une méthode de monitoring proactive (logs centralisés, alertes webhook, uptime monitoring, métriques CPU/RAM)." },
+            { cat: "Audit", q: "Un bot commence à exécuter des actions imprévues sans modification récente du code. Quelle serait ta démarche d’audit technique ?" },
+            { cat: "Interopérabilité", q: "Deux bots entrent en conflit à cause d’un préfixe identique ou d’événements redondants. Explique comment diagnostiquer précisément la source du conflit." },
+            { cat: "Interopérabilité", q: "Comment éviter les collisions de permissions lorsque plusieurs bots gèrent les rôles automatiquement ?" },
+            { cat: "Analyse", q: "Un bot mute accidentellement un administrateur à cause d’un mauvais algorithme de détection. Analyse les failles de conception qui ont permis cette erreur." },
+            { cat: "Développement", q: "Explique la différence entre une architecture monolithique et modulaire pour un bot. Laquelle privilégierais-tu pour un serveur à forte croissance ?" },
+            { cat: "Optimisation", q: "Comment optimiser un bot pour réduire la consommation mémoire et éviter les memory leaks ?" },
+            { cat: "Données", q: "Quels sont les avantages et inconvénients d’un stockage : JSON local, Base SQL, Base NoSQL et Redis cache ?" },
+            { cat: "Développement", q: "Comment implémenter un système de permissions hiérarchique interne au bot indépendant des rôles Discord ?" },
+            { cat: "Stratégie", q: "Dans quels cas justifierais-tu la création d’un bot propriétaire plutôt que l’utilisation d’un bot public reconnu ?" },
+            { cat: "Stratégie", q: "Comment évaluer la fiabilité d’un bot public avant de l’ajouter au serveur ?" },
+            { cat: "Gouvernance", q: "Quelle serait ta politique concernant l’attribution du rôle Administrateur à un bot ? Donne une réponse argumentée, technique et sécuritaire." },
+            { cat: "Étude de Cas", q: "CAS FINAL : Ton serveur de 15 000 membres subit un raid coordonné, une tentative d’exploitation de bot et une saturation API. Décris ta stratégie complète (Actions, Mesures, Comm, Rapport)." }
         ];
 
-        document.getElementById('hid-user').value = localStorage.getItem('user') || "Anonyme";
         const container = document.getElementById('steps-container');
+        document.getElementById('hid-user').value = localStorage.getItem('user') || "Anonyme";
 
-        questions.forEach((q, i) => {
+        questions.forEach((item, i) => {
             const div = document.createElement('div');
             div.className = 'step';
             div.innerHTML = `
+                <div class="category-tag">${item.cat}</div>
                 <span class="q-num">Question technique ${i+1}/${questions.length}</span>
-                <div class="q-text">${q}</div>
-                <textarea name="Reponse_Bot_${i+1}" placeholder="Détails techniques attendus..." required></textarea>
+                <div class="q-text">${item.q}</div>
+                <textarea name="Reponse_Expert_${i+1}" placeholder="Analyse technique détaillée..." required></textarea>
             `;
             container.appendChild(div);
         });
@@ -76,28 +99,26 @@
 
         function changeStep(n) {
             if (n === 1 && current >= 0) {
-                const area = steps[current].querySelector('textarea');
-                if (!area.value.trim()) { alert("Merci de fournir une réponse technique."); return; }
+                if (!steps[current].querySelector('textarea').value.trim()) {
+                    alert("Une analyse technique est requise pour passer à la suite.");
+                    return;
+                }
             }
-
             if (current >= 0) steps[current].classList.remove('active');
             current += n;
-
             if (current >= steps.length) {
                 document.getElementById('exam-form').submit();
                 return;
             }
-
             steps[current].classList.add('active');
             updateUI();
             window.scrollTo(0,0);
         }
 
         function updateUI() {
-            const progress = ((current + 1) / steps.length) * 100;
-            document.getElementById('bar').style.width = progress + "%";
+            document.getElementById('bar').style.width = ((current+1)/questions.length)*100 + "%";
             document.getElementById('prevBtn').style.display = current > 0 ? "block" : "none";
-            document.getElementById('nextBtn').innerText = current === steps.length - 1 ? "Envoyer le dossier technique" : (current === -1 ? "Démarrer" : "Suivant");
+            document.getElementById('nextBtn').innerText = current === questions.length - 1 ? "Soumettre l'expertise finale" : (current === -1 ? "Démarrer" : "Question Suivante");
             if(current === -1) changeStep(1);
         }
         updateUI();
