@@ -2,71 +2,46 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynasty Family's - Accueil</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="star-field"></div>
 
-    <div class="stars-background" id="star-field"></div>
+    <div class="flex-center">
+        <div class="glass-card">
+            <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo">
+            <h1>Dynasty Family's</h1>
 
-    <div class="login-card">
-        <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo" alt="Luffy Gear 5">
-        
-        <h1>Dynasty Family's</h1>
+            <div id="view-candidat">
+                <input type="text" id="pseudo" placeholder="Pseudo Discord">
+                <button class="btn" onclick="start()">Commencer</button>
+                <div class="link-small" onclick="toggle()">Accès Staff</div>
+            </div>
 
-        <div id="view-candidat" style="width: 100%;">
-            <input type="text" id="discord-pseudo" placeholder="Pseudo Discord">
-            <button class="btn" onclick="start()">Entrer</button>
-            <div class="staff-link" onclick="showAdmin()">Accès Staff</div>
-        </div>
-
-        <div id="view-admin" style="display: none; width: 100%;">
-            <input type="text" id="admin-user" placeholder="Login Staff">
-            <input type="password" id="admin-pass" placeholder="Mot de passe">
-            <button class="btn" style="background:#fff;" onclick="login()">Connexion</button>
-            <div class="staff-link" onclick="showAdmin()">Retour</div>
+            <div id="view-admin" style="display:none;">
+                <input type="text" id="admin-user" placeholder="Login Admin">
+                <input type="password" id="admin-pass" placeholder="Mot de passe">
+                <button class="btn" onclick="login()">Connexion</button>
+                <div class="link-small" onclick="toggle()">Retour</div>
+            </div>
         </div>
     </div>
 
+    <script src="script-stars.js"></script>
     <script>
-        // Génération des étoiles
-        const field = document.getElementById('star-field');
-        for (let i = 0; i < 150; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            const size = Math.random() * 3 + 'px';
-            star.style.width = size;
-            star.style.height = size;
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
-            field.appendChild(star);
+        function toggle() {
+            document.getElementById('view-candidat').style.display = document.getElementById('view-candidat').style.display === 'none' ? 'block' : 'none';
+            document.getElementById('view-admin').style.display = document.getElementById('view-admin').style.display === 'none' ? 'block' : 'none';
         }
-
-        function showAdmin() {
-            const v1 = document.getElementById('view-candidat');
-            const v2 = document.getElementById('view-admin');
-            v1.style.display = v1.style.display === 'none' ? 'block' : 'none';
-            v2.style.display = v2.style.display === 'none' ? 'block' : 'none';
-        }
-
         function start() {
-            const p = document.getElementById('discord-pseudo').value.trim();
-            if(p !== "") {
-                localStorage.setItem('user', p);
-                window.location.href = "hub.html";
-            } else { alert("Entre ton pseudo !"); }
+            const p = document.getElementById('pseudo').value;
+            if(p.trim()) { localStorage.setItem('user', p); window.location.href = "hub.html"; }
         }
-
         function login() {
-            const u = document.getElementById('admin-user').value;
-            const p = document.getElementById('admin-pass').value;
-            if(u === "Staff" && p === "Gear5") {
-                localStorage.setItem('role', 'admin');
-                window.location.href = "admin-view.html";
-            } else { alert("Identifiants incorrects"); }
+            if(document.getElementById('admin-user').value === "Admin" && document.getElementById('admin-pass').value === "Gear5") {
+                localStorage.setItem('role', 'admin'); window.location.href = "admin-view.html";
+            }
         }
     </script>
 </body>
