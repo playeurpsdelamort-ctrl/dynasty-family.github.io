@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynasty Family's - Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Portail G5</h1>
+        <p style="text-align:center;">Bienvenue, <b id="display-user"></b>. Choisis ton formulaire :</p>
+        
+        <div class="grid">
+            <a href="modo-test.html" class="glass-card btn">🛡️ Modo Test</a>
+            <a href="bot-manager.html" class="glass-card btn">🤖 Bot Manager</a>
+            <a href="middleman.html" class="glass-card btn">🤝 Middleman</a>
+            <a href="animateur.html" class="glass-card btn">🎉 Animateur</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('display-user').innerText = localStorage.getItem('user') || "Candidat";
+    </script>
+</body>
+</html>
