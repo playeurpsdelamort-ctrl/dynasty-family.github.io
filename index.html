@@ -13,22 +13,17 @@
             --alert: #ef4444;
         }
 
-        * { 
-            box-sizing: border-box; 
-            -webkit-tap-highlight-color: transparent; 
-            touch-action: manipulation;
-        }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 
         body { 
             background: #000;
             background-image: 
                 radial-gradient(1px 1px at 25px 35px, #fff, rgba(0,0,0,0)),
                 radial-gradient(2px 2px at 50px 100px, #eee, rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 150px 40px, #ddd, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 200px 150px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 120px 210px, #fff, rgba(0,0,0,0)),
                 linear-gradient(135deg, #020617 0%, #0f172a 100%);
             background-repeat: repeat;
-            background-size: 250px 250px, 300px 300px, 200px 200px, 400px 400px, 100% 100%;
+            background-size: 250px 250px, 300px 300px, 350px 350px, 100% 100%;
             color: var(--text-main); 
             font-family: 'Segoe UI', system-ui, sans-serif; 
             margin: 0; padding: 10px; min-height: 100vh;
@@ -52,8 +47,6 @@
             font-size: 0.9rem;
             margin-bottom: 20px;
             text-align: center;
-            line-height: 1.5;
-            box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
         }
 
         h1 { color: var(--gold); font-size: 1.6rem; text-transform: uppercase; letter-spacing: 3px; margin: 5px 0; font-weight: 900; }
@@ -104,7 +97,7 @@
             box-shadow: 0 10px 25px rgba(251, 146, 60, 0.4); margin-bottom: 50px;
         }
 
-        .staff-tag { color: var(--gold); font-weight: bold; text-align: center; margin-top: 20px; font-size: 0.9rem; }
+        .mention { color: var(--gold); font-weight: bold; margin-top: 10px; display: block; }
 
         footer { text-align: center; color: #94a3b8; font-size: 0.7rem; padding-bottom: 30px; }
     </style>
@@ -115,113 +108,104 @@
     <div class="header">
         <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" alt="Logo" class="logo">
         <h1>𝘿𝙮𝙣𝙖𝙨𝙩𝙮 𝙁𝙖𝙢𝙞𝙡𝙮’ｓ</h1>
-        <p class="subtitle">Recrutement G5</p>
+        <p class="subtitle">RECRUTEMENT G5</p>
     </div>
 
     <div class="instruction-box">
-        <strong>📢 NOTE POUR LES RECRUTEURS :</strong><br>
-        Voici les questions à copier-coller pour une candidature <strong>@Animateur Test</strong>.<br> 
-        Merci d’envoyer chaque question séparément et d’attendre la réponse du candidat avant de passer à la suivante.
+        <strong>Voici les questions à copier-coller pour une candidature @Animateur Test . Merci d’envoyer chaque question séparément et d’attendre la réponse du candidat avant de passer à la suivante</strong>
     </div>
 
     <div class="tab-switcher">
         <button class="tab-btn active" id="btn-mod" onclick="showForm('mod')">Devenir Modo</button>
-        <button class="tab-btn" id="btn-anim" onclick="showForm('anim')">Devenir Anim Test</button>
+        <button class="tab-btn" id="btn-anim" onclick="showForm('anim')">Devenir Anim</button>
     </div>
 
     <div id="section-mod" class="form-content active">
         <form action="https://formspree.io/f/xnjbrvez" method="POST">
-            <input type="hidden" name="Role" value="MODÉRATEUR">
+            <input type="hidden" name="Candidature" value="MODÉRATEUR">
             <div class="glass-card">
                 <label>Pseudo Discord & Âge</label>
-                <input type="text" name="identite" required placeholder="Luffy#0001 (19 ans)">
+                <input type="text" name="identite" required placeholder="Pseudo#0000">
             </div>
             <div class="glass-card">
-                <div class="category-header">📦 I. Parcours & Expérience</div>
+                <div class="category-header">📦 PARCOURS & EXPÉRIENCE</div>
                 <label>1. Présente ton parcours sur Discord (ancienneté, serveurs, rôles...).</label>
                 <textarea name="m1" required></textarea>
                 <label>2. Décris une expérience de modération difficile.</label>
                 <textarea name="m2" required></textarea>
-                <label>3. As-tu déjà participé à l’élaboration d’un règlement ?</label>
-                <textarea name="m3" required></textarea>
             </div>
-            <button type="submit" class="submit-btn">Soumettre Candidature Modo</button>
+            <button type="submit" class="submit-btn">SOUMETTRE CANDIDATURE MODÉRATEUR</button>
         </form>
     </div>
 
     <div id="section-anim" class="form-content">
         <form action="https://formspree.io/f/xnjbrvez" method="POST">
-            <input type="hidden" name="Role" value="ANIMATEUR TEST">
+            <input type="hidden" name="Candidature" value="ANIMATEUR TEST">
             
             <div class="glass-card">
-                <label>Pseudo Discord & Âge</label>
-                <input type="text" name="identite" required placeholder="Brook#0001 (20 ans)">
-            </div>
-
-            <div class="glass-card">
-                <div class="category-header">📋 Informations générales</div>
-                <label>1. Depuis combien de temps es-tu sur le serveur ?</label>
-                <input type="text" name="a1" required>
-                <label>2. As-tu déjà été animateur sur un autre serveur ? Si oui, explique ton rôle et ce que tu faisais exactement.</label>
+                <div class="category-header">Informations générales</div>
+                <label>Depuis combien de temps es-tu sur le serveur ?</label>
+                <textarea name="a1" required></textarea>
+                <label>As-tu déjà été animateur sur un autre serveur ? Si oui, explique ton rôle et ce que tu faisais exactement.</label>
                 <textarea name="a2" required></textarea>
             </div>
 
             <div class="glass-card">
-                <div class="category-header">🔥 Motivation et personnalité</div>
-                <label>3. Pourquoi souhaites-tu devenir animateur ici ?</label>
+                <div class="category-header">Motivation et personnalité</div>
+                <label>Pourquoi souhaites-tu devenir animateur ici ?</label>
                 <textarea name="a3" required></textarea>
-                <label>4. Quelles qualités penses-tu apporter à notre serveur en tant qu’animateur ?</label>
+                <label>Quelles qualités penses-tu apporter à notre serveur en tant qu’animateur ?</label>
                 <textarea name="a4" required></textarea>
-                <label>5. Comment réagirais-tu face à un membre irrespectueux ou qui enfreint les règles ?</label>
+                <label>Comment réagirais-tu face à un membre irrespectueux ou qui enfreint les règles ?</label>
                 <textarea name="a5" required></textarea>
-                <label>6. Préfères-tu travailler seul ou en équipe ? Pourquoi ?</label>
+                <label>Préfères-tu travailler seul ou en équipe ? Pourquoi ?</label>
                 <textarea name="a6" required></textarea>
-                <label>7. Comment gères-tu le stress ou les situations conflictuelles ?</label>
+                <label>Comment gères-tu le stress ou les situations conflictuelles ?</label>
                 <textarea name="a7" required></textarea>
-                <label>8. Pour toi, un animateur a-t-il le droit d’utiliser ses permissions en dehors des events ?</label>
+                <label>Pour toi, un animateur a-t-il le droit d’utiliser ses permissions en dehors des events ?</label>
                 <textarea name="a8" required></textarea>
             </div>
 
             <div class="glass-card">
-                <div class="category-header">🎨 Connaissance du serveur / créativité</div>
-                <label>9. Quels types d’événements ou d’animations pourrais-tu proposer ?</label>
+                <div class="category-header">Connaissance du serveur / créativité</div>
+                <label>Quels types d’événements ou d’animations pourrais-tu proposer ?</label>
                 <textarea name="a9" required></textarea>
-                <label>10. Propose une idée d’animation originale que tu pourrais organiser.</label>
+                <label>Propose une idée d’animation originale que tu pourrais organiser.</label>
                 <textarea name="a10" required></textarea>
-                <label>11. Si tu devais créer un petit événement rapide pour les membres, que ferais-tu ?</label>
+                <label>Si tu devais créer un petit événement rapide pour les membres, que ferais-tu ?</label>
                 <textarea name="a11" required></textarea>
-                <label>12. Selon toi, qu’est-ce qui rend une animation réussie ?</label>
+                <label>Selon toi, qu’est-ce qui rend une animation réussie ?</label>
                 <textarea name="a12" required></textarea>
-                <label>13. Crée-nous une annonce complète pour un jeu de ton choix (date, heure, jeu, description, règles, etc.).</label>
+                <label>Crée-nous une annonce complète pour un jeu de ton choix (date, heure, jeu, description, règles, etc.).</label>
                 <textarea name="a13" rows="5" required></textarea>
             </div>
 
             <div class="glass-card">
-                <div class="category-header">⚡ Gestion et réactivité</div>
-                <label>14. Comment réagirais-tu si deux membres se disputaient pendant un événement ?</label>
+                <div class="category-header">Gestion et réactivité</div>
+                <label>Comment réagirais-tu si deux membres se disputaient pendant un événement ?</label>
                 <textarea name="a14" required></textarea>
-                <label>15. Serais-tu disponible pour organiser des événements régulièrement ? Si oui, quand ?</label>
-                <input type="text" name="a15" required>
-                <label>16. Un membre spam dans le chat pendant un événement, que fais-tu ?</label>
+                <label>Serais-tu disponible pour organiser des événements régulièrement ? Si oui, quand ?</label>
+                <textarea name="a15" required></textarea>
+                <label>Un membre spam dans le chat pendant un événement, que fais-tu ?</label>
                 <textarea name="a16" required></textarea>
-                <label>17. Un événement échoue (bug ou manque de participants), comment réagis-tu ?</label>
+                <label>Un événement que tu as organisé échoue à cause d’un bug ou d’un manque de participants, comment réagis-tu ?</label>
                 <textarea name="a17" required></textarea>
-                <label>18. Tu remarques qu’un autre animateur ne suit pas les règles, que fais-tu ?</label>
+                <label>Tu remarques qu’un autre animateur ne suit pas les règles, que fais-tu ?</label>
                 <textarea name="a18" required></textarea>
-                <label>19. Tu dois annoncer une information importante de façon engageante, comment fais-tu ?</label>
+                <label>Tu dois annoncer une information importante à tous les membres, comment le fais-tu de façon claire et engageante ?</label>
                 <textarea name="a19" required></textarea>
             </div>
 
             <div class="glass-card">
-                <div class="category-header">💻 Compétences techniques</div>
-                <label>20. Sais-tu utiliser les commandes de bots pour animer (ex : giveaway, sondages, mini-jeux) ?</label>
+                <div class="category-header">Compétences techniques</div>
+                <label>Sais-tu utiliser les commandes de bots pour animer le serveur (ex : giveaway, sondages, mini-jeux) ?</label>
                 <textarea name="a20" required></textarea>
-                <label>21. Sais-tu gérer les salons vocaux et textuels pendant un événement ?</label>
+                <label>Sais-tu gérer les salons vocaux et textuels pendant un événement ?</label>
                 <textarea name="a21" required></textarea>
+                <span class="mention">@🛡️ Staff</span>
             </div>
 
-            <p class="staff-tag">@🛡️ Staff</p>
-            <button type="submit" class="submit-btn">Envoyer Candidature Test</button>
+            <button type="submit" class="submit-btn">SOUMETTRE CANDIDATURE ANIMATEUR</button>
         </form>
     </div>
 
