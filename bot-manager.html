@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Examen Bot - Dynasty Family's</title>
+    <title>Examen Bot Manager - Dynasty Family's</title>
     <style>
         body { margin:0; background:#050a18; color:white; font-family:sans-serif; display:flex; flex-direction:column; align-items:center; min-height:100vh; padding:15px; box-sizing:border-box; }
         .header { text-align:center; margin-bottom:15px; }
@@ -42,40 +42,65 @@
             </div>
         </form>
     </div>
+
     <script>
         const questions = [
-            "Quels bots de modération maîtrises-tu ?",
-            "Configuration d'un système d'Auto-mod complexe ?",
-            "Comment sécurises-tu contre les raids ?",
-            "Gestion des permissions rôles sensibles ?",
-            "Notions en Webhooks ou API Discord ?",
-            "Création d'un système de logs efficace ?",
-            "Que fais-tu si le bot principal tombe ?",
-            "Conflits de rôles et hiérarchie ?",
-            "As-tu déjà créé un bot (JS/Python) ?",
-            "Méthode pour tester une nouvelle config ?"
+            "Quels bots de modération maîtrises-tu le mieux (Dyno, MEE6, Carl-bot, Wick, etc.) ? Détaille ton expérience avec chacun.",
+            "Explique comment tu configurerais un système d'Auto-mod complexe pour filtrer les liens de scam et les mots interdits sans gêner les membres.",
+            "Comment sécurises-tu concrètement un serveur contre les raids massifs (self-bots) ? Quelles options de vérification privilégies-tu ?",
+            "Décris ta méthode pour gérer les permissions des rôles sensibles (Admin/Modo) afin d'éviter toute faille de sécurité (2FA, hiérarchie).",
+            "As-tu des notions en Webhooks ou en utilisation d'API Discord ? Si oui, donne un exemple d'utilisation utile pour le serveur.",
+            "Comment créerais-tu un système de logs efficace pour surveiller les suppressions de messages et les modifications de rôles sans surcharger le staff ?",
+            "Que fais-tu si le bot principal de modération tombe en panne en plein milieu d'une crise sur le serveur ?",
+            "Comment gères-tu les conflits de rôles ou les bugs de hiérarchie qui empêchent certains membres d'accéder à leurs salons ?",
+            "As-tu déjà créé ou hébergé tes propres bots (en Python, JS ou autre) ? Si oui, explique ce qu'ils faisaient précisément.",
+            "Quelle est ta méthodologie pour tester une nouvelle configuration de bot avant de la rendre publique sur tout le serveur ?"
         ];
+
         document.getElementById('hid-user').value = localStorage.getItem('user') || "Anonyme";
         const container = document.getElementById('steps-container');
+
         questions.forEach((q, i) => {
-            const div = document.createElement('div'); div.className = 'step';
-            div.innerHTML = `<span class="q-num">Question ${i+1}/${questions.length}</span><div class="q-text">${q}</div><textarea name="R${i+1}" required></textarea>`;
+            const div = document.createElement('div');
+            div.className = 'step';
+            div.innerHTML = `
+                <span class="q-num">Question technique ${i+1}/${questions.length}</span>
+                <div class="q-text">${q}</div>
+                <textarea name="Reponse_Bot_${i+1}" placeholder="Détails techniques attendus..." required></textarea>
+            `;
             container.appendChild(div);
         });
-        let current = -1; const steps = document.querySelectorAll('.step');
+
+        let current = -1;
+        const steps = document.querySelectorAll('.step');
+
         function changeStep(n) {
-            if (n === 1 && current >= 0 && !steps[current].querySelector('textarea').value.trim()) return alert("Champ requis !");
+            if (n === 1 && current >= 0) {
+                const area = steps[current].querySelector('textarea');
+                if (!area.value.trim()) { alert("Merci de fournir une réponse technique."); return; }
+            }
+
             if (current >= 0) steps[current].classList.remove('active');
             current += n;
-            if (current >= steps.length) return document.getElementById('exam-form').submit();
+
+            if (current >= steps.length) {
+                document.getElementById('exam-form').submit();
+                return;
+            }
+
             steps[current].classList.add('active');
-            document.getElementById('bar').style.width = ((current+1)/steps.length)*100 + "%";
-            document.getElementById('prevBtn').style.display = current > 0 ? "block" : "none";
-            document.getElementById('nextBtn').innerText = current === steps.length -1 ? "Terminer" : (current === -1 ? "Démarrer" : "Suivant");
-            if(current === -1) changeStep(1);
+            updateUI();
             window.scrollTo(0,0);
         }
-        changeStep(1);
+
+        function updateUI() {
+            const progress = ((current + 1) / steps.length) * 100;
+            document.getElementById('bar').style.width = progress + "%";
+            document.getElementById('prevBtn').style.display = current > 0 ? "block" : "none";
+            document.getElementById('nextBtn').innerText = current === steps.length - 1 ? "Envoyer le dossier technique" : (current === -1 ? "Démarrer" : "Suivant");
+            if(current === -1) changeStep(1);
+        }
+        updateUI();
     </script>
 </body>
 </html>
