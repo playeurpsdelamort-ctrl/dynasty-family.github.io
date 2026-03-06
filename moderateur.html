@@ -37,7 +37,8 @@
         .btn-next:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255, 140, 0, 0.4); }
         .btn-prev:hover { background: rgba(255,255,255,0.1); }
         
-        .footer-link { color: rgba(255,255,255,0.2); text-decoration: none; font-size: 0.8rem; margin-bottom: 30px; }
+        .footer-link { color: rgba(255,255,255,0.2); text-decoration: none; font-size: 0.8rem; margin-bottom: 30px; transition: 0.3s; }
+        .footer-link:hover { color: var(--primary); }
 
         @media (max-width: 600px) {
             .nav-btns { flex-direction: column; }
@@ -57,7 +58,7 @@
         <div class="progress-container"><div class="progress-bar" id="bar"></div></div>
         <form action="https://api.web3forms.com/submit" method="POST" id="form">
             <input type="hidden" name="access_key" value="a8ed2428-2741-474c-82f8-1c5444211509">
-            <input type="hidden" name="subject" value="Nouveau Dossier Modérateur">
+            <input type="hidden" name="subject" value="Nouveau Dossier Modérateur Test">
             <input type="checkbox" name="botcheck" style="display: none;">
             <input type="hidden" name="Pseudo" id="hid-user">
             
@@ -74,12 +75,28 @@
 
     <script>
         const questions = [
-            { cat: "Expérience", q: "Présente ton parcours sur Discord de manière détaillée (ancienneté, types de serveurs fréquentés, rôles occupés, responsabilités assumées)." },
-            { cat: "Motivation", q: "Pourquoi souhaites-tu rejoindre l'équipe de modération de Dynasty Family's spécifiquement ?" },
-            { cat: "Scénario", q: "Un membre commence à insulter un autre utilisateur dans un salon public. Quelle est ta procédure immédiate ?" },
-            { cat: "Éthique", q: "Pour toi, quelle est la limite entre une modération ferme et un abus de pouvoir ?" },
-            { cat: "Disponibilité", q: "Quelles sont tes tranches horaires d'activité sur Discord (semaine et week-end) ?" }
-            // Tu pourras ajouter les 17 autres questions ici pour arriver à 22
+            { cat: "I. Parcours & Expérience", q: "1. Présente ton parcours sur Discord de manière détaillée (ancienneté, types de serveurs fréquentés, rôles occupés, responsabilités assumées)." },
+            { cat: "I. Parcours & Expérience", q: "2. Décris une expérience concrète de modération difficile que tu as vécue et explique les décisions stratégiques que tu as prises." },
+            { cat: "I. Parcours & Expérience", q: "3. As-tu déjà participé à l’élaboration ou à l’amélioration d’un règlement ? Si oui, explique ta méthodologie." },
+            { cat: "II. Motivation & Vision", q: "4. Quelle est ta conception du rôle de modérateur au sein d’une communauté structurée ?" },
+            { cat: "II. Motivation & Vision", q: "5. En quoi ta candidature se distingue-t-elle des autres ?" },
+            { cat: "II. Motivation & Vision", q: "6. Quelle est, selon toi, la frontière entre autorité légitime et abus de pouvoir ?" },
+            { cat: "II. Motivation & Vision", q: "7. Comment contribues-tu à instaurer un climat sain et durable dans une communauté en ligne ?" },
+            { cat: "III. Analyse & Gestion de situations", q: "8. Un membre influent (ancien du serveur) enfreint volontairement le règlement. Quelle stratégie adoptes-tu ?" },
+            { cat: "III. Analyse & Gestion de situations", q: "9. Deux membres se provoquent mutuellement, mais aucun ne semble innocent. Comment établis-tu les responsabilités ?" },
+            { cat: "III. Analyse & Gestion de situations", q: "10. Un membre conteste publiquement une sanction appliquée. Comment gères-tu la situation sans perdre en crédibilité ?" },
+            { cat: "III. Analyse & Gestion de situations", q: "11. Une vague de raid survient en pleine nuit. Explique précisément les mesures d’urgence que tu prends." },
+            { cat: "III. Analyse & Gestion de situations", q: "12. Un modérateur abuse de ses permissions. Quelle est ta réaction et pourquoi ?" },
+            { cat: "IV. Gestion émotionnelle", q: "13. Comment maintiens-tu ton objectivité face à la pression, aux critiques ou aux provocations ?" },
+            { cat: "IV. Gestion émotionnelle", q: "14. Comment différencies-tu un simple troll d’un membre réellement problématique ?" },
+            { cat: "IV. Gestion émotionnelle", q: "15. Penses-tu que la fermeté doit primer sur la pédagogie ? Argumente ta réponse." },
+            { cat: "V. Impartialité & Éthique", q: "16. Définis le principe d’impartialité dans le cadre d’une modération professionnelle." },
+            { cat: "V. Impartialité & Éthique", q: "17. Si un ami proche enfreint le règlement, quelle serait ta démarche exacte ?" },
+            { cat: "V. Impartialité & Éthique", q: "18. Comment éviter les biais personnels dans la prise de décision ?" },
+            { cat: "VI. Compétences techniques", q: "19. Explique le fonctionnement des sanctions progressives (warn → mute → kick → ban)." },
+            { cat: "VI. Compétences techniques", q: "20. Décris le rôle des logs et pourquoi ils sont essentiels dans une modération professionnelle." },
+            { cat: "VI. Compétences techniques", q: "21. As-tu déjà configuré un bot (automod, antiraid, etc.) ? Décris précisément tes actions." },
+            { cat: "VII. Question stratégique finale", q: "22. Si tu étais responsable, quelles améliorations structurelles mettrais-tu en place pour optimiser l’efficacité de l’équipe ?" }
         ];
 
         document.getElementById('hid-user').value = localStorage.getItem('user') || "Anonyme";
@@ -87,7 +104,7 @@
         
         questions.forEach((item, i) => {
             cont.innerHTML += `<div class="step">
-                <span class="q-label">${item.cat.toUpperCase()} — QUESTION ${i+1} / ${questions.length}</span>
+                <span class="q-label">${item.cat} — QUESTION ${i+1} / ${questions.length}</span>
                 <div class="q-text">${item.q}</div>
                 <textarea name="Mod_Ans_Q${i+1}" placeholder="Réponse détaillée et argumentée..." required></textarea>
             </div>`;
@@ -100,12 +117,12 @@
             steps.forEach((s, i) => s.classList.toggle('active', i === idx));
             document.getElementById('bar').style.width = ((idx + 1) / steps.length) * 100 + "%";
             document.getElementById('prevBtn').style.display = idx === 0 ? "none" : "block";
-            document.getElementById('nextBtn').innerText = idx === steps.length - 1 ? 'FINALISER LA CANDIDATURE' : 'SUIVANT';
+            document.getElementById('nextBtn').innerText = idx === steps.length - 1 ? 'SOUMETTRE MA CANDIDATURE' : 'SUIVANT';
         }
 
         function move(n) {
             if (n === 1 && !steps[current].querySelector('textarea').value.trim()) {
-                return alert("Merci de fournir une réponse argumentée.");
+                return alert("Merci de fournir une réponse argumentée pour continuer.");
             }
             current += n;
             if (current >= steps.length) {
