@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examen Bot Manager - Dynasty Family's</title>
+    <title>Expert Bot Manager - Dynasty Family's</title>
     <style>
         :root { --primary: #ff8c00; --bg: #050a18; --card: #0d1426; }
-        body { margin: 0; background: var(--bg); color: white; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        body { margin: 0; background: var(--bg); color: white; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
         
-        .header { text-align: center; margin: 40px 0; }
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(255, 140, 0, 0.05), transparent 70%); pointer-events: none; }
+
+        .header { text-align: center; margin: 40px 0; z-index: 1; padding: 0 15px; }
         .logo { width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--primary); box-shadow: 0 0 30px rgba(255, 140, 0, 0.4); margin-bottom: 20px; }
-        .title { color: var(--primary); font-size: 2.2rem; font-weight: 900; text-transform: uppercase; font-style: italic; letter-spacing: -1px; margin: 0; }
+        .title { color: var(--primary); font-size: 2.2rem; font-weight: 900; text-transform: uppercase; font-style: italic; letter-spacing: -1px; margin: 0; text-shadow: 0 0 20px rgba(255, 140, 0, 0.2); }
         .subtitle { color: #94a3b8; font-size: 0.8rem; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin-top: 5px; }
 
-        .exam-card { width: 90%; max-width: 900px; background: var(--card); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.05); padding: 50px; position: relative; box-shadow: 0 40px 100px rgba(0,0,0,0.6); margin-bottom: 50px; }
+        .exam-card { width: 95%; max-width: 950px; background: var(--card); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.05); padding: clamp(20px, 5%, 50px); position: relative; box-shadow: 0 40px 100px rgba(0,0,0,0.6); margin-bottom: 50px; box-sizing: border-box; }
         
         .progress-container { width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; margin-bottom: 40px; position: relative; overflow: hidden; }
         .progress-bar { height: 100%; background: var(--primary); width: 0%; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 15px var(--primary); }
@@ -23,63 +25,111 @@
         @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         .q-label { color: var(--primary); font-weight: 900; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; display: block; }
-        .q-text { font-size: 1.3rem; font-weight: 700; margin-bottom: 30px; line-height: 1.4; color: #f8fafc; }
+        .q-text { font-size: clamp(1.1rem, 3.5vw, 1.35rem); font-weight: 700; margin-bottom: 30px; line-height: 1.5; color: #f8fafc; }
         
-        textarea { width: 100%; height: 300px; background: rgba(0, 0, 0, 0.4); border: 2px solid rgba(255,255,255,0.05); border-radius: 12px; color: #7de3ff; font-family: 'Consolas', monospace; padding: 25px; font-size: 1rem; box-sizing: border-box; resize: none; transition: 0.3s; outline: none; }
+        textarea { width: 100%; height: 320px; background: rgba(0, 0, 0, 0.4); border: 2px solid rgba(255,255,255,0.05); border-radius: 12px; color: #7de3ff; font-family: 'Consolas', 'Courier New', monospace; padding: 25px; font-size: 1rem; box-sizing: border-box; resize: none; transition: 0.3s; outline: none; }
         textarea:focus { border-color: var(--primary); background: rgba(0, 0, 0, 0.6); }
 
-        .btn-next { width: 100%; background: var(--primary); color: #000; border: none; padding: 20px; border-radius: 12px; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; cursor: pointer; margin-top: 30px; transition: 0.3s; }
+        .nav-btns { display: flex; gap: 15px; margin-top: 30px; }
+        .btn-next { flex: 2; background: var(--primary); color: #000; border: none; padding: 22px; border-radius: 12px; font-size: 1.1rem; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.3s; letter-spacing: 1px; }
+        .btn-prev { flex: 1; background: rgba(255,255,255,0.05); color: #fff; border: none; padding: 22px; border-radius: 12px; font-size: 1rem; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.3s; display: none; }
+        
         .btn-next:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255, 140, 0, 0.4); }
+        .btn-prev:hover { background: rgba(255,255,255,0.1); }
+        
+        .footer-link { color: rgba(255,255,255,0.2); text-decoration: none; font-size: 0.8rem; margin-bottom: 30px; }
+
+        @media (max-width: 600px) {
+            .nav-btns { flex-direction: column; }
+            .btn-prev { order: 2; }
+            .btn-next { order: 1; }
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo">
         <h1 class="title">CANDIDATURE BOT MANAGER</h1>
-        <div class="subtitle">DYNASTY FAMILY'S • ARCHITECTURE & SÉCURITÉ</div>
+        <div class="subtitle">DYNASTY FAMILY'S • EXPERTISE TECHNIQUE</div>
     </div>
 
     <div class="exam-card">
         <div class="progress-container"><div class="progress-bar" id="bar"></div></div>
-        <form action="https://formspree.io/f/xnjbrvez" method="POST" id="form">
+        <form action="https://api.web3forms.com/submit" method="POST" id="form">
+            <input type="hidden" name="access_key" value="a8ed2428-2741-474c-82f8-1c5444211509">
+            <input type="hidden" name="subject" value="Nouveau Dossier Bot Manager Expert">
+            <input type="checkbox" name="botcheck" style="display: none;">
             <input type="hidden" name="Pseudo" id="hid-user">
-            <input type="hidden" name="Poste" value="Bot Manager">
+            
             <div id="container"></div>
-            <button type="button" class="btn-next" id="nextBtn" onclick="move(1)">SUIVANT</button>
+
+            <div class="nav-btns">
+                <button type="button" class="btn-prev" id="prevBtn" onclick="move(-1)">RETOUR</button>
+                <button type="button" class="btn-next" id="nextBtn" onclick="move(1)">SUIVANT</button>
+            </div>
         </form>
     </div>
 
+    <a href="hub.html" class="footer-link">Quitter l'examen</a>
+
     <script>
         const questions = [
-            "I. ARCHITECTURE : Analyse comparativement une architecture self-hosted, cloud-managed et serverless pour un bot Discord. Discute des implications en matière de résilience et coûts.",
-            "II. SÉCURITÉ : Détaille les permissions pouvant provoquer une compromission massive du serveur (Manage Roles, Webhooks, etc.). Scénarios d’attaque possibles ?",
-            "III. GESTION DE CRISE : Un bot critique tombe en panne durant un raid massif. Décris ton Plan de Continuité Opérationnelle (PCA) en trois phases.",
-            "IV. MONITORING : Décris une méthode de surveillance proactive (logs centralisés, alertes, métriques CPU/RAM) pour garantir un uptime de 99.9%.",
-            "V. ÉTUDE DE CAS : Serveur de 15 000 membres sous raid coordonné + saturation API. Quelles sont tes mesures techniques immédiates ?"
+            { cat: "I. Architecture & Hébergement", q: "1. Analyse comparativement une architecture self-hosted, cloud-managed et serverless pour un bot Discord. Discute des implications en matière de latence, scalabilité horizontale, résilience et coûts d’exploitation." },
+            { cat: "I. Architecture & Hébergement", q: "2. Explique les différences fondamentales entre : Gateway Intents privilégiés, Webhooks, et Slash Commands (Interactions API). Dans quels contextes privilégierais-tu chacun ?" },
+            { cat: "I. Architecture & Hébergement", q: "3. Décris le cycle de vie complet d’un bot Discord depuis l’authentification OAuth2 jusqu’au traitement d’un événement (event dispatch → handler → réponse)." },
+            { cat: "I. Architecture & Hébergement", q: "4. Quels sont les risques liés au stockage local d’un token bot ? Propose une architecture sécurisée pour la gestion des secrets (ex : variables d’environnement chiffrées, vault, rotation de token)." },
+            { cat: "II. Permissions & Sécurité Avancée", q: "5. Analyse le principe du Least Privilege (Moindre Privilège) dans le contexte d’un bot Discord. Comment l’implémenter concrètement ?" },
+            { cat: "II. Permissions & Sécurité Avancée", q: "6. Détaille les permissions pouvant provoquer une compromission massive du serveur si mal configurées (ex : Manage Roles, Administrator, Manage Webhooks…). Explique les scénarios d’attaque possibles." },
+            { cat: "II. Permissions & Sécurité Avancée", q: "7. Comment protéger un bot contre : Injection de commandes, Escalade de privilèges, Spam API / Rate limit abuse, Exploitation via faille dans une dépendance NPM/PyPI ?" },
+            { cat: "II. Permissions & Sécurité Avancée", q: "8. Propose un protocole de prévention anti-raid intégrant : Détection comportementale, Limitation de fréquence (rate limiting), Journalisation automatisée, Mode lockdown dynamique." },
+            { cat: "III. Résilience & Gestion de crise", q: "9. Un bot critique tombe en panne durant un raid actif. Décris un plan de continuité opérationnelle (PCA) structuré en trois phases : urgence immédiate – stabilisation – restauration complète." },
+            { cat: "III. Résilience & Gestion de crise", q: "10. Comment implémenterais-tu un système de failover automatique pour garantir une haute disponibilité (HA) ?" },
+            { cat: "III. Résilience & Gestion de crise", q: "11. Décris une méthode de monitoring proactive (logs centralisés, alertes webhook, uptime monitoring, métriques CPU/RAM)." },
+            { cat: "III. Résilience & Gestion de crise", q: "12. Un bot commence à exécuter des actions imprévues sans modification récente du code. Quelle serait ta démarche d’audit technique ?" },
+            { cat: "IV. Conflits & Interopérabilité", q: "13. Deux bots entrent en conflit à cause d’un préfixe identique ou d’événements redondants. Explique comment diagnostiquer précisément la source du conflit." },
+            { cat: "IV. Conflits & Interopérabilité", q: "14. Comment éviter les collisions de permissions lorsque plusieurs bots gèrent les rôles automatiquement ?" },
+            { cat: "IV. Conflits & Interopérabilité", q: "15. Un bot mute accidentellement un administrateur à cause d’un mauvais algorithme de détection. Analyse les failles de conception qui ont permis cette erreur." },
+            { cat: "V. Développement & Optimisation", q: "16. Explique la différence entre une architecture monolithique et modulaire pour un bot. Laquelle privilégierais-tu pour un serveur à forte croissance ?" },
+            { cat: "V. Développement & Optimisation", q: "17. Comment optimiser un bot pour réduire la consommation mémoire et éviter les memory leaks ?" },
+            { cat: "V. Développement & Optimisation", q: "18. Quels sont les avantages et inconvénients d’un stockage : JSON local, Base SQL, Base NoSQL, Redis cache ?" },
+            { cat: "V. Développement & Optimisation", q: "19. Comment implémenter un système de permissions hiérarchique interne au bot indépendant des rôles Discord ?" },
+            { cat: "VI. Gouvernance & Décision Stratégique", q: "20. Dans quels cas justifierais-tu la création d’un bot propriétaire plutôt que l’utilisation d’un bot public reconnu ?" },
+            { cat: "VI. Gouvernance & Décision Stratégique", q: "21. Comment évaluer la fiabilité d’un bot public avant de l’ajouter au serveur ?" },
+            { cat: "VI. Gouvernance & Décision Stratégique", q: "22. Quelle serait ta politique concernant l’attribution du rôle Administrateur à un bot ? Donne une réponse argumentée, technique et sécuritaire." },
+            { cat: "VII. Étude de cas finale", q: "23. Ton serveur de 15 000 membres subit : un raid coordonné, une tentative d’exploitation via commande mal filtrée, une saturation API. Décris ta stratégie (Actions, Mesures, Com, Rapport)." }
         ];
 
         document.getElementById('hid-user').value = localStorage.getItem('user') || "Anonyme";
         const cont = document.getElementById('container');
-        questions.forEach((q, i) => {
+        
+        questions.forEach((item, i) => {
             cont.innerHTML += `<div class="step">
-                <span class="q-label">MODULE TECHNIQUE ${i+1} / ${questions.length}</span>
-                <div class="q-text">${q}</div>
-                <textarea name="Bot_Expert_Q${i+1}" placeholder="Analyse technique attendue..." required></textarea>
+                <span class="q-label">${item.cat} — EXAMEN ${i+1} / ${questions.length}</span>
+                <div class="q-text">${item.q}</div>
+                <textarea name="Expert_Ans_Q${i+1}" placeholder="Saisissez votre analyse technique ici..." required></textarea>
             </div>`;
         });
 
         let current = 0;
         const steps = document.querySelectorAll('.step');
+        
         function show(idx) {
             steps.forEach((s, i) => s.classList.toggle('active', i === idx));
             document.getElementById('bar').style.width = ((idx + 1) / steps.length) * 100 + "%";
-            document.getElementById('nextBtn').innerText = idx === steps.length - 1 ? 'TRANSMETTRE L\'EXPERTISE' : 'SUIVANT';
+            document.getElementById('prevBtn').style.display = idx === 0 ? "none" : "block";
+            document.getElementById('nextBtn').innerText = idx === steps.length - 1 ? 'TRANSMETTRE LE RAPPORT TECHNIQUE' : 'SUIVANT';
         }
+
         function move(n) {
-            if (!steps[current].querySelector('textarea').value.trim()) return alert("Une analyse est requise.");
+            if (n === 1 && !steps[current].querySelector('textarea').value.trim()) {
+                return alert("Une analyse approfondie est requise pour passer au module suivant.");
+            }
             current += n;
-            if (current >= steps.length) document.getElementById('form').submit();
-            else show(current);
+            if (current >= steps.length) {
+                document.getElementById('form').submit();
+            } else {
+                show(current);
+            }
         }
         show(0);
     </script>
