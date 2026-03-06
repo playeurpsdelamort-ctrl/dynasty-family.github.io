@@ -3,207 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examen Modérateur Test - Dynasty Family's</title>
+    <title>Examen Modérateur - Dynasty Family's</title>
     <style>
-        /* DESIGN AUTHENTIQUE DYNASTY FAMILY'S */
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #050a18;
-            background-image: 
-                radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 30px),
-                radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 40px);
-            background-size: 400px 400px, 250px 250px;
-            background-attachment: fixed;
-            color: #ffffff;
-            font-family: 'Segoe UI', sans-serif;
-            overflow: hidden;
-        }
+        :root { --primary: #ff8c00; --bg: #050a18; --card: #0d1426; }
+        body { margin: 0; background: var(--bg); color: white; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
+        
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(255, 140, 0, 0.05), transparent 70%); pointer-events: none; }
 
-        .container {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
+        .header { text-align: center; margin: 40px 0; z-index: 1; padding: 0 15px; }
+        .logo { width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--primary); box-shadow: 0 0 30px rgba(255, 140, 0, 0.4); margin-bottom: 20px; }
+        .title { color: var(--primary); font-size: 2.2rem; font-weight: 900; text-transform: uppercase; font-style: italic; letter-spacing: -1px; margin: 0; text-shadow: 0 0 20px rgba(255, 140, 0, 0.2); }
+        .subtitle { color: #94a3b8; font-size: 0.8rem; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin-top: 5px; }
 
-        .logo-main {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            border: 3px solid #ff8c00;
-            box-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
-            margin-bottom: 15px;
-            object-fit: cover;
-        }
+        .exam-card { width: 90%; max-width: 850px; background: var(--card); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.05); padding: clamp(25px, 5%, 50px); position: relative; box-shadow: 0 40px 100px rgba(0,0,0,0.6); margin-bottom: 50px; box-sizing: border-box; }
+        
+        .progress-container { width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; margin-bottom: 40px; position: relative; overflow: hidden; }
+        .progress-bar { height: 100%; background: var(--primary); width: 0%; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 15px var(--primary); }
 
-        .main-title {
-            color: #ff8c00;
-            font-style: italic;
-            font-weight: 900;
-            text-transform: uppercase;
-            font-size: 1.8rem;
-            margin: 0;
-            letter-spacing: 1px;
-        }
-
-        .glass-card {
-            width: 100%;
-            max-width: 800px;
-            background: rgba(13, 20, 38, 0.95);
-            border: 1px solid rgba(255, 140, 0, 0.2);
-            border-radius: 15px;
-            padding: 35px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
-            margin-top: 20px;
-        }
-
-        .progress-container {
-            width: 100%;
-            background: rgba(255,255,255,0.1);
-            height: 4px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: #ff8c00;
-            width: 0%;
-            transition: 0.4s ease;
-            box-shadow: 0 0 10px #ff8c00;
-        }
-
-        .step { display: none; animation: slideIn 0.4s ease; text-align: left; }
-        .step.active { display: block; }
+        .step { display: none; }
+        .step.active { display: block; animation: slideIn 0.4s ease-out; }
         @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .question-num { color: #ff8c00; font-weight: 900; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 10px; display: block; }
-        .question-text { font-size: 1.15rem; line-height: 1.5; margin-bottom: 20px; font-weight: 600; color: #f3f4f6; }
+        .q-label { color: var(--primary); font-weight: 900; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; display: block; }
+        .q-text { font-size: clamp(1.1rem, 4vw, 1.35rem); font-weight: 700; margin-bottom: 30px; line-height: 1.5; color: #f8fafc; }
+        
+        textarea { width: 100%; height: 280px; background: rgba(0, 0, 0, 0.3); border: 2px solid rgba(255,255,255,0.05); border-radius: 12px; color: white; padding: 25px; font-size: 1.1rem; box-sizing: border-box; resize: none; transition: 0.3s; outline: none; }
+        textarea:focus { border-color: var(--primary); background: rgba(0, 0, 0, 0.5); }
 
-        textarea {
-            width: 100%;
-            min-height: 220px;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: #fff;
-            padding: 18px;
-            font-family: inherit;
-            font-size: 1rem;
-            resize: none;
-            box-sizing: border-box;
-            transition: 0.3s;
+        .nav-btns { display: flex; gap: 15px; margin-top: 30px; }
+        .btn-next { flex: 2; background: var(--primary); color: #000; border: none; padding: 22px; border-radius: 12px; font-size: 1.15rem; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.3s; letter-spacing: 1px; }
+        .btn-prev { flex: 1; background: rgba(255,255,255,0.05); color: #fff; border: none; padding: 22px; border-radius: 12px; font-size: 1rem; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.3s; display: none; }
+        
+        .btn-next:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255, 140, 0, 0.4); }
+        .btn-prev:hover { background: rgba(255,255,255,0.1); }
+        
+        .footer-link { color: rgba(255,255,255,0.2); text-decoration: none; font-size: 0.8rem; margin-bottom: 30px; }
+
+        @media (max-width: 600px) {
+            .nav-btns { flex-direction: column; }
+            .btn-prev { order: 2; }
+            .btn-next { order: 1; }
         }
-
-        textarea:focus { outline: none; border-color: #ff8c00; }
-
-        .nav-btns { display: flex; justify-content: space-between; margin-top: 30px; gap: 15px; }
-        .btn-nav { padding: 14px 28px; border-radius: 8px; font-weight: 900; cursor: pointer; transition: 0.3s; border: none; text-transform: uppercase; font-size: 0.85rem; }
-        .btn-prev { background: rgba(255,255,255,0.05); color: #94a3b8; border: 1px solid rgba(255,255,255,0.1); }
-        .btn-next { background: #ff8c00; color: #000; flex-grow: 1; }
-        .btn-next:hover { box-shadow: 0 0 20px rgba(255, 140, 0, 0.4); transform: scale(1.02); }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo-main">
-        <h1 class="main-title">Candidature Modérateur Test</h1>
-        <p style="color: #ff8c00; font-weight: bold; font-size: 0.8rem; margin: 5px 0 20px 0;">DYNASTY FAMILY'S • DISCIPLINE & STRATÉGIE</p>
-
-        <div class="glass-card">
-            <div class="progress-container"><div class="progress-bar" id="progress"></div></div>
-
-            <form action="https://formspree.io/f/xnjbrvez" method="POST" id="exam-form">
-                <input type="hidden" name="Pseudo_Discord" id="hidden-pseudo">
-                <input type="hidden" name="Poste" value="Modérateur Test">
-
-                <div id="steps-container">
-                    </div>
-
-                <div class="nav-btns">
-                    <button type="button" class="btn-nav btn-prev" id="prevBtn" onclick="changeStep(-1)" style="visibility: hidden;">Précédent</button>
-                    <button type="button" class="btn-nav btn-next" id="nextBtn" onclick="changeStep(1)">Démarrer</button>
-                </div>
-            </form>
-        </div>
-        <a href="hub.html" style="color: #64748b; text-decoration: none; margin-top: 20px; font-size: 0.75rem; opacity: 0.6;">Quitter l'examen</a>
+    <div class="header">
+        <img src="https://raw.githubusercontent.com/playeurpsdelamort-ctrl/dynasty-family.github.io/main/dinastyfamilli.jpg" class="logo">
+        <h1 class="title">CANDIDATURE MODÉRATEUR</h1>
+        <div class="subtitle">DYNASTY FAMILY'S • DISCIPLINE & STRATÉGIE</div>
     </div>
+
+    <div class="exam-card">
+        <div class="progress-container"><div class="progress-bar" id="bar"></div></div>
+        <form action="https://api.web3forms.com/submit" method="POST" id="form">
+            <input type="hidden" name="access_key" value="a8ed2428-2741-474c-82f8-1c5444211509">
+            <input type="hidden" name="subject" value="Nouveau Dossier Modérateur">
+            <input type="checkbox" name="botcheck" style="display: none;">
+            <input type="hidden" name="Pseudo" id="hid-user">
+            
+            <div id="container"></div>
+
+            <div class="nav-btns">
+                <button type="button" class="btn-prev" id="prevBtn" onclick="move(-1)">RETOUR</button>
+                <button type="button" class="btn-next" id="nextBtn" onclick="move(1)">SUIVANT</button>
+            </div>
+        </form>
+    </div>
+
+    <a href="hub.html" class="footer-link">Quitter l'examen</a>
 
     <script>
         const questions = [
-            "Présente ton parcours sur Discord de manière détaillée (ancienneté, types de serveurs fréquentés, rôles occupés, responsabilités assumées).",
-            "Décris une expérience concrète de modération difficile que tu as vécue et explique les décisions stratégiques que tu as prises.",
-            "As-tu déjà participé à l’élaboration ou à l’amélioration d’un règlement ? Si oui, explique ta méthodologie.",
-            "Quelle est ta conception du rôle de modérateur au sein d’une communauté structurée ?",
-            "En quoi ta candidature se distingue-t-elle des autres ?",
-            "Quelle est, selon toi, la frontière entre autorité légitime et abus de pouvoir ?",
-            "Comment contribues-tu à instaurer un climat sain et durable dans une communauté en ligne ?",
-            "Un membre influent (ancien du serveur, apprécié par beaucoup) enfreint volontairement le règlement. Quelle stratégie adoptes-tu ?",
-            "Deux membres se provoquent mutuellement, mais aucun ne semble totalement innocent. Comment établis-tu les responsabilités ?",
-            "Un membre conteste publiquement une sanction que tu as appliquée. Comment gères-tu la situation sans perdre en crédibilité ?",
-            "Une vague de raid survient en pleine nuit. Explique précisément les mesures d’urgence que tu prends.",
-            "Un modérateur abuse de ses permissions. Quelle est ta réaction et pourquoi ?",
-            "Comment maintiens-tu ton objectivité face à la pression, aux critiques ou aux provocations répétées ?",
-            "Comment différencies-tu un simple troll d’un membre réellement problématique ?",
-            "Penses-tu que la fermeté doit primer sur la pédagogie ? Argumente ta réponse.",
-            "Définis le principe d’impartialité dans le cadre d’une modération.",
-            "Si un ami proche enfreint le règlement, quelle serait ta démarche exacte ?",
-            "Comment éviter les biais personnels dans la prise de décision ?",
-            "Explique le fonctionnement des sanctions progressives (warn → mute → kick → ban).",
-            "Décris le rôle des logs et pourquoi ils sont essentiels dans une modération professionnelle.",
-            "As-tu déjà configuré ou paramétré un bot de modération (automod, antiraid, permissions, etc.) ? Décris précisément ce que tu as fait.",
-            "CAS FINAL : Si tu étais responsable de la modération, quelles améliorations structurelles mettrais-tu en place pour optimiser l’efficacité de l’équipe ?"
+            { cat: "Expérience", q: "Présente ton parcours sur Discord de manière détaillée (ancienneté, types de serveurs fréquentés, rôles occupés, responsabilités assumées)." },
+            { cat: "Motivation", q: "Pourquoi souhaites-tu rejoindre l'équipe de modération de Dynasty Family's spécifiquement ?" },
+            { cat: "Scénario", q: "Un membre commence à insulter un autre utilisateur dans un salon public. Quelle est ta procédure immédiate ?" },
+            { cat: "Éthique", q: "Pour toi, quelle est la limite entre une modération ferme et un abus de pouvoir ?" },
+            { cat: "Disponibilité", q: "Quelles sont tes tranches horaires d'activité sur Discord (semaine et week-end) ?" }
+            // Tu pourras ajouter les 17 autres questions ici pour arriver à 22
         ];
 
-        const container = document.getElementById('steps-container');
-        document.getElementById('hidden-pseudo').value = localStorage.getItem('user') || "Anonyme";
-
-        questions.forEach((q, i) => {
-            const div = document.createElement('div');
-            div.className = 'step';
-            div.innerHTML = `
-                <span class="question-num">Question ${i + 1} / ${questions.length}</span>
-                <div class="question-text">${q}</div>
-                <textarea name="reponse_q${i+1}" placeholder="Réponse détaillée et argumentée..." required></textarea>
-            `;
-            container.appendChild(div);
+        document.getElementById('hid-user').value = localStorage.getItem('user') || "Anonyme";
+        const cont = document.getElementById('container');
+        
+        questions.forEach((item, i) => {
+            cont.innerHTML += `<div class="step">
+                <span class="q-label">${item.cat.toUpperCase()} — QUESTION ${i+1} / ${questions.length}</span>
+                <div class="q-text">${item.q}</div>
+                <textarea name="Mod_Ans_Q${i+1}" placeholder="Réponse détaillée et argumentée..." required></textarea>
+            </div>`;
         });
 
-        let currentStep = -1;
+        let current = 0;
         const steps = document.querySelectorAll('.step');
-
-        function changeStep(n) {
-            // Validation du champ
-            if (n === 1 && currentStep >= 0) {
-                const area = steps[currentStep].querySelector('textarea');
-                if (!area.value.trim()) { alert("Merci de fournir une réponse."); return; }
-            }
-
-            if (currentStep >= 0) steps[currentStep].classList.remove('active');
-            currentStep += n;
-
-            // Envoi du formulaire à la fin
-            if (currentStep >= steps.length) {
-                document.getElementById('exam-form').submit();
-                return;
-            }
-
-            steps[currentStep].classList.add('active');
-            updateUI();
+        
+        function show(idx) {
+            steps.forEach((s, i) => s.classList.toggle('active', i === idx));
+            document.getElementById('bar').style.width = ((idx + 1) / steps.length) * 100 + "%";
+            document.getElementById('prevBtn').style.display = idx === 0 ? "none" : "block";
+            document.getElementById('nextBtn').innerText = idx === steps.length - 1 ? 'FINALISER LA CANDIDATURE' : 'SUIVANT';
         }
 
-        function updateUI() {
-            const progress = ((currentStep + 1) / steps.length) * 100;
-            document.getElementById('progress').style.width = progress + "%";
-            document.getElementById('prevBtn').style.visibility = currentStep > 0 ? 'visible' : 'hidden';
-            document.getElementById('nextBtn').innerText = currentStep === steps.length - 1 ? "Finaliser ma candidature" : (currentStep === -1 ? "Démarrer" : "Suivant");
-            if(currentStep === -1) changeStep(1);
+        function move(n) {
+            if (n === 1 && !steps[current].querySelector('textarea').value.trim()) {
+                return alert("Merci de fournir une réponse argumentée.");
+            }
+            current += n;
+            if (current >= steps.length) {
+                document.getElementById('form').submit();
+            } else {
+                show(current);
+            }
         }
-        updateUI();
+        show(0);
     </script>
 </body>
 </html>
